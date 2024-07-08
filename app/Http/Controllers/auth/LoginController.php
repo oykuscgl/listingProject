@@ -37,4 +37,13 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->isAdmin()) { // isAdmin() admin kontrolü için uygun bir metod ismi olabilir
+            return redirect()->route('admin.dashboard', ['user_id' => $user->id]);
+        } else {
+            return redirect('/home'); // Admin değilse varsayılan olarak /home sayfasına yönlendir
+        }
+    }
 }
