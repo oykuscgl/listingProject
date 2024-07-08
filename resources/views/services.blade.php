@@ -30,17 +30,17 @@
         }
         /* Kartlar normal yükseklik */
         .full-height {
-            height: 70vh; 
+            height: 50vh; 
         } 
         .banner-container{
-        margin-right: 8rem;
-        margin-left: 6rem;
+        margin-right: 2rem;
+        margin-left: 2rem;
         }
         .banner {
             width: 100%;
             height: 35vh;
             object-fit: cover;
-            margin: 30px 30px 30px 30px;
+            margin: 10px;
             display: block;
         }
         /*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
@@ -59,7 +59,7 @@
         .banner-text {
             position: absolute;
             top: 50%; 
-            left: 30%; 
+            left: 40%; 
             transform: translate(-100%, -50%); 
             text-align: center; 
             color: #e53e3e; 
@@ -89,11 +89,9 @@
         @media (max-width: 960px) 
         {
             .full-height {
-            overflow: hidden;
-            height: 30vh; 
+            height: 10vh; 
             }
             .banner-container {
-            margin: 0 auto;  
             margin-right: 3rem;
             }
             .banner{
@@ -109,8 +107,7 @@
             .banner-text {
             position: absolute;
             top: 50%; 
-            left: 40%; 
-            transform: translate(-100%, -50%); 
+            left: 150%; 
         }
         .lg-text{
         font-size: 1.2rem; 
