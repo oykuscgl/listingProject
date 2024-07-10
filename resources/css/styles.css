@@ -7,71 +7,111 @@
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.max-w-7xl {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Card styles */
 .card {
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
     overflow: hidden;
-    display: inline-block; /* Display cards inline */
-    position: relative; /* Position context for absolute positioning */
-    width: calc(50% - 1rem); /* Adjust width to fit two cards per row */
-    margin-right: 1rem; /* Margin between cards */
-    margin-bottom: 1rem; /* Margin at the bottom of cards */
+    margin: auto;
 }
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    border-radius: 0.5rem 0.5rem 0 0; /* Rounded corners for top of images */
 }
 
-.card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+/* Kartlar normal yükseklik */
+.full-height {
+    height: 50vh; 
+} 
+
+.banner-container {
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.banner {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    padding: 1rem;
-    text-align: center;
+    height: 35vh;
+    object-fit: cover;
+    margin: 10px;
+    display: block;
 }
 
-.card-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: white; /* White text color */
+/*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
+.gradient-overlay {   
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;   
+    padding: 4rem;
+    background-image: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
 }
 
-.card-content a.btn {
-    display: inline-block;
-    background-color: #f44336;
+/* BAŞLIK VE FOTOĞRAF DÜZENİ */
+.banner-text {
+    position: absolute;
+    top: 50%; 
+    left: 40%; 
+    transform: translate(-100%, -50%); 
+    text-align: center; 
+    color: #e53e3e; 
+    font-weight: bold; 
+}
+
+/* BUTON DÜZENİ */
+.btn {
+    position: absolute;
+    bottom: 5%; /* Adjusted bottom position */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e53e3e;
     color: white;
-    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
-.card-content a.btn:hover {
-    background-color: #e53935;
+.btn i {
+    font-size: 1.5rem; 
+    color: white; 
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .card {
-        width: 100%; /* Full width on smaller screens */
-        margin-right: 0;
+.brightness-75 {
+    filter: brightness(1.25);
+}
+
+/* responsive küçük ekran ayarları*/
+@media (max-width: 960px) {
+    .full-height {
+        height: auto; 
+    }
+    .banner {
+        max-width: 100%; 
+    }
+    .btn {
+        position: relative;
+        margin-top: 20px; 
+        bottom: unset; 
+        left: unset; 
+        transform: unset; 
+    }
+    .banner-text {
+        position: absolute;
+        top: 50%; 
+        left: 150%; 
+    }
+    .lg-text {
+        font-size: 1.2rem; 
     }
 }

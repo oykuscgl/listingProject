@@ -8,3 +8,9 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('services');
 });
+Route::get('/', function () {
+    return view('customersearches');
+});
+Route::get('/', function () {
+    return view('aboutus');
+});
