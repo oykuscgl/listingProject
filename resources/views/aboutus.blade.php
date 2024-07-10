@@ -126,29 +126,13 @@
             color: white; /* İkon rengi */
         }
         .explore{
-            background-color: grey;
+            background: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
         }
-        .btn-play {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30%;
-            height: 2%;
-            background-color: #e53e3e;
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 20px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            background-color: white;
-            border: #cc092f 5px solid;
-        }
+
         
         
  
-@media (max-width: 1920px) 
+@media (min-width: 1920px) 
         {
 
             ::before, ::after {
@@ -160,7 +144,7 @@
             }
             .full-height {
             width: 100%;
-            height: 65vh; 
+            height: 100%; 
             }
             .big-cards{
                 width: 100%;
@@ -209,7 +193,7 @@
             font-size: 1.2rem;
         }
         }
-        @media (max-width: 767px) 
+@media (min-width: 480px) 
         {
             ::before, ::after {
                 box-sizing: border-box;
@@ -220,11 +204,11 @@
             }
             .full-height {
             width: 100%;
-            height: 65vh; 
+            height: 35vh; 
             }
             .big-cards{
                 width: 100%;
-                height: 35vh;
+                height: 75vh;
             }
             .banner {
             margin-bottom: -4%;
@@ -242,7 +226,7 @@
             left: 0;
             width: 100%; 
             height: 100%; 
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); /* Gradient style adjusted */
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); 
             }
         .banner-text {
             letter-spacing: .05rem;
@@ -271,14 +255,13 @@
         .lg-title{
             font-size: 1.5rem;
         }
-        }      
-
+        }    
 
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="banner-container  mr-2 m-2">
+<div class="banner-container  m-5">
     <div style="position: relative;">
         <img class="banner h-fit" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image">
         <div class="absolute inset-0 bg-gradient-to-r from-white via-gray to-transparent"></div>
@@ -365,22 +348,18 @@
 </div>
 </section>
 
-
-<section class="flex justify-center text-center mt-8">
-    <div class="container ">
-        <div class="col-center">
-            <h2 class="text-4xl text-bold">PURATOSU KEŞFEDİN</h2>
-            <p class="text-xl mt-5">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
-        </div>
-
-        <div class=" inline-flex items-center justify-start text-red-500 bg-white border-2 border-red-600 rounded-lg p-4">
-    <a href="#" class=>
-        <span class="mr-2">Oynat</span>
-        <img src="./images/circle-play-regular.svg" alt="" class="w-10 h-10">
-    </a>
-</div>
-
+ 
+<section class="container-sm text-center  bg-gray-200 h-100 pt-20">
+    <h2 class="p-margin-top-xs p-margin-bottom text-xl font-bold">PURATOS'U KEŞFEDİN</h2>
+    <p class="lead text-xl mt-5 text-center">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
+    <div class="btn-play mt-5 mb-5 inline-flex items-center justify-between text-red-500 bg-white border-4 border-red-600 rounded-full p-4">
+        <a href="#" class="flex items-center  mr-10">
+            <span class="flex-1 mr-2 text-left font-bold pl-5">Oynat</span>
+            <img src="./images/circle-play-regular.svg" alt="" class="w-6 h-6 ml-8">
+        </a>
+    </div>
 </section>
+
 
 </body>
 </html>
