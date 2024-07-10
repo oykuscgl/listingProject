@@ -32,8 +32,8 @@
         /* Kartlar normal yükseklik */
         .full-height {
             width: 60vh;
-            height: 45vh; 
-        } 
+            height: 45vh;
+        }
         .banner-container {
     position: relative;
     margin-right: 1rem;
@@ -62,31 +62,31 @@
 }
 
         /*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
-        .gradient-overlay {   
+        .gradient-overlay {
             position: absolute;
             inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;   
+            text-align: center;
             padding: 4rem;
             background-image: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
         }
         /* BAŞLIK VE FOTOĞRAF DÜZENİ */
         .banner-text {
             position: absolute;
-            top: 50%; 
-            left: 30%; 
-            transform: translate(-100%, -50%); 
-            text-align: center; 
-            color: #e53e3e; 
-            font-weight: bold; 
+            top: 50%;
+            left: 30%;
+            transform: translate(-100%, -50%);
+            text-align: center;
+            color: #e53e3e;
+            font-weight: bold;
         }
         /* BUTON DÜZENİ */
         .btn {
         position: absolute;
-        bottom: 15%; 
+        bottom: 15%;
         left: 50%;
         transform: translateX(-50%);
         background-color: #e53e3e;
@@ -98,17 +98,17 @@
         align-items: center;
         }
         .btn i {
-            margin-left: 8px; 
+            margin-left: 8px;
         }
         .brightness-75 {
             filter: brightness(1.25);
         }
         /* responsive küçük ekran ayarları*/
-        @media (max-width: 1020px) 
+        @media (max-width: 1020px)
         {
             .full-height {
             width: 100%;
-            height: 25vh; 
+            height: 25vh;
             }
             .banner-container {
             margin-right: 1rem;
@@ -117,21 +117,21 @@
                 background-color: white;
                 margin-bottom: 2rem;
                 height: 27vh;
-                max-width: 100%; 
+                max-width: 100%;
             }
             .btn {
             position: relative;
-            margin-top: 20px; 
-            bottom: unset; 
-            left: unset; 
-            transform: unset; 
+            margin-top: 20px;
+            bottom: unset;
+            left: unset;
+            transform: unset;
             }
             .banner-text {
                 margin-left: 15%;
                 font-size: 20px;
         }
         .lg-text{
-        font-size: 1.2rem; 
+        font-size: 1.2rem;
         }
         }   BUNLAR HTML DOSYAMDA OLAN CSSLER BUNLARI EXTERNAL OLARAK KULLANDIĞIM STYLE.CSS DOSYAMDAN ÇEKMEK İSTİYORUM STYLE.CSS DOSYAM ŞU ŞEKİLDE /* style.css */
 
@@ -166,8 +166,8 @@ body {
 
 /* Kartlar normal yükseklik */
 .full-height {
-    height: 50vh; 
-} 
+    height: 50vh;
+}
 
 .banner-container {
     margin-right: 2rem;
@@ -183,14 +183,14 @@ body {
 }
 
 /*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
-.gradient-overlay {   
+.gradient-overlay {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;   
+    text-align: center;
     padding: 4rem;
     background-image: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
 }
@@ -210,7 +210,7 @@ body {
     </div>
 </div>
 <div class="card row-start">
-    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"> 
+    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
         <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
             <img class="w-full filter brightness-75" src="{{ asset('images/sensobus.jpeg') }}" alt="İnovasyon Merkezi">
             <div class="gradient-overlay">
