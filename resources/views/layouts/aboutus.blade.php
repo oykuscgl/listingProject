@@ -42,7 +42,7 @@
         /* Kartlar normal yükseklik */
         .full-height {
             width: 60vh;
-            height: 50vh; 
+            height: 50vh;
         }
         .big-cards{
             width: 60vh;
@@ -56,7 +56,7 @@
             justify-content: start;
         }
 
-    .banner::after 
+    .banner::after
         {
         content: '';
         position: absolute;
@@ -67,7 +67,7 @@
         background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
         }
 
-        .banner 
+        .banner
         {
         margin-bottom: 3%;
         width: 100%;
@@ -75,11 +75,11 @@
         object-fit: cover;
         display: block;
         position: relative;
-        z-index: 0; 
+        z-index: 0;
         }
 
         /*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
-        .gradient-overlay {   
+        .gradient-overlay {
             margin: 0;
             position: absolute;
             inset: 0;
@@ -87,7 +87,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;   
+            text-align: center;
             padding: 4rem;
             background-image: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
         }
@@ -95,18 +95,18 @@
         .banner-text {
             letter-spacing: .05rem;
             position: absolute;
-            top: 50%; 
-            left: 20%; 
-            transform: translate(-100%, -50%); 
-            text-align: center; 
-            color: red; 
-            font-weight: bold; 
+            top: 50%;
+            left: 20%;
+            transform: translate(-100%, -50%);
+            text-align: center;
+            color: red;
+            font-weight: bold;
             font-size: 24px;
         }
         /* BUTON DÜZENİ */
         .btn {
             position: absolute;
-            bottom: 15%; 
+            bottom: 15%;
             left: 50%;
             transform: translateX(-50%);
             background-color: #e53e3e;
@@ -122,9 +122,9 @@
             font-size: 2rem; /* İkon boyutu */
             color: white; /* İkon rengi */
         }
-        
- 
-@media (max-width: 1020px) 
+
+
+@media (max-width: 1020px)
         {
             .card
             {
@@ -132,7 +132,7 @@
             }
             .full-height {
             width: 100%;
-            height: 35vh; 
+            height: 35vh;
             }
             .big-cards{
                 width: 100%;
@@ -146,44 +146,44 @@
             height: 30vh;
             }
 
-            .banner::before 
+            .banner::before
             {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%; 
-            height: 100%; 
+            width: 100%;
+            height: 100%;
             background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); /* Gradient style adjusted */
             }
         .banner-text {
             letter-spacing: .05rem;
             position: absolute;
             top: 40%;
-            bottom: 50%; 
-            left: 35%;  
-            text-align: left; 
-            color: #e53e3e; 
-            font-weight: bold; 
+            bottom: 50%;
+            left: 35%;
+            text-align: left;
+            color: #e53e3e;
+            font-weight: bold;
             font-size: 36px;
         }
             .btn {
             position: relative;
-            margin-top: 20px; 
-            bottom: 0; 
-            left: 0; 
-            transform: unset; 
+            margin-top: 20px;
+            bottom: 0;
+            left: 0;
+            transform: unset;
             }
             .banner-text {
                 margin-left: 15%;
         }
         .lg-text{
-        font-size: 1.6rem; 
+        font-size: 1.6rem;
         }
         .lg-title{
             font-size: 1.5rem;
         }
-        }   
+        }
 
 
     </style>
@@ -196,7 +196,7 @@
         <div class="absolute inset-0 bg-gradient-to-r from-white via-gray to-transparent"></div>
         <div class="banner-text">
             <div style="display: flex; flex-direction: row; justify-content: start; font-size: 12px;">
-                <p class="text-black">Home ></p> 
+                <p class="text-black">Home ></p>
                 <p class="red-more">PURATOS HAKKINDA</p>
             </div>
             <div><h3 class="text-bold red-more">PURATOS HAKKINDA</h3></div>
@@ -206,9 +206,9 @@
 
 
 
-<section class="container-fluid">  
+<section class="container-fluid">
 <div class="card row-start">
-    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-8 ml-5"> 
+    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-8 ml-5">
         <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
             <img class="w-full filter" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
             <div class="gradient-overlay">
@@ -264,7 +264,7 @@
           <a href="#" class="btn">Keşfet <i class="fa fa-angle-right"></i></a>
       </div>
     </div>
-    
+
     <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
       <img class="w-full filter" src="{{ asset('images/demo.png') }}" alt="Demo">
       <div class="gradient-overlay">

@@ -31,7 +31,25 @@ Route::post('/admin/products/store', [AdminController::class, 'storeProduct'])->
 Route::delete('/admin/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
 
 
-Route::middleware('appendUserId')->get('/{user_id}', function (Request $request) {
-    return $request->user_id; // Kullanıcının id'sini döndür
+Route::get('/hakkımızda', function () {
+    return view('layouts/aboutus');
+});
+
+Route::get('/hizmetlerimiz', function () {
+    return view('layouts/services');
+});
+
+Route::get('/tuketici-arastirmalari', function () {
+    return view('layouts/customersearches');
+});
+
+Route::get('/urun-ekle', function () {
+    return view('admin/products');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Admin Dashboard
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
 });
 

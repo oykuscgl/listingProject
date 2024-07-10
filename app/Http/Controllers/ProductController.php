@@ -1,8 +1,8 @@
 <?php
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\User;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -27,15 +27,15 @@ class ProductController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $product = new Product($request->all());
+        $product = Product::create($request->all());
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products');
             $product->image_path = $imagePath;
+            $product->save();
         }
 
-        $product->save();
-        $product->categories()->attach($request->categories);
+        $product->categories()->sync($request->categories);
 
         return redirect()->route('products.index');
     }
@@ -68,6 +68,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products');
             $product->image_path = $imagePath;
+            $product->save();
         }
 
         $product->categories()->sync($request->categories);
