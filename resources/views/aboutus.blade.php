@@ -10,13 +10,16 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-J6JHuQlRHCUCjMUbTV800vUqlLg5C/Z+ZpKrqvyzA02hSe2HltzTT3bE3D5s7A800Dm800s+Xu5Br1EeMaDpWAMjC9Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-J6JHuQlRHCUCjMUbTV800vUqlLg5C/Z+ZpKrqvyzA02hSe2HltzTT3bE3D5s7A800Dm800s+Xu5Br1EeMaDpWAMjC9Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
       body {
             position: relative;
             margin: 0;
             padding: 0;
             font-family: 'CenturyGothic', Verdana, sans-serif;
+        }
+        *{
+            box-sizing: border-box;
         }
         @font-face {
             font-family: 'CenturyGothic', Verdana, sans-serif;
@@ -122,17 +125,102 @@
             font-size: 2rem; /* İkon boyutu */
             color: white; /* İkon rengi */
         }
+        .explore{
+            background-color: grey;
+        }
+        .btn-play {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 2%;
+            background-color: #e53e3e;
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            background-color: white;
+            border: #cc092f 5px solid;
+        }
+        
         
  
-@media (max-width: 1020px) 
+@media (max-width: 1920px) 
         {
+
+            ::before, ::after {
+                box-sizing: border-box;
+            }
             .card
             {
                 transform: scale(0.95);
             }
             .full-height {
             width: 100%;
-            height: 35vh; 
+            height: 65vh; 
+            }
+            .big-cards{
+                width: 100%;
+                height: 65vh;
+            }
+            .banner {
+            margin-bottom: -4%;
+            position: relative;
+            width: 100%;
+            object-fit: cover;
+            height: 30vh;
+            }
+
+            .banner::before 
+            {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); /* Gradient style adjusted */
+            }
+        .banner-text {
+            letter-spacing: .05rem;
+            position: absolute;
+            top: 40%;
+            bottom: 50%; 
+            left: 35%;  
+            text-align: left; 
+            color: #e53e3e; 
+            font-weight: bold; 
+            font-size: 36px;
+        }
+            .btn {
+            position: relative;
+            margin-top: 20px; 
+            bottom: 0; 
+            left: 0; 
+            transform: unset; 
+            }
+            .banner-text {
+                margin-left: 15%;
+        }
+        .lg-title{
+            font-size: 1.2rem;
+        }
+        }
+        @media (max-width: 767px) 
+        {
+            ::before, ::after {
+                box-sizing: border-box;
+            }
+            .card
+            {
+                transform: scale(0.95);
+            }
+            .full-height {
+            width: 100%;
+            height: 65vh; 
             }
             .big-cards{
                 width: 100%;
@@ -178,12 +266,12 @@
                 margin-left: 15%;
         }
         .lg-text{
-        font-size: 1.6rem; 
+        font-size: 1.3rem; 
         }
         .lg-title{
             font-size: 1.5rem;
         }
-        }   
+        }      
 
 
     </style>
@@ -208,7 +296,7 @@
 
 <section class="container-fluid">  
 <div class="card row-start">
-    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-8 ml-5"> 
+    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 ml-5 mt-10"> 
         <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
             <img class="w-full filter" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
             <div class="gradient-overlay">
@@ -224,7 +312,6 @@
           <a href="#" class="lg-title text-white text-2xl font-bold mb-4">DEĞERLERİMİZ</a>
           <p class="text-gray-800  text-2xl lg-text text-center">Değerlerimiz, yaptığımız her şeyin kalbinde olan güvene dayanır. Tüm değerlerimizin özünde yer alan güven, yeni fikirler için güvenilir ortaklar olmamızı sağlıyor.</p>
           <a href="#" class="btn">Keşfet <i class="fas fa-angle-right"></i></a>
-
       </div>
     </div>
 
@@ -279,18 +366,19 @@
 </section>
 
 
-<section class="explore flex justify-center text-center">
-    <div class="container bg-gray">
+<section class="flex justify-center text-center mt-8">
+    <div class="container ">
         <div class="col-center">
-            <h2 class="text-4x1 text-bold">PURATOSU KEŞFEDİN</h2>
-            <p class="text-4x1">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
-        </div>
-        <div>
-        <a href="#" class="">Oynat<i class="fas fa-angle-right"></i></a>
+            <h2 class="text-4xl text-bold">PURATOSU KEŞFEDİN</h2>
+            <p class="text-xl mt-5">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
         </div>
 
-    </div>
-
+        <div class=" inline-flex items-center justify-start text-red-500 bg-white border-2 border-red-600 rounded-lg p-4">
+    <a href="#" class=>
+        <span class="mr-2">Oynat</span>
+        <img src="./images/circle-play-regular.svg" alt="" class="w-10 h-10">
+    </a>
+</div>
 
 </section>
 
