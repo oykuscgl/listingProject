@@ -1,0 +1,117 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Kartlar normal yükseklik */
+.full-height {
+    height: 50vh; 
+} 
+
+.banner-container {
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.banner {
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+    margin: 10px;
+    display: block;
+}
+
+/*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
+.gradient-overlay {   
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;   
+    padding: 4rem;
+    background-image: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
+}
+
+/* BAŞLIK VE FOTOĞRAF DÜZENİ */
+.banner-text {
+    position: absolute;
+    top: 50%; 
+    left: 40%; 
+    transform: translate(-100%, -50%); 
+    text-align: center; 
+    color: #e53e3e; 
+    font-weight: bold; 
+}
+
+/* BUTON DÜZENİ */
+.btn {
+    position: absolute;
+    bottom: 5%; /* Adjusted bottom position */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e53e3e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.btn i {
+    font-size: 1.5rem; 
+    color: white; 
+}
+
+.brightness-75 {
+    filter: brightness(1.25);
+}
+
+/* responsive küçük ekran ayarları*/
+@media (max-width: 960px) {
+    .full-height {
+        height: auto; 
+    }
+    .banner {
+        max-width: 100%; 
+    }
+    .btn {
+        position: relative;
+        margin-top: 20px; 
+        bottom: unset; 
+        left: unset; 
+        transform: unset; 
+    }
+    .banner-text {
+        position: absolute;
+        top: 50%; 
+        left: 150%; 
+    }
+    .lg-text {
+        font-size: 1.2rem; 
+    }
+}
