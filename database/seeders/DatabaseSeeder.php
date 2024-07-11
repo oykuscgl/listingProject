@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ProductsTableSeeder::class,
+            RecipeSeeder::class,
         ]);
 
     }

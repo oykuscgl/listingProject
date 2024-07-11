@@ -10,25 +10,28 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth/login');
     }
 
     public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
-        }
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        // Kullanıcının rolünü döndür
+        return response()->json(['role' => Auth::user()->role]);
     }
+
+    return back()->withErrors([
+        'email' => 'The provided credentials do not match our records.',
+    ]);
+}
+
 
     public function logout(Request $request)
     {
@@ -40,10 +43,13 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if ($user->isAdmin()) { // isAdmin() admin kontrolü için uygun bir metod ismi olabilir
-            return redirect()->route('admin.dashboard', ['user_id' => $user->id]);
+        if ($user->role === 'admin') {
+            return redirect()->route('admin/adminDashboard');
         } else {
-            return redirect('/home'); // Admin değilse varsayılan olarak /home sayfasına yönlendir
+            return redirect()->route('layouts/userHomePage');
         }
     }
 }
+
+
+

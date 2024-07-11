@@ -14,7 +14,7 @@
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login') }}" id="loginForm">
                             @csrf
 
                             <div class="form-group row">
@@ -71,8 +71,35 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(event) {
+                event.preventDefault();
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = form.serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: formData,
+                    success: function(response) {
+                        if (response.role === 'admin') {
+                            window.location.href = "{{ url('/adminDashboard') }}";
+                        } else {
+                            window.location.href = "{{ url('/userHomePage') }}";
+                        }
+                    },
+                    error: function(response) {
+                        alert('Login failed. Please check your credentials and try again.');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
