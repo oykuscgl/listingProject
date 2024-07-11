@@ -1,3 +1,4 @@
+!
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +8,15 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@%5E1.0/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<style>
-       body {
+    <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
             position: relative;
             margin: 0;
             padding: 0;
             font-family: 'CenturyGothic', Verdana, sans-serif;
         }
-        *{
+        * {
             box-sizing: border-box;
         }
         @font-face {
@@ -26,50 +26,55 @@
             font-display: swap;
             src: url('clientlib-font-default/resources/fonts/CenturyGothicW05-SemiBoldIt.woff');
         }
-
-</style>
-<body>
-
-<section class="container mt-10 p-4">
-<header class="text-white py-4 px-6 flex items-center justify-between">
-    <div class="text-2xl font-bold text-black">{{ $recipe->title }}</div>
-  </header>
-  <div class="bg-white border-t border-gray-300 flex items-center py-4 px-6 rounded-full serial">
-    <input type="text" class="px-4 py-2 border border-gray-300 rounded-full flex-grow mr-2 focus:outline-none hover:border-red-500 focus:border-gray-700" placeholder="">
-    <button class="bg-gray-600 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full focus:outline-none">
-    <img src="magnifying-glass-solid.svg" alt="search" class="h-6 w-6">
-    </button>
-    </div>
-  </div>
-
-  <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
-        <figure class="relative">
-            <!-- Image and link -->
-            <img src="{{ $recipe->image }}" alt="{{ $recipe->title }}" class="w-full h-64 object-cover">
-        </figure>
-        <div class="p-4 btn">
-            <h3 class="p-margin-top-sm p-margin-bottom-sm font-bold text-lg">{{ $recipe->title }}</h3>
-            <div class="flex justify-between items-center text-sm mt-5">
-                <p class="mt-4 text-sm/relaxed">
-                    {{ $recipe->description }}
-                </p>
+        .red-more{
+            color: #cc092f;
+        }
+    </style>
+</head>
+<body class="">
+<div class="container m-20">
+    <div style="position: relative;">
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-gray-500 to-transparent"></div>
+        <div class="mb-10">
+            <div class="flex flex-row justify-center text-left">
+                <p class="text-black underline">Home  >  </p>
+                <p class="text-black underline">Tariflerimiz  >  </p>
+                <p class="red-more">{{ $recipe->title }}</p>
             </div>
+            <div class="text-left">
+                <h3 class="text-bold red-more text-3xl">   {{ $recipe->title }}</h3></div>
         </div>
     </div>
-
-    <div class="p-4">
-        <h3 class="font-bold text-lg">Malzemeler:</h3>
-        <ul class="list-disc list-inside mt-2">
-            <p class="mt-4 text-sm/relaxed">
-                {{ $recipe->detailed_info }}
-            </p>
-        </ul>
-    </div>
-
-    <div class="p-4">
-        <a href="{{ route('recipes.index') }}" class="text-red-500">Tüm Tariflere Geri Dön</a>
+</div>
+<section>
+<div class="flex flex-row justify-center">
+    <div class="flex flex-col text-center">
+<h2 class="text-xl font-semibold mb-4">İÇİNDEKİLER</h2>
+    <table class="bg-white border border-gray-200 w-full h-full">
+        <thead class="bg-gray-200">
+         <tr>
+            <th class="py-2 px-4 border-b">MALZEMELER</th>
+            <th class="py-2 px-4 border-b">MİKTAR</th>
+         </tr>
+    </thead>
+    <tbody>
+        @if ($recipe && isset($recipe->description))
+            @foreach (json_decode($recipe->description, true) as $ingredient)
+                <tr>
+                    <td class="py-2 px-4 border-b">{{ $ingredient['ingredient'] }}</td>
+                    <td class="py-2 px-4 border-b">{{ $ingredient['amount'] }}</td>
+                </tr>
+            @endforeach
+        @endif
+    </tbody>
+        </table>
+        </div>
+    <img class="ml-10 w-1/2" src="{{ asset('images/strawberrycake.jpeg') }}" alt="Image">
     </div>
 </section>
-
+    <div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-4"> HAZIRLANIŞI</h1>
+    <p class="text-gray-700 mb-6">{{ $recipe->detailed_info }}</p>
+<div>
 </body>
 </html>

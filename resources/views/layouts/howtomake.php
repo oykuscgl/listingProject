@@ -30,8 +30,7 @@
     </header>
 
         <section class="mt-20 flex flex-row justify-center">
-
-        <div class="text-lg text-center">
+            <div class="text-lg text-center">
             <h2 class="">İÇİNDEKİLER</h2>
                 <table class="bg-white border border-gray">
                     <thead class="divide-y divide-grey">

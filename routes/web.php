@@ -21,8 +21,8 @@ Route::get('/customersearches', function () {
 Route::get('/aboutus', function () {
     return view('layouts.aboutus');
 });
-Route::get('/recipes', function () {
-    return view('layouts.recipes');
+Route::get('/recipe', function () {
+    return view('layouts.recipe');
 });
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
