@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-J6JHuQlRHCUCjMUbTV800vUqlLg5C/Z+ZpKrqvyzA02hSe2HltzTT3bE3D5s7A800Dm800s+Xu5Br1EeMaDpWAMjC9Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -125,7 +124,6 @@
             font-size: 2rem; /* İkon boyutu */
             color: white; /* İkon rengi */
         }
-<<<<<<< HEAD:resources/views/aboutus.blade.php
         .explore{
             background: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
         }
@@ -134,11 +132,6 @@
         
  
 @media (min-width: 1920px) 
-=======
-
-
-@media (max-width: 1020px)
->>>>>>> origin/main:resources/views/layouts/aboutus.blade.php
         {
 
             ::before, ::after {
@@ -150,11 +143,7 @@
             }
             .full-height {
             width: 100%;
-<<<<<<< HEAD:resources/views/aboutus.blade.php
             height: 100%; 
-=======
-            height: 35vh;
->>>>>>> origin/main:resources/views/layouts/aboutus.blade.php
             }
             .big-cards{
                 width: 100%;
@@ -260,21 +249,12 @@
                 margin-left: 15%;
         }
         .lg-text{
-<<<<<<< HEAD:resources/views/aboutus.blade.php
         font-size: 1.3rem; 
-=======
-        font-size: 1.6rem;
->>>>>>> origin/main:resources/views/layouts/aboutus.blade.php
         }
         .lg-title{
             font-size: 1.5rem;
         }
-<<<<<<< HEAD:resources/views/aboutus.blade.php
         }    
-=======
-        }
-
->>>>>>> origin/main:resources/views/layouts/aboutus.blade.php
 
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -298,11 +278,7 @@
 
 <section class="container-fluid">
 <div class="card row-start">
-<<<<<<< HEAD:resources/views/aboutus.blade.php
     <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 ml-5 mt-10"> 
-=======
-    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-8 ml-5">
->>>>>>> origin/main:resources/views/layouts/aboutus.blade.php
         <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
             <img class="w-full filter" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
             <div class="gradient-overlay">
