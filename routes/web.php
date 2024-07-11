@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -27,6 +26,9 @@ Route::get('/recipes', function () {
 });
 =======
 
+Route::get('/userHomePage', function () {
+    return view('layouts/userHomePage');
+})->name('userHomePage');
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
@@ -34,16 +36,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-
-// Ürünler yönetimi
-Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
-Route::get('/admin/products/create', [AdminController::class, 'createProduct'])->name('admin.products.create');
-Route::post('/admin/products/store', [AdminController::class, 'storeProduct'])->name('admin.products.store');
-Route::delete('/admin/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
-
 
 Route::get('/hakkımızda', function () {
     return view('layouts/aboutus');
@@ -63,8 +55,9 @@ Route::get('/urun-ekle', function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     // Admin Dashboard
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
+    Route::get('admin/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
 });
+
+
 
 >>>>>>> origin/main
