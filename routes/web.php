@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
     return view('layouts.app');
@@ -21,12 +22,11 @@ Route::get('/customersearches', function () {
 Route::get('/aboutus', function () {
     return view('layouts.aboutus');
 });
-Route::get('/recipe', function () {
-    return view('layouts.recipe');
-});
+
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
-
 Route::get('/recipes/{recipe_id}', [RecipeController::class, 'show'])->name('recipes.show');
 
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{newsPost_id}', [NewsController::class, 'show'])->name('news.show');
 

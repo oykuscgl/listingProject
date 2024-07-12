@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\News;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -31,9 +32,10 @@ class DatabaseSeeder extends Seeder
         */
 
         $this->call([
-         //   CategorySeeder::class,
-         //   ProductsTableSeeder::class,
-         //   RecipeSeeder::class,
+            //CategorySeeder::class,
+            //ProductsTableSeeder::class,
+            //RecipeSeeder::class,
+            //NewsSeeder::class,
         ]);
 
     }
