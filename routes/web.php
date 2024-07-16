@@ -67,7 +67,7 @@ Route::put('/admin/products/{product}', [AdminController::class, 'updateProduct'
 Route::delete('/admin/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.destroy');
 
 //recipe management
-Route::get('/admin/recipe-management', [AdminController::class, 'recipeManagement'])->name('admin.recipeManagement');
+Route::get('/admin/recipe-management', [AdminController::class, 'recipeManagement'])->name('admin.recipes.index');
 Route::get('/admin/recipes/create', [AdminController::class, 'showAddRecipeForm'])->name('admin.recipes.create');
 Route::post('/admin/recipes', [AdminController::class, 'storeRecipe'])->name('admin.recipes.store');
 Route::get('/admin/recipes/{recipe}/edit', [AdminController::class, 'editRecipe'])->name('admin.recipes.edit');
@@ -75,15 +75,20 @@ Route::put('/admin/recipes/{recipe}', [AdminController::class, 'updateRecipe'])-
 Route::delete('/admin/recipes/{recipe}', [AdminController::class, 'destroyRecipe'])->name('admin.recipes.destroy');
 
 //news management
-Route::get('/admin/news-management', [AdminController::class, 'newsManagement'])->name('admin.newsManagement');
+Route::get('/admin/news-management', [AdminController::class, 'newsManagement'])->name('admin.news.index');
 Route::get('/admin/news/create', [AdminController::class, 'showAddNewsForm'])->name('admin.news.create');
 Route::post('/admin/news', [AdminController::class, 'storeNews'])->name('admin.news.store');
 Route::get('/admin/news/{news_id}/edit', [AdminController::class, 'editNews'])->name('admin.news.edit');
 Route::put('/admin/news/{news_id}', [AdminController::class, 'updateNews'])->name('admin.news.update');
-Route::delete('/admin/news/{news}', [AdminController::class, 'destroyNews'])->name('admin.news.destroy');
+Route::delete('/admin/news/{news_id}', [AdminController::class, 'destroyNews'])->name('admin.news.destroy');
 
 //service management
-Route::get('/admin/service-management', [AdminController::class, 'serviceManagement'])->name('admin.serviceManagement');
+Route::get('/admin/service-management', [AdminController::class, 'servicesManagement'])->name('admin.serviceManagement');
+Route::get('/admin/services/create', [AdminController::class, 'showAddServiceForm'])->name('admin.services.create');
+Route::post('/admin/services', [AdminController::class, 'storeServices'])->name('admin.services.store');
+Route::get('/admin/services/{service_id}/edit', [AdminController::class, 'editServices'])->name('admin.services.edit');
+Route::put('/admin/services/{service_id}', [AdminController::class, 'updateServices'])->name('admin.services.update');
+Route::delete('/admin/services/{service_id}', [AdminController::class, 'destroyServices'])->name('admin.services.destroy');
 
 
 //consumer research management

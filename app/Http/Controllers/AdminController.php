@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\RecipeRequest;
 use App\Http\Requests\NewsPostRequest;
+use App\Http\Requests\ServiceRequest;
 
 
 class AdminController extends Controller
@@ -146,17 +147,57 @@ class AdminController extends Controller
         return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
 
-    public function destroyNews(News $new)
+    public function destroyNews($news_id)
     {
-        $new->delete();
-        return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla silindi.');
+        // Haber kaydını bul ve sil
+        $news = News::findOrFail($news_id);
+        $news->delete();
+        return redirect()->route('admin.news.index')->with('success', 'Haber başarıyla silindi.');
     }
 
     //SERVICE CONTROL
-    public function serviceManagement()
+    public function servicesManagement()
     {
-        // Firma hizmetleri sayfası
-        return view('admin.serviceManagement');
+        // Haberler yönetimi sayfası
+        $services = Service::all('id','title');
+        return view('admin.services.index', compact('services'));
+    }
+
+    public function showAddServiceForm()
+    {
+        $services = Service::all();
+        return view('admin.services.create', compact('services'));
+    }
+
+    public function createServices()
+    {
+        return view('admin.services.create');
+    }
+
+    public function storeServices(ServiceRequest $request)
+    {
+        Service::create($request->validated());
+        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function editServices($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('admin.services.edit', compact('service'));
+    }
+
+    public function updateServices(ServiceRequest $request, Service $new)
+    {
+        $new->update($request->validated());
+        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+    public function destroyServices($service_id)
+    {
+        // Haber kaydını bul ve sil
+        $services = Service::findOrFail($service_id);
+        $services->delete();
+        return redirect()->route('admin.services.index')->with('success', 'Haber başarıyla silindi.');
     }
 
 
