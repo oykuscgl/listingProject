@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
     <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/resources/views/js/recipe-script.js"></script>
     <style>
         body {
             position: relative;
@@ -32,16 +33,17 @@
     </style>
 </head>
 <body class="">
+
 <div class="container m-20">
     <div style="position: relative;">
     <div class="absolute inset-0 bg-gradient-to-r from-black via-gray-500 to-transparent"></div>
         <div class="mb-10">
-            <div class="flex flex-row justify-center text-left">
+            <div class="flex flex-row justify-center text-center">
                 <p class="text-black underline">Home  >  </p>
                 <p class="text-black underline">Tariflerimiz  >  </p>
                 <p class="red-more">{{ $recipe->title }}</p>
             </div>
-            <div class="text-left">
+            <div class="text-center">
                 <h3 class="text-bold red-more text-3xl">   {{ $recipe->title }}</h3></div>
         </div>
     </div>
@@ -69,7 +71,7 @@
     </tbody>
         </table>
         </div>
-    <img class="ml-10 w-1/2" src="{{ asset('images/strawberrycake.jpeg') }}" alt="Image">
+    <img class="ml-10 w-1/2" src="{{ asset('images/'.$recipe->image) }}" alt="Image">
     </div>
 </section>
     <div class="bg-white shadow-md rounded-lg p-6">

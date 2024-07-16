@@ -1,6 +1,6 @@
         
         <!--Navbar-->
-        <header class="bg-gray-100 bg-white shadow">
+        <header class="bg-gray-100 bg-white shadow mx-auto">
         <!-- Üst Menü -->
         <div class="w-full">
         <div class="flex justify-end bg-gray-200 py-6 pr-2 rounded-l-full">
@@ -24,12 +24,17 @@
         <div class="bg-white py-2 shadow">
             <div class=" flex justify-between items-center px-4">
                 <div class="flex items-center">
-                    <img src="images/logo.png" alt="Puratos Logo" class="h-25">
+                <img src="{{ asset('images/logo.svg') }}" alt="Puratos Logo" class="h-25">
                 </div>
                 <nav>
                     <ul class="flex space-x-4">
-                        <li class="relative group">
-                            <a href="#" class="text-gray-700 hover:text-red-600">Ekmekçilik</a>
+                        <li class="relative group"> 
+                        <div class="flex flex-row justify-between items-center">
+                            <a href="#" class="font-bold text-gray-700 hover:text-red-600">Ekmekçilik</a>
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                 </svg>
+                         </div>
                             <!-- Dropdown -->
                             <div class="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
                                 <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dropdown Item 1</a>
@@ -83,23 +88,7 @@
         </div>
     </header>
 
-    <!-- SideBar -->
 
-        <aside class="w-full md:w-1/4 p-4 bg-white shadow">
-                    <h2 class="text-xl font-bold mb-4">Filtrele</h2>
-                    <ul>
-                        <li><label><input type="checkbox" class="mr-2"> Beslenme</label></li>
-                        <li><label><input type="checkbox" class="mr-2"> Kurumsal</label></li>
-                        <li><label><input type="checkbox" class="mr-2"> Tüketici Araştırmaları</label></li>
-                        <li><label><input type="checkbox" class="mr-2"> Ekşi Maya</label></li>
-                        <li><label><input type="checkbox" class="mr-2"> İyilik Sağlık </label></li>
-                    </ul>
-                    <div class="underline-long mt-4 w-full"></div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-bold mb-4">Puratos Türkiye</h3>
-                        <p class="text-gray-700 mb-4 kurumsal-info">Puratos Türkiye İzmir Fabrika<br>Tire Organize Sanayi Bölgesi<br>İbni Melek OSB Mahallesi<br>Tosbi Yol 5. Sokak No:2 35900<br>Tire/İZMİR<br>+90 232 513 50 13</p>
-                    </div>
-        </aside>
 
         
 
