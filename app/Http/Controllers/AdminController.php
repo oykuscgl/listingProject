@@ -13,6 +13,8 @@ use App\Models\Blog;
 use App\Models\HumanResource;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\RecipeRequest;
+use App\Http\Requests\NewsPostRequest;
 
 
 class AdminController extends Controller
@@ -23,12 +25,9 @@ class AdminController extends Controller
         return view('admin/adminDashboard');
     }
 
-    public function productManagement()
-    {
-        // Ürün yönetimi sayfası
-        return view('admin.productManagement');
-    }
 
+
+    //PRODUCT CONTROL
     public function manageProducts()
     {
         $products = Product::with('category')->get();
@@ -65,54 +64,139 @@ class AdminController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully');
     }
 
+
+    //RECIPE CONTROL
+
     public function recipeManagement()
     {
-        // Tarif yönetimi sayfası
-        return view('admin.recipeManagement');
+        $recipes = Recipe::all('id','title');
+        return view('admin.recipes.index', compact('recipes'));
     }
 
+    public function showAddRecipeForm()
+    {
+        $recipes = Recipe::all();
+        return view('admin.recipes.create', compact('recipes'));
+    }
+
+    public function createRecipe()
+    {
+        return view('admin.recipes.create');
+    }
+
+    public function storeRecipe(RecipeRequest $request)
+    {
+        Recipe::create($request->validated());
+        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function editRecipe(Recipe $recipe)
+    {
+        return view('admin.recipes.edit', compact('recipe'));
+    }
+
+    public function updateRecipe(RecipeRequest $request, Recipe $recipe)
+    {
+        $recipe->update($request->validated());
+        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+    public function destroyRecipe(Recipe $recipe)
+    {
+        $recipe->delete();
+        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla silindi.');
+    }
+
+
+
+    //NEWS CONTROL
+    public function newsManagement()
+    {
+        // Haberler yönetimi sayfası
+        $news = News::all('id','title');
+        return view('admin.news.index', compact('news'));
+    }
+
+    public function showAddNewsForm()
+    {
+        $news = News::all();
+        return view('admin.news.create', compact('news'));
+    }
+
+    public function createNews()
+    {
+        return view('admin.news.create');
+    }
+
+    public function storeNews(NewsPostRequest $request)
+    {
+        News::create($request->validated());
+        return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function editNews($id)
+    {
+        $new = News::findOrFail($id);
+        return view('admin.news.edit', compact('new'));
+    }
+
+    public function updateNews(NewsPostRequest $request, News $new)
+    {
+        $new->update($request->validated());
+        return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+    public function destroyNews(News $new)
+    {
+        $new->delete();
+        return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla silindi.');
+    }
+
+    //SERVICE CONTROL
     public function serviceManagement()
     {
         // Firma hizmetleri sayfası
         return view('admin.serviceManagement');
     }
 
+
+
+    //CONSUMER RESEARCH CONTROL
     public function consumerResearch()
     {
         // Tüketici araştırmaları sayfası
         return view('admin.consumerResearch');
     }
 
+
+
+    //COMPANY INFO CONTROL
     public function companyInfo()
     {
         // Firma hakkında bilgisi sayfası
         return view('admin.companyInfo');
     }
 
-    public function newsManagement()
-    {
-        // Haberler yönetimi sayfası
-        return view('admin.newsManagement');
-    }
-
+    //BLOG CONTROL
     public function blogManagement()
     {
         // Blog yönetimi sayfası
         return view('admin.blogManagement');
     }
 
+
+
+
+    //HUMAN RESOURCES CONTROL
     public function hr()
     {
         // İnsan kaynakları yönetimi sayfası
         return view('admin.hr');
     }
 
-    public function company()
-    {
-        // Firma sayfası
-        return view('admin.company');
-    }
 
+
+    //CONTACT CONTROL
     public function contact()
     {
         // Firma iletişim sayfası

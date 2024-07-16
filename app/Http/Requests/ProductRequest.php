@@ -17,6 +17,12 @@ class ProductRequest extends FormRequest
             'stock' => 'required|integer',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
+            'description' => 'nullable|string',
+            'shelf_life' => 'nullable|string',
+            'product_code' => 'nullable|string',
+            'pallet' => 'nullable|string',
+            'packaging' => 'nullable|string',
+            'detailed_description' => 'nullable|string',
         ];
     }
 }

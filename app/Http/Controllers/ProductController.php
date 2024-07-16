@@ -1,15 +1,17 @@
 <?php
-use App\Http\Controllers\Controller;
+
+namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::all();
-        return view('products.index', compact('products'));
+        return view('layouts.products', compact('products'));
     }
 
     public function create()
@@ -39,6 +41,7 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
+
 
     public function show($id)
     {

@@ -6,7 +6,7 @@
         <div class="flex justify-end bg-gray-200 py-6 pr-2 rounded-l-full">
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
+                    <li><a href="{{route('products.index')}}" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
                     <li><a href="{{ route('recipes.index')}}" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
                     <li><a href="{{ route('services.index')}}" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
                     <li><a href="#" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
@@ -17,7 +17,7 @@
                     <li><a href="#" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
                     <li><a href="#" class="text-gray-700 hover:text-red-600">İletişim</a></li>
                     <a href="{{ route('login')}}" class="text-gray-700 hover:text-red-600">Login</a>
-                    <a href="{{ route('register')}}" class="text-gray-700 hover:text-red-600">Register</a>
+                <a href="{{ route('register')}}" class="text-gray-700 hover:text-red-600">Register</a>
                 </ul>
             </nav>
         </div>
@@ -81,9 +81,11 @@
                         </svg>
                     </a>
                     <a href="#" class="text-gray-700 hover:text-red-600">
+                        <button id="loginButton">
                         <svg class="w-6 h-6" xmlns="https://picsum.photos/536/354" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l1 10h13l1-10h2m-6 6h6"></path>
                         </svg>
+                        </button>
                     </a>
                 </div>
             </div>
