@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Admin Dashboard</h1>
-                <a href="{{ route('admin.productManagement') }}" class="btn btn-primary mt-3">Ürün Yönetimi</a>
+                <a href="{{ route('admin.products.index') }}" class="btn btn-primary mt-3">Ürün Yönetimi</a>
                 <a href="{{ route('admin.recipeManagement') }}" class="btn btn-primary mt-3">Tarif Yönetimi</a>
                 <a href="{{ route('admin.serviceManagement') }}" class="btn btn-primary mt-3">Firma Hizmetleri</a>
                 <a href="{{ route('admin.consumerResearch') }}" class="btn btn-primary mt-3">Tüketici Araştırmaları</a>

@@ -1,365 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-800">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-J6JHuQlRHCUCjMUbTV800vUqlLg5C/Z+ZpKrqvyzA02hSe2HltzTT3bE3D5s7A800Dm800s+Xu5Br1EeMaDpWAMjC9Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-      body {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            font-family: 'CenturyGothic', Verdana, sans-serif;
-        }
-        *{
-            box-sizing: border-box;
-        }
-        @font-face {
-            font-family: 'CenturyGothic', Verdana, sans-serif;
-            font-weight: 600;
-            font-style: italic;
-            font-display: swap;
-            src: url('clientlib-font-default/resources/fonts/CenturyGothicW05-SemiBoldIt.woff');
-        }
-        .red-more{
-            color: #cc092f;
-        }
-        .card {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        /* Kartlar normal yükseklik */
-        .full-height {
-            width: 60vh;
-            height: 50vh;
-        }
-        .big-cards{
-            width: 60vh;
-            height: 75vh;
-        }
-        .big-cards-text
-        {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: start;
-        }
-
-    .banner::after
-        {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-        }
-
-        .banner
-        {
-        margin-bottom: 3%;
-        width: 100%;
-        height: 35vh;
-        object-fit: cover;
-        display: block;
-        position: relative;
-        z-index: 0;
-        }
-
-        /*KARTLAR İÇİN ARKA PLAN VE YER DÜZENİ*/
-        .gradient-overlay {
-            margin: 0;
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem;
-            background-image: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
-        }
-        /* BAŞLIK VE FOTOĞRAF DÜZENİ */
-        .banner-text {
-            letter-spacing: .05rem;
-            position: absolute;
-            top: 50%;
-            left: 20%;
-            transform: translate(-100%, -50%);
-            text-align: center;
-            color: red;
-            font-weight: bold;
-            font-size: 24px;
-        }
-        /* BUTON DÜZENİ */
-        .btn {
-            position: absolute;
-            bottom: 15%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #e53e3e;
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 20px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-        }
-        .btn i {
-            font-size: 2rem; /* İkon boyutu */
-            color: white; /* İkon rengi */
-        }
-        .explore{
-            background: linear-gradient(to top, rgba(200, 200, 200, 0.5) 30%, rgba(200, 200, 200, 0.9) 100%);
-        }
-
-        
-        
- 
-@media (min-width: 1920px) 
-        {
-
-            ::before, ::after {
-                box-sizing: border-box;
-            }
-            .card
-            {
-                transform: scale(0.95);
-            }
-            .full-height {
-            width: 100%;
-            height: 100%; 
-            }
-            .big-cards{
-                width: 100%;
-                height: 65vh;
-            }
-            .banner {
-            margin-bottom: -4%;
-            position: relative;
-            width: 100%;
-            object-fit: cover;
-            height: 30vh;
-            }
-
-            .banner::before
-            {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); /* Gradient style adjusted */
-            }
-        .banner-text {
-            letter-spacing: .05rem;
-            position: absolute;
-            top: 40%;
-            bottom: 50%;
-            left: 35%;
-            text-align: left;
-            color: #e53e3e;
-            font-weight: bold;
-            font-size: 36px;
-        }
-            .btn {
-            position: relative;
-            margin-top: 20px;
-            bottom: 0;
-            left: 0;
-            transform: unset;
-            }
-            .banner-text {
-                margin-left: 15%;
-        }
-        .lg-title{
-            font-size: 1.2rem;
-        }
-        }
-@media (min-width: 480px) 
-        {
-            ::before, ::after {
-                box-sizing: border-box;
-            }
-            .card
-            {
-                transform: scale(0.95);
-            }
-            .full-height {
-            width: 100%;
-            height: 35vh; 
-            }
-            .big-cards{
-                width: 100%;
-                height: 75vh;
-            }
-            .banner {
-            margin-bottom: -4%;
-            position: relative;
-            width: 100%;
-            object-fit: cover;
-            height: 30vh;
-            }
-
-            .banner::before 
-            {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%; 
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); 
-            }
-        .banner-text {
-            letter-spacing: .05rem;
-            position: absolute;
-            top: 40%;
-            bottom: 50%; 
-            left: 35%;  
-            text-align: left; 
-            color: #e53e3e; 
-            font-weight: bold; 
-            font-size: 36px;
-        }
-            .btn {
-            position: relative;
-            margin-top: 20px; 
-            bottom: 0; 
-            left: 0; 
-            transform: unset; 
-            }
-            .banner-text {
-                margin-left: 15%;
-        }
-        .lg-text{
-        font-size: 1.3rem; 
-        }
-        .lg-title{
-            font-size: 1.5rem;
-        }
-        }    
-
-    </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-J6JHuQlRHCUCjMUbTV800vUqlLg5C/Z+ZpKrqvyzA02hSe2HltzTT3bE3D5s7A800Dm800s+Xu5Br1EeMaDpWAMjC9Pg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-<div class="banner-container  m-5">
-    <div style="position: relative;">
-        <img class="banner h-fit" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image">
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-gray to-transparent"></div>
-        <div class="banner-text">
-            <div style="display: flex; flex-direction: row; justify-content: start; font-size: 12px;">
-                <p class="text-black">Home ></p>
-                <p class="red-more">PURATOS HAKKINDA</p>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+  
+</style>
+
+<body class="font-sans bg-white">
+
+    
+    <div>
+        @include('components.navbar')
+    </div>
+
+    
+    <div class="relative mr-2">
+        <img class="w-full object-cover banner" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image"
+            style="height:30vh">
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-gray-100"></div>
+        <div class="absolute top-1/3 left-12 transform -translate-y-1/2">
+            <div class="flex items-center space-x-2 text-sm text-black">
+                <p class="underline uppercase">Home ></p>
+                <p class="text-red-500">PURATOS HAKKINDA</p>
             </div>
-            <div><h3 class="text-bold red-more">PURATOS HAKKINDA</h3></div>
+            <div>
+                <h3 class="font-bold text-red-700 text-4xl mt-5">PURATOS HAKKINDA</h3>
+            </div>
+        </div>
+    </div>
+
+    <section class="container-fluid px-4 py-10 mx-auto">
+        <div class="grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+            <div class="relative  shadow-md rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <img class="object-cover w-full h-full z-10 filter brightness-75" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
+                        <div class="absolute inset-0 bg-gray-100 opacity-40 z-0"></div>
+                    </div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6 w-full mb-5 xl:h-150">
+                    <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">HAKKIMIZDA</a>
+                        <p class="text-gray-700 text-2xl mb-10 text-center justify-center w-96">Puratos, küresel, müşteri odaklı bir organizasyon ve sıkı sıkıya bağlı bir aile şirketidir.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
+                    <div class="flex items-center justify-between w-full">
+                     <span class="text-md ml-1">Keşfet</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="relative bg-black shadow-md rounded-lg overflow-hidden h-100 xl:h-150">
+                <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/us.jpeg') }}" alt="Hakkımızda">
+                <div class="absolute inset-0 bg-gray-100  opacity-60 z-0 "></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6">
+                    <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">DEĞERLERİMİZ</a>
+                     <p class="text-gray-700 text-2xl mb-10  text-center w-96">Değerlerimiz, yaptığımız her şeyin kalbinde olan güvene dayanır. Tüm değerlerimizin özünde yer alan güven, yeni fikirler için güvenilir ortaklar olmamızı sağlıyor.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
+                    <div class="flex items-center justify-between w-full">
+                    <span class="text-md ml-1">Keşfet</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                </div>
+                </a>
+                </div>
+            </div>
+
+       
+            <div class="relative bg-black shadow-md rounded-lg overflow-hidden h-100">
+                    <img class="w-full h-full object-cover z-10filter brightness-75" src="{{ asset('images/taah.jpeg') }}" alt="Hakkımızda">
+                <div class="absolute inset-0 bg-gray-100  opacity-40 z-0 "></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center mb-12">
+                    <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">TAAHHÜTLERİMİZ</a>
+                        <p class="text-gray-700 text-2xl mb-5  text-center w-96">Ürünlerimiz ve çözümlerimiz sürekli besin değerlerini optimize etmeyi amaçlarken sosyal sorumluluk faaliyetlerimiz gelecek nesile yatırıma dayalıdır.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
+                    <div class="flex items-center justify-between w-full">
+                    <span class="text-md ml-1">Keşfet</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                </div>
+                </a>
+                </div>
+            </div>
+
+            
+            <div class="relative  shadow-md rounded-lg overflow-hidden">
+                    <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/humanres.jpeg') }}" alt="Hakkımızda">
+                <div class="absolute inset-0 bg-gray-100  opacity-40 z-0 "></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center  mb-12">
+                    <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">İNSAN KAYNAKLARI</a>
+                        <p class="text-gray-700 text-2xl mb-5  text-center w-96">Çalışanlarımız, yetenekleri ve tutkularıyla yönlendirilir. Puratos'da şirket değerlerimizi ve çalışma prensiplerimizi harmanlayarak kendi sihrinizi yaratabilirsiniz.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
+                    <div class="flex items-center justify-between w-full">
+                    <span class="text-md ml-1">Keşfet</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                </div>
+                </a>
+                </div>
+            </div>
+        
+            <div class="relative shadow-md rounded-lg overflow-hidden" style="height:150%">
+                <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/tarihce.jpeg') }}" alt="Hakkımızda">
+                <div class="absolute inset-0 bg-gray-100 opacity-40 z-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center mb-12">
+                    <a href="#" class="text-white text-2xl font-bold mb-5">TARİHÇEMİZ</a>
+                        <p class="text-gray-700 text-2xl mb-5 text-center w-96">Puratos 100 yaşında! 100 yıl boyunca yenilik tutkusu ve yaptığımız her şeyi sürekli iyileştirme isteğiyle hareket ettik.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-20">
+                    <div class="flex items-center justify-between w-full">
+                    <span class="text-md ml-1">Keşfet</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                </div>
+                </a>
+                </div>
+            </div>
+
+        <div class="relative  shadow-md rounded-lg overflow-hidden" style="height:150%">
+                <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/sector.jpeg') }}" alt="Sector">
+            <div class="absolute inset-0 bg-gray-100  opacity-40 z-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center mb-12">
+                        <a href="#" class="text-white text-2xl font-bold mt-4 mb-4 w-96">EKMEKÇİLİK VE PASTACILIK SEKTÖRÜ YENİDEN YAPILANDIRMA FONU</a>
+                            <p class="text-gray-700 text-2xl text-center w-96">Puratos Türkiye olarak hayata geçirdiğimiz “Puratos Türkiye Ekmekçilik ve Pastacılık Sektörü Yeniden Yapılanma Fonu” ile dayanışmanın bir parçası oluyor ve depremden etkilenen bölgelerdeki yerel ekmekçilik ve pastacılık işletmelerinin yeniden ayağı kalmasına katkı sağlıyoruz.</p>
+                        <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-5">
+                            <div class="flex items-center justify-between w-full">
+                             <span class="text-md ml-1">Keşfet</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                </div>  
+                        </a>
+            </div>
+        </div>
+
+            <div class="relative  shadow-md rounded-lg overflow-hidden mt-56 h-auto" style="height:85vh">
+                <div class="bg-gray-100 from-white to-gray-500"></div>
+                <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/demo.png') }}" alt="Hakkımızda">
+                <div class="absolute inset-0 bg-gray-100 opacity-40 z-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center  mb-12">
+                    <a href="#" class="text-white text-2xl font-bold mb-3 mt-10">PURATOS’TAN PROFESYONELLERE ÖZEL DEMO DENEYİMİ</a>
+                        <p class="text-gray-700 text-2xl mb-10 text-center w-96">‘Food Innovation for Good’ yani ‘İyilik İçin Gıda İnovasyonu’ sloganıyla çıktığımız bu yolda tüm faydanın iyiliğe aktarılması için çabalıyoruz. Eğitim meraklılarını da bizlerle bu iyiliği paylaşmaya davet ediyoruz.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
+                    <div class="flex items-center justify-between w-full">
+                    <span class="text-md ml-1">Keşfet</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                </div>
+                </a>
+                </div>
+            </div>
+        </div>
+
+<div class="container-sm text-center bg-gray-100 py-20 mt-12 w-full">
+    <div class="flex flex-col items-center justify-center">
+             <h2 class="text-2xl font-bold mb-5">PURATOS'U KEŞFEDİN</h2>
+                <p class="text-2xl text-gray-700 mb-5 w-1/2">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
+        <div class="bg-white border border-red-500 rounded-full p-2">
+            <div class="flex flex-row justify-beetwen items-center">
+                 <a href="#" class="flex flex-row items-center mr-2">
+                <span class="font-bold text-red-600 ml-3">Oynat</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke-width="1.5" stroke="red" class="w-5 h-5 ml-10">
+                <path fill="red" d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z"/>
+                </svg>
+                </a>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-<section class="container-fluid">
-<div class="card row-start">
-    <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 ml-5 mt-10"> 
-        <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
-            <img class="w-full filter" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
-            <div class="gradient-overlay">
-                <a href="#" class="lg-title text-white text-2xl font-bold mb-4">HAKKIMIZDA</a>
-                <p class="text-gray-800 mb-4 text-2xl lg-text text-center">Puratos, küresel, müşteri odaklı bir organizasyon ve sıkı sıkıya bağlı bir aile şirketidir.</p>
-                <a href="#" class="btn">Keşfet <i class="fas fa-angle-right"></i></a>
-            </div>
-        </div>
-
-        <div class="relative bg-white shadow-md rounded-lg overflow-hidden full-height">
-      <img class="w-full filter" src="{{ asset('images/us.jpeg') }}" alt="Degerlerimiz">
-      <div class="gradient-overlay">
-          <a href="#" class="lg-title text-white text-2xl font-bold mb-4">DEĞERLERİMİZ</a>
-          <p class="text-gray-800  text-2xl lg-text text-center">Değerlerimiz, yaptığımız her şeyin kalbinde olan güvene dayanır. Tüm değerlerimizin özünde yer alan güven, yeni fikirler için güvenilir ortaklar olmamızı sağlıyor.</p>
-          <a href="#" class="btn">Keşfet <i class="fas fa-angle-right"></i></a>
-      </div>
-    </div>
-
-    <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
-      <img class="w-full filter" src="{{ asset('images/taah.jpeg') }}" alt="Taahutlerimiz">
-      <div class="gradient-overlay big-cards-text">
-          <a href="#" class="lg-title text-white text-2xl font-bold mb-4">TAAHÜTLERİMİZ</a>
-          <p class="text-gray-800  text-2xl lg-text text-center">Ürünlerimiz ve çözümlerimiz sürekli besin değerlerini optimize etmeyi amaçlarken sosyal sorumluluk faliyetlerimiz gelecek nesile yatırıma dayalıdır.</p>
-          <a href="#" class="btn">Keşfet <i class="fas fa-angle-right"></i></a>
-
-      </div>
-    </div>
-
-    <div class="relative bg-black shadow-md rounded-lg overflow-hidden big-cards">
-      <img class="w-full filter" src="{{ asset('images/humanres.jpeg') }}" alt="Human Resources">
-      <div class="gradient-overlay big-card-text">
-          <a href="#" class="lg-title text-white text-2xl font-bold mb-4">İNSAN KAYNAKLARI</a>
-          <p class="text-gray-800 text-2xl lg-text text-center">Çalışanlarımız, yetenekleri ve tutkularıyla yönlendirilir. Puratos'da şirket değerlerimizi ve çalışma prensiplerimizi harmanlayarak kendi sihrinizi yaratabilirsiniz.</p>
-          <a href="#" class="btn">Keşfet <i class="fas fa-angle-right"></i></a>
-      </div>
-    </div>
-
-    <div class="relative bg-black shadow-md rounded-lg overflow-hidden big-cards">
-      <img class="w-full filter" src="{{ asset('images/tarihce.jpeg') }}" alt="Tarihce">
-      <div class="gradient-overlay">
-          <a href="#" class="lg-title text-white text-2xl font-bold mb-4">TARİHÇEMİZ</a>
-          <p class="text-gray-800 text-2xl lg-text text-center">Puratos 100 yaşında! 100 yıl boyunca yenilik tutkusu ve yaptığımız her şeyi sürekli iyileştirme isteğiyle hareket ettik.</p>
-          <a href="#" class="btn">Keşfet <i class="fas fa-angle-right"></i></a>
-      </div>
-    </div>
-
-    <div class="relative bg-black shadow-md rounded-lg overflow-hidden big-cards">
-      <img class="w-full filter" src="{{ asset('images/sector.jpeg') }}" alt="sector">
-      <div class="gradient-overlay">
-          <a href="#" class="lg-title text-white text-2xl font-bold mb-4">EKMEKÇİLİK VE PASTACILIK SEKTÖRÜ YENİDEN YAPILANDIRMA FONU</a>
-          <p class="text-gray-800 text-2xl lg-text text-center">Puratos Türkiye olarak hayata geçirdiğimiz “Puratos Türkiye Ekmekçilik ve Pastacılık Sektörü Yeniden Yapılanma Fonu” ile dayanışmanın bir parçası oluyor ve depremden etkilenen bölgelerdeki yerel ekmekçilik ve pastacılık işletmelerinin yeniden ayağı kalmasına katkı sağlıyoruz.</p>
-          <a href="#" class="btn">Keşfet <i class="fa fa-angle-right"></i></a>
-      </div>
-    </div>
-
-    <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
-      <img class="w-full filter" src="{{ asset('images/demo.png') }}" alt="Demo">
-      <div class="gradient-overlay">
-          <a href="#" class="lg-title text-white text-2xl font-bold mb-4">PURATOS'TAN PROFESYONELLERE ÖZEL DEMO DENEYİMİ</a>
-          <p class="text-bold text-gray-800 text-2xl lg-text text-center">‘Food Innovation for Good’ yani ‘İyilik İçin Gıda İnovasyonu’ sloganıyla çıktığımız bu yolda tüm faydanın iyiliğe aktarılması için çabalıyoruz. Eğitim meraklılarını da bizlerle bu iyiliği paylaşmaya davet ediyoruz.</p>
-          <a href="#" class="btn">Keşfet <i class="fa-thin fa-angle-right"></i></a>
-      </div>
-    </div>
-
-  </main>
-</div>
-</section>
-
- 
-<section class="container-sm text-center  bg-gray-200 h-100 pt-20">
-    <h2 class="p-margin-top-xs p-margin-bottom text-xl font-bold">PURATOS'U KEŞFEDİN</h2>
-    <p class="lead text-xl mt-5 text-center">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
-    <div class="btn-play mt-5 mb-5 inline-flex items-center justify-between text-red-500 bg-white border-4 border-red-600 rounded-full p-4">
-        <a href="#" class="flex items-center  mr-10">
-            <span class="flex-1 mr-2 text-left font-bold pl-5">Oynat</span>
-            <img src="./images/circle-play-regular.svg" alt="" class="w-6 h-6 ml-8">
-        </a>
-    </div>
-</section>
+    </section>
 
 
 </body>
-</html>
 
+</html>
