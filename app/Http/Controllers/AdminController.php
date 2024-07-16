@@ -5,79 +5,117 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Recipe;
 use App\Models\Service;
+use App\Models\Category;
 use App\Models\ConsumerInsight;
 use App\Models\AboutUs;
 use App\Models\News;
 use App\Models\Blog;
 use App\Models\HumanResource;
 use Illuminate\Http\Request;
-use App\Http\Requests\Xre;
+use App\Http\Requests\ProductRequest;
+
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function dashboard()
     {
         // Admin panelinin ana sayfası
         return view('admin/adminDashboard');
     }
 
-    public function createProduct(Xre $request)
+    public function productManagement()
     {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->category_id = $request->category_id; //
-
-        return redirect()->route('');
+        // Ürün yönetimi sayfası
+        return view('admin.productManagement');
     }
 
-    public function deleteProdut(Xre $request)
+    public function manageProducts()
     {
-        $product = Product::find($request->product_id);
+        $products = Product::with('category')->get();
+        return view('admin.products.index', compact('products'));
+    }
+
+    public function showAddProductForm()
+    {
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
+    }
+
+    public function storeProduct(ProductRequest $request)
+    {
+        Product::create($request->validated());
+        return redirect()->route('admin.products.index')->with('success', 'Product added successfully');
+    }
+
+    public function showEditProductForm(Product $product)
+    {
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'categories'));
+    }
+
+    public function updateProduct(ProductRequest $request, Product $product)
+    {
+        $product->update($request->validated());
+        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
+    }
+
+    public function deleteProduct(Product $product)
+    {
         $product->delete();
-        return redirect()->route('');
+        return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully');
     }
 
-    public function editProduct(Xre $request)
+    public function recipeManagement()
     {
-        $product = Product::find($request->product_id);
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->category_id = $request->category_id;
-        return redirect()->route('');
+        // Tarif yönetimi sayfası
+        return view('admin.recipeManagement');
     }
 
-    public function createRecipe(Xre $request)
+    public function serviceManagement()
     {
-        $recipe = new Recipe();
-        $recipe->title = $request->title;
-        $recipe->description = $request->description;
-        $recipe->category= $request->category;
-        $recipe->detailed_info = $request->detailed_info;
-
+        // Firma hizmetleri sayfası
+        return view('admin.serviceManagement');
     }
 
-    public function editRecipe(Xre $request)
-
+    public function consumerResearch()
     {
-        $recipe = new Recipe();
-        $recipe->title = $request->title;
-        $recipe->description = $request->description;
-        $recipe->category= $request->category;
-        $recipe->detailed_info = $request->detailed_info;
-
-        return redirect()->route('');
+        // Tüketici araştırmaları sayfası
+        return view('admin.consumerResearch');
     }
 
+    public function companyInfo()
+    {
+        // Firma hakkında bilgisi sayfası
+        return view('admin.companyInfo');
+    }
 
+    public function newsManagement()
+    {
+        // Haberler yönetimi sayfası
+        return view('admin.newsManagement');
+    }
 
+    public function blogManagement()
+    {
+        // Blog yönetimi sayfası
+        return view('admin.blogManagement');
+    }
+
+    public function hr()
+    {
+        // İnsan kaynakları yönetimi sayfası
+        return view('admin.hr');
+    }
+
+    public function company()
+    {
+        // Firma sayfası
+        return view('admin.company');
+    }
+
+    public function contact()
+    {
+        // Firma iletişim sayfası
+        return view('admin.contact');
+    }
 }

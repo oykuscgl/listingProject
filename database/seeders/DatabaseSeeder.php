@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             //ProductsTableSeeder::class,
             //RecipeSeeder::class,
             //NewsSeeder::class,
+            ServiceSeeder::class,
         ]);
 
     }

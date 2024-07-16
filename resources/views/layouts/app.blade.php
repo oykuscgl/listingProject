@@ -23,7 +23,6 @@
 
 
 
-
             @include('components.navbar')
             @yield('content')
 

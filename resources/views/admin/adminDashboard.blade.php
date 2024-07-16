@@ -1,24 +1,28 @@
-@extends('layouts.app')
-
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Admin Panel</div>
-
-                    <div class="card-body">
-                        <div class="list-group">
-                            <a href="{{ route('admin.products') }}" class="list-group-item list-group-item-action">Ürün Yönetimi</a>
-                            <a href="{{ route('admin.recipes') }}" class="list-group-item list-group-item-action">Tarif Yönetimi</a>
-                            <a href="{{ route('admin.services') }}" class="list-group-item list-group-item-action">Hizmetler</a>
-                            <a href="{{ route('admin.consumerInsights') }}" class="list-group-item list-group-item-action">Tüketici Araştırmaları</a>
-                            <a href="{{ route('admin.news') }}" class="list-group-item list-group-item-action">Haberler</a>
-                            <a href="{{ route('admin.blogPosts') }}" class="list-group-item list-group-item-action">Blog Yazıları Yönetimi</a>
-                        </div>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Admin Dashboard</h1>
+                <a href="{{ route('admin.productManagement') }}" class="btn btn-primary mt-3">Ürün Yönetimi</a>
+                <a href="{{ route('admin.recipeManagement') }}" class="btn btn-primary mt-3">Tarif Yönetimi</a>
+                <a href="{{ route('admin.serviceManagement') }}" class="btn btn-primary mt-3">Firma Hizmetleri</a>
+                <a href="{{ route('admin.consumerResearch') }}" class="btn btn-primary mt-3">Tüketici Araştırmaları</a>
+                <a href="{{ route('admin.companyInfo') }}" class="btn btn-primary mt-3">Firma Hakkında Bilgisi</a>
+                <a href="{{ route('admin.newsManagement') }}" class="btn btn-primary mt-3">Haberler Yönetimi</a>
+                <a href="{{ route('admin.blogManagement') }}" class="btn btn-primary mt-3">Blog Yönetimi</a>
+                <a href="{{ route('admin.hr') }}" class="btn btn-primary mt-3">Firma İnsan Kaynakları</a>
+                <a href="{{ route('admin.company') }}" class="btn btn-primary mt-3">Firma</a>
+                <a href="{{ route('admin.contact') }}" class="btn btn-primary mt-3">Firma İletişim</a>
             </div>
         </div>
     </div>
-@endsection
+</body>
+</html>

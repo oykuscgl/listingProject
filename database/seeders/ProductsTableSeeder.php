@@ -21,56 +21,56 @@ class ProductsTableSeeder extends Seeder
         'name' => 'Carat Kakao',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 3, // Rastgele bir kategori ID'si seç
+        'category_id' => 3,
     ]);
 
     Product::create([
         'name' => 'Carat Cover Bitter',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 3, // Rastgele bir kategori ID'si seç
+        'category_id' => 3,
     ]);
 
     Product::create([
         'name' => 'Carat Cover Sütlü',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 3, // Rastgele bir kategori ID'si seç
+        'category_id' => 3,
     ]);
 
     Product::create([
         'name' => 'Brillo Karamel',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 2, // Rastgele bir kategori ID'si seç
+        'category_id' => 2,
     ]);
 
     Product::create([
         'name' => 'Brillo Vişne',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 2, // Rastgele bir kategori ID'si seç
+        'category_id' => 2,
     ]);
 
     Product::create([
         'name' => 'Brillo Kakao',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 2, // Rastgele bir kategori ID'si seç
+        'category_id' => 2,
     ]);
 
     Product::create([
         'name' => 'Sapore Aroldo',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 1, // Rastgele bir kategori ID'si seç
+        'category_id' => 1,
     ]);
 
     Product::create([
         'name' => 'Easy Geleneksel',
         'stock' => 10,
         'price' => 106,
-        'category_id' => 1, // Rastgele bir kategori ID'si seç
+        'category_id' => 1,
     ]);
 }
 }
