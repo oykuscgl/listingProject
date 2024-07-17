@@ -1,42 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puratos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen">
 
-        <!--Navbar-->
-        <header class="bg-gray-100 bg-white shadow mx-auto">
+    <!-- Navbar -->
+    <header class="bg-gray-100 shadow sticky top-0 z-50">
         <!-- Üst Menü -->
         <div class="w-full">
-        <div class="flex justify-end bg-gray-200 py-6 pr-2 rounded-l-full">
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="{{route('products.index')}}" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
-                    <li><a href="{{ route('recipes.index')}}" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
-                    <li><a href="{{ route('services.index')}}" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
-                    <li><a href="{{ route('news.index')}}" class="text-gray-700 hover:text-red-600">Haberler</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">Blog</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-red-600">İletişim</a></li>
-                    <a href="{{ route('login')}}" class="text-gray-700 hover:text-red-600">Login</a>
-                <a href="{{ route('register')}}" class="text-gray-700 hover:text-red-600">Register</a>
-                </ul>
-            </nav>
+            <div class="flex justify-end bg-gray-200 py-6 pr-2 rounded-l-full">
+                <nav>
+                    <ul class="flex space-x-4">
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
+                        <li><a href="{{ route('recipes.index')}}" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
+                        <li><a href="{{ route('services.index')}}" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
+                        <li><a href="{{ route('news.index')}}" class="text-gray-700 hover:text-red-600">Haberler</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">Blog</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-red-600">İletişim</a></li>
+                        <a href="{{ route('login')}}" class="text-gray-700 hover:text-red-600">Login</a>
+                        <a href="{{ route('register')}}" class="text-gray-700 hover:text-red-600">Register</a>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
         <!-- Alt Menü -->
         <div class="bg-white py-2 shadow">
-            <div class=" flex justify-between items-center px-4">
+            <div class="flex justify-between items-center px-4">
                 <div class="flex items-center">
-                <img src="{{ asset('images/logo.svg') }}" alt="Puratos Logo" class="h-25">
+                    <img src="{{ asset('images/logo.png') }}" alt="Puratos Logo" class="h-16">
                 </div>
                 <nav>
                     <ul class="flex space-x-4">
                         <li class="relative group">
-                        <div class="flex flex-row justify-between items-center">
-                            <a href="#" class="font-bold text-gray-700 hover:text-red-600">Ekmekçilik</a>
-                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                 </svg>
-                         </div>
+                            <div class="flex items-center">
+                                <a href="#" class="font-bold text-gray-700 hover:text-red-600">Ekmekçilik</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 ml-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
                             <!-- Dropdown -->
                             <div class="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
                                 <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dropdown Item 1</a>
@@ -69,7 +78,7 @@
                     <div class="relative">
                         <input type="text" class="border rounded-full py-2 pl-4 pr-10 focus:outline-none" placeholder="Ara">
                         <button class="absolute right-0 top-0 mt-2 mr-2 bg-black text-white rounded-full p-1">
-                            <svg class="w-5 h-5" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19a9 9 0 110-18 9 9 0 010 18zm0 0l6-6"></path>
                             </svg>
                         </button>
@@ -92,7 +101,6 @@
         </div>
     </header>
 
+    
 
-
-
-
+   
