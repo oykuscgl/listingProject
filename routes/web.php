@@ -134,6 +134,3 @@ Route::get('/admin/company', [AdminController::class, 'company'])->name('admin.c
 //contact info management
 Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
 
-Route::get('/contact', function () {
-    return view('layouts.communication');
-});

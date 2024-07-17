@@ -15,13 +15,13 @@
             <div class="flex justify-end bg-gray-200 py-6 pr-2 rounded-l-full">
                 <nav>
                     <ul class="flex space-x-4">
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
+                        <li><a href="{{ route('products.index')}}" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
                         <li><a href="{{ route('recipes.index')}}" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
                         <li><a href="{{ route('services.index')}}" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
+                        <li><a href="{{ route('researches.index')}}" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
                         <li><a href="{{ route('news.index')}}" class="text-gray-700 hover:text-red-600">Haberler</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Blog</a></li>
+                        <li><a href="{{ route('blogs.index')}}" class="text-gray-700 hover:text-red-600">Blog</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-red-600">İletişim</a></li>

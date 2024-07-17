@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <header>
-        $research->title;
-    </header>
 
     <main>
         <section class="service-detail-section">
@@ -24,9 +21,5 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <!-- Footer içeriği burada olacak -->
-    </footer>
 </body>
 </html>
