@@ -4,12 +4,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogPost extends Model
+class CompanyInfo extends Model
 {
 
    use HasFactory;
 
-    protected $table = 'blog_post';
+    protected $table = 'about_us';
 
     protected $fillable = [
         'title',

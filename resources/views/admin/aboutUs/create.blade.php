@@ -2,24 +2,20 @@
 
 @section('content')
 <div class="container">
-    <h1>Firma Hizmet Ekle</h1>
-    <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
+    <h1>Şirket Hakkında Yazısı Ekle</h1>
+    <form action="{{ route('admin.aboutUs.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="title">Başlık</label>
+            <label for="title">Şriket Hakkında Post Başlığı</label>
             <input type="text" name="title" class="form-control" value="{{ old('title') }}">
         </div>
         <div class="form-group">
-            <label for="description">Açıklama</label>
+            <label for="description">Hakkında Post Açıklaması</label>
             <textarea name="description" class="form-control">{{ old('description') }}</textarea>
         </div>
         <div class="form-group">
-            <label for="detailed_info">Detaylı Bilgi</label>
+            <label for="detailed_info">Detaylı Hakkında Bilgisi</label>
             <textarea name="detailed_info" class="form-control">{{ old('detailed_info') }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="image">Resim</label>
-            <input type="file" name="image" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>

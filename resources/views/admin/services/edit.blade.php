@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Hizmet Düzenle</h1>
+    <h1>Firma Hizmet Düzenle</h1>
     <form action="{{ route('admin.services.update', $service) }}" method="POST">
         @csrf
         @method('PUT')

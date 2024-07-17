@@ -11,14 +11,14 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Admin Dashboard</h1>
-                <a href="{{ route('admin.products.index') }}" class="btn btn-primary mt-3">Ürün Yönetimi</a>
-                <a href="{{ route('admin.recipes.index') }}" class="btn btn-primary mt-3">Tarif Yönetimi</a>
-                <a href="{{ route('admin.services.index') }}" class="btn btn-primary mt-3">Firma Hizmetleri</a>
-                <a href="{{ route('admin.consumerResearch') }}" class="btn btn-primary mt-3">Tüketici Araştırmaları</a>
-                <a href="{{ route('admin.companyInfo') }}" class="btn btn-primary mt-3">Firma Hakkında Bilgisi</a>
-                <a href="{{ route('admin.news.index') }}" class="btn btn-primary mt-3">Haberler Yönetimi</a>
-                <a href="{{ route('admin.blogManagement') }}" class="btn btn-primary mt-3">Blog Yönetimi</a>
-                <a href="{{ route('admin.hr') }}" class="btn btn-primary mt-3">Firma İnsan Kaynakları</a>
+                <a href="{{ route('admin.products.index') }}" class="btn btn-primary mt-3">Ürün Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.recipes.index') }}" class="btn btn-primary mt-3">Tarif Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.services.index') }}" class="btn btn-primary mt-3">Firma Hizmetleri Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.consumerResearches.index') }}" class="btn btn-primary mt-3">Tüketici Araştırmaları Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.companyInfo') }}" class="btn btn-primary mt-3">Firma  Bilgisi Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.news.index') }}" class="btn btn-primary mt-3">Haberler Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary mt-3">Blog Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.hr') }}" class="btn btn-primary mt-3">Firma İnsan Kaynakları Yönetimi Sayfasına Git</a>
                 <a href="{{ route('admin.company') }}" class="btn btn-primary mt-3">Firma</a>
                 <a href="{{ route('admin.contact') }}" class="btn btn-primary mt-3">Firma İletişim</a>
             </div>

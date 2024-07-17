@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class ServiceRequest extends FormRequest{
+class ConsumerResearchRequest extends FormRequest{
     public function authorize(){
         return true;
     }
@@ -15,7 +15,6 @@ class ServiceRequest extends FormRequest{
             'description' => 'required|string',
             'category' => 'string|max:255',
             'detailed_info' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 

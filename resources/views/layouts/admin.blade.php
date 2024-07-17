@@ -8,17 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <header class="my-4">
-            <h1>Admin Panel</h1>
+        <header class="my-4" >
+            <h1 class="center"> Admin Panel</h1>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ route('admin.adminDashboard') }}">Admin Dashboard</a>
+                <a class="navbar-brand" href="{{ route('admin.adminDashboard') }}">Admin Dashboard'a dön &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                <div>
+                    <a href="{{ route('logout') }}">Çıkış Yap</a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </nav>
-            <div>
-                <a href="{{ route('logout') }}">Çıkış Yap</a>
-            </div>
         </header>
 
         <main>

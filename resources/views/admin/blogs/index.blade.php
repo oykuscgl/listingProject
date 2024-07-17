@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Tarifler Yönetim Sayfası</h1>
-    <a href="{{ route('admin.recipes.create') }}" class="btn btn-primary mb-3">Tarif Ekle</a>
+    <h1>Blog Yazıları Yönetim Sayfası</h1>
+    <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary mb-3">Blog Yazısı Ekle</a>
     <table class="table">
         <thead>
             <tr>
@@ -13,13 +13,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($recipes as $recipe)
+            @foreach($blogs as $blogPost)
                 <tr>
-                    <td>{{ $recipe->title }}</td>
-                    <td>{{ $recipe->category }}</td>
+                    <td>{{ $blogPost->title }}</td>
+                    <td>{{ $blogPost->category }}</td>
                     <td>
-                        <a href="{{ route('admin.recipes.edit', $recipe) }}" class="btn btn-warning">Düzenle</a>
-                        <form action="{{ route('admin.recipes.destroy', $recipe) }}" method="POST" class="d-inline">
+                        <a href="{{ route('admin.blogs.edit', $blogPost) }}" class="btn btn-warning">Düzenle</a>
+                        <form action="{{ route('admin.blogs.destroy', $blogPost) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Sil</button>

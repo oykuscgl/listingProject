@@ -2,24 +2,22 @@
 
 @section('content')
 <div class="container">
-    <h1>Tarifler Yönetim Sayfası</h1>
-    <a href="{{ route('admin.recipes.create') }}" class="btn btn-primary mb-3">Tarif Ekle</a>
+    <h1>Tüketici Araştırmaları Yönetim Sayfası</h1>
+    <a href="{{ route('admin.consumerResearches.create') }}" class="btn btn-primary mb-3">Tüketici Araştırması Ekle</a>
     <table class="table">
         <thead>
             <tr>
                 <th>Başlık</th>
-                <th>Kategori</th>
                 <th>İşlemler</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($recipes as $recipe)
+            @foreach($researches as $research)
                 <tr>
-                    <td>{{ $recipe->title }}</td>
-                    <td>{{ $recipe->category }}</td>
+                    <td>{{ $research->title }}</td>
                     <td>
-                        <a href="{{ route('admin.recipes.edit', $recipe) }}" class="btn btn-warning">Düzenle</a>
-                        <form action="{{ route('admin.recipes.destroy', $recipe) }}" method="POST" class="d-inline">
+                        <a href="{{ route('admin.consumerResearches.edit', $research) }}" class="btn btn-warning">Düzenle</a>
+                        <form action="{{ route('admin.consumerResearches.destroy', $research) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Sil</button>

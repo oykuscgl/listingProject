@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogPostRequest;
+use App\Http\Requests\ConsumerResearchRequest;
 use App\Models\Product;
 use App\Models\Recipe;
 use App\Models\Service;
 use App\Models\Category;
-use App\Models\ConsumerInsight;
-use App\Models\AboutUs;
+use App\Models\ConsumerResearch;
+use App\Models\CompanyInfo;
 use App\Models\News;
-use App\Models\Blog;
+use App\Models\BlogPost;
 use App\Models\HumanResource;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\RecipeRequest;
 use App\Http\Requests\NewsPostRequest;
 use App\Http\Requests\ServiceRequest;
+use App\Http\Requests\InfoRequest;
 
 
 class AdminController extends Controller
@@ -177,7 +180,7 @@ class AdminController extends Controller
     public function storeServices(ServiceRequest $request)
     {
         Service::create($request->validated());
-        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla eklendi.');
+        return redirect()->route('admin.services.index')->with('success', 'Hizmet başarıyla eklendi.');
     }
 
     public function editServices($id)
@@ -203,27 +206,144 @@ class AdminController extends Controller
 
 
     //CONSUMER RESEARCH CONTROL
-    public function consumerResearch()
+    public function consumerResearchManagement()
     {
         // Tüketici araştırmaları sayfası
-        return view('admin.consumerResearch');
+        $researches = ConsumerResearch::all();
+        return view('admin.consumerResearches.index', compact('researches'));
     }
 
-
-
-    //COMPANY INFO CONTROL
-    public function companyInfo()
+    public function showAddResearchForm()
     {
-        // Firma hakkında bilgisi sayfası
-        return view('admin.companyInfo');
+        $researches = ConsumerResearch::all();
+        return view('admin.consumerResearches.create', compact('researches'));
     }
+
+    public function createResearch()
+    {
+        return view('admin.consumerResearches.create');
+    }
+
+    public function storeResearch(ConsumerResearchRequest $request)
+    {
+        ConsumerResearch::create($request->validated());
+        return redirect()->route('admin.consumerResearches.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function editResearch($id)
+    {
+        $research = ConsumerResearch::findOrFail($id);
+        return view('admin.consumerResearches.edit', compact('research'));
+    }
+
+    public function updateResearch(ConsumerResearchRequest $request, ConsumerResearch $research)
+    {
+        $research->update($request->validated());
+        return redirect()->route('admin.consumerResearches.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+    public function destroyResearch($research_id)
+    {
+        // Haber kaydını bul ve sil
+        $researches = ConsumerResearch::findOrFail($research_id);
+        $researches->delete();
+        return redirect()->route('admin.consumerResearches.index')->with('success', 'Haber başarıyla silindi.');
+    }
+
+
+
 
     //BLOG CONTROL
     public function blogManagement()
     {
         // Blog yönetimi sayfası
-        return view('admin.blogManagement');
+        $blogs = BlogPost::all();
+        return view('admin.blogs.index', compact('blogs'));
     }
+
+
+    public function showAddBlogPostForm()
+    {
+        $blogs = BlogPost::all();
+        return view('admin.blogs.create', compact('blogs'));
+    }
+
+    public function createBlogPost()
+    {
+        return view('admin.blogs.create');
+    }
+
+    public function storeBlogPost(BlogPostRequest $request)
+    {
+        BlogPost::create($request->validated());
+        return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function editBlogPost($id)
+    {
+        $blogs = BlogPost::findOrFail($id);
+        return view('admin.blogs.edit', compact('blogPost'));
+    }
+
+    public function updateBlogPost(BlogPostRequest $request, BlogPost $blogPost)
+    {
+        $blogPost->update($request->validated());
+        return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+    public function destroyBlogPost($blogPost_id)
+    {
+        // Haber kaydını bul ve sil
+        $blogs = BlogPost::findOrFail($blogPost_id);
+        $blogs->delete();
+        return redirect()->route('admin.blogs.index')->with('success', 'Haber başarıyla silindi.');
+    }
+
+    //COMPANY INFO CONTROL
+    public function companyInfoManagement()
+    {
+        // Firma hakkında bilgisi sayfası
+        $infos = CompanyInfo::all();
+        return view('admin.aboutUs.index', compact('infos'));
+    }
+
+    public function showAddInfoForm()
+    {
+        $infos = CompanyInfo::all();
+        return view('admin.infos.create', compact('infos'));
+    }
+
+    public function createInfo()
+    {
+        return view('admin.infos.create');
+    }
+
+    public function storeInfo(InfoRequest $request)
+    {
+        CompanyInfo::create($request->validated());
+        return redirect()->route('admin.infos.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function editInfo($id)
+    {
+        $infos = CompanyInfo::findOrFail($id);
+        return view('admin.infos.edit', compact('info'));
+    }
+
+    public function updateInfo(InfoRequest $request, CompanyInfo $info)
+    {
+        $info->update($request->validated());
+        return redirect()->route('admin.infos.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+    public function destroyInfo($info_id)
+    {
+        // Haber kaydını bul ve sil
+        $blogs = BlogPost::findOrFail($info_id);
+        $blogs->delete();
+        return redirect()->route('admin.blogs.index')->with('success', 'Haber başarıyla silindi.');
+    }
+
 
 
 

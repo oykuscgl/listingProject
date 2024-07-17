@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <h2>Ürün Yönetimi</h2>
+        <h2>Ürünler Yönetim Sayfası</h2>
         <a href="{{ route('admin.products.create') }}" class="btn btn-success mb-3">Ürün Ekle</a>
         @if(session('success'))
             <div class="alert alert-success">

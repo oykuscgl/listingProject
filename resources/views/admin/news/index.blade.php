@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>haberler Yönetimi</h1>
+    <h1>Haberler Yönetim Sayfası</h1>
     <a href="{{ route('admin.news.create') }}" class="btn btn-primary mb-3">Haber Ekle</a>
     <table class="table">
         <thead>
