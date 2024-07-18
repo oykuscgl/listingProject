@@ -11,6 +11,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerSearchController;
 use App\Http\Controllers\auth\AuthenticatedSessionController;
+use App\Http\Controllers\CompanyInfoController;
 
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])
@@ -32,9 +33,7 @@ Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, '
 Route::get('/customersearches', function () {
     return view('layouts.customersearches');
 });
-Route::get('/aboutus', function () {
-    return view('layouts.aboutus');
-});
+
 
 Route::get('/main', function () {
     return view('layouts.main');
@@ -57,6 +56,9 @@ Route::get('/blogs/{blogPost_id}', [BlogController::class, 'show'])->name('blogs
 
 Route::get('/consumer-research', [CustomerSearchController::class, 'index'])->name('researches.index');
 Route::get('/consumer-research/{research_id}', [CustomerSearchController::class, 'show'])->name('researches.show');
+
+Route::get('/aboutUs', [CompanyInfoController::class, 'index'])->name('aboutUs.index');
+Route::get('/aboutUs/{info_id}', [CompanyInfoController::class, 'show'])->name('aboutUs.show');
 
 
 //Admin Dashboard
