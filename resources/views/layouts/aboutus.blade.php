@@ -43,7 +43,53 @@
 
     <section class="container-fluid px-4 py-10 mx-auto">
         <div class="grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-            <div class="relative  shadow-md rounded-lg overflow-hidden">
+        <section class="container-fluid px-4 py-10 mx-auto">
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+    @foreach($infos as $info)
+                <div class="relative shadow-md rounded-md overflow-hidden h-96">
+                     <a href="{{ route('infos.show', ['info_id' => $info->id]) }}">
+                    <img src="{{ asset('images/'.$info->image) }}" alt="{{ $info->title }}" class="w-full h-48 object-cover z-10 filter brightness-75">
+                    </a>
+            <div class="absolute inset-0 bg-gray-100 opacity-50 z-0"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-start text-center w-full mt-16">
+        <a href="#" class="text-black text-2xl font-bold mt-4 mb-8">{{ $info->title }}</a>
+        <p class="text-gray-700 text-2xl text-center justify-center w-96">{{ $info->description }}</p>
+        <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
+        <div class="flex items-center justify-between w-full">
+         <span class="text-md ml-1">Keşfet</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+        </div>
+        </a>
+        </div>
+    </div>
+    @endforeach
+    <div class="relative  shadow-md rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <img class="object-cover w-full h-full z-10 filter brightness-75" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
+                        <div class="absolute inset-0 bg-black opacity-20 z-0"></div>
+                    </div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6 w-full mb-5 xl:h-150">
+                    <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">HAKKIMIZDA</a>
+                        <p class="text-2xl text-white opacity-100 mb-10 text-center justify-center w-96">Puratos, küresel, müşteri odaklı bir organizasyon ve sıkı sıkıya bağlı bir aile şirketidir.</p>
+                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
+                    <div class="flex items-center justify-between w-full">
+                     <span class="text-md ml-1">Keşfet</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+</section>    
+        <div class="relative  shadow-md rounded-lg overflow-hidden">
                     <div class="relative">
                         <img class="object-cover w-full h-full z-10 filter brightness-75" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
                         <div class="absolute inset-0 bg-black opacity-20 z-0"></div>

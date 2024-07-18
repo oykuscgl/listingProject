@@ -10,7 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerSearchController;
 use App\Http\Controllers\auth\AuthenticatedSessionController;
-
+use App\Http\Controllers\CompanyInfoController;
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
@@ -56,6 +56,9 @@ Route::get('/blogs/{blogPost_id}', [BlogController::class, 'show'])->name('blogs
 
 Route::get('/consumer-research', [CustomerSearchController::class, 'index'])->name('researches.index');
 Route::get('/consumer-research/{research_id}', [CustomerSearchController::class, 'show'])->name('researches.show');
+
+Route::get('/infos', [CompanyInfoController::class, 'index'])->name('infos.index');
+Route::get('/infos/{info_id}', [CompanyInfoController::class, 'show'])->name('infos.show');
 
 
 //Admin Actions
@@ -118,7 +121,7 @@ Route::delete('/admin/blogs/{blogPost_id}', [AdminController::class, 'destroyBlo
 
 
 //about us management
-Route::get('/admin/company-info', [AdminController::class, 'companyInfo'])->name('admin.companyInfo');
+Route::get('/admin/company-info', [AdminController::class, 'companyInfoManagement'])->name('admin.infos.index');
 Route::get('/admin/company-info/create', [AdminController::class, 'showAddBlogPostForm'])->name('admin.infos.create');
 Route::post('/admin/company-info', [AdminController::class, 'storeBlogPost'])->name('admin.blogs.store');
 Route::get('/admin/company-info/{info_id}/edit', [AdminController::class, 'editBlogPost'])->name('admin.infos.edit');

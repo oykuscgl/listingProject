@@ -304,7 +304,7 @@ class AdminController extends Controller
     {
         // Firma hakkında bilgisi sayfası
         $infos = CompanyInfo::all();
-        return view('admin.aboutUs.index', compact('infos'));
+        return view('admin.infos.index', compact('infos'));
     }
 
     public function showAddInfoForm()
