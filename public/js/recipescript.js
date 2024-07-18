@@ -25,6 +25,14 @@ function changeBackgroundColor(button) {
     button.classList.remove('hover:bg-red-500', 'hover:text-white', 'focus:bg-red-500', 'focus:text-white', 'hover:text-red-500');
 }
 
+function toggleCheckboxes() {
+    var checkboxes = document.getElementById("checkboxes");
+    if (checkboxes.style.display === "none" || checkboxes.style.display === "") {
+        checkboxes.style.display = "block";
+    } else {
+        checkboxes.style.display = "none";
+    }
+}
 
 function showMessage() {
     alert('Butona tıklandı!');

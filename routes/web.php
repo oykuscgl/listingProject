@@ -36,6 +36,10 @@ Route::get('/aboutus', function () {
     return view('layouts.aboutus');
 });
 
+Route::get('/main', function () {
+    return view('layouts.main');
+});
+
 
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
 

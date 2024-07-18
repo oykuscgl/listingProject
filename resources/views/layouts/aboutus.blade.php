@@ -46,11 +46,11 @@
             <div class="relative  shadow-md rounded-lg overflow-hidden">
                     <div class="relative">
                         <img class="object-cover w-full h-full z-10 filter brightness-75" src="{{ asset('images/about.jpeg') }}" alt="Hakkımızda">
-                        <div class="absolute inset-0 bg-gray-100 opacity-40 z-0"></div>
+                        <div class="absolute inset-0 bg-black opacity-20 z-0"></div>
                     </div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6 w-full mb-5 xl:h-150">
                     <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">HAKKIMIZDA</a>
-                        <p class="text-gray-700 text-2xl mb-10 text-center justify-center w-96">Puratos, küresel, müşteri odaklı bir organizasyon ve sıkı sıkıya bağlı bir aile şirketidir.</p>
+                        <p class="text-2xl text-white opacity-100 mb-10 text-center justify-center w-96">Puratos, küresel, müşteri odaklı bir organizasyon ve sıkı sıkıya bağlı bir aile şirketidir.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
                     <div class="flex items-center justify-between w-full">
                      <span class="text-md ml-1">Keşfet</span>
@@ -63,12 +63,12 @@
             </div>
 
 
-            <div class="relative bg-black shadow-md rounded-lg overflow-hidden h-100 xl:h-150">
+            <div class="relative bg-black shadow-md rounded-lg overflow-hidden h-full ">
                 <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/us.jpeg') }}" alt="Hakkımızda">
-                <div class="absolute inset-0 bg-gray-100  opacity-60 z-0 "></div>
+                <div class="absolute inset-0 bg-black  opacity-20 z-0 "></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6">
                     <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">DEĞERLERİMİZ</a>
-                     <p class="text-gray-700 text-2xl mb-10  text-center w-96">Değerlerimiz, yaptığımız her şeyin kalbinde olan güvene dayanır. Tüm değerlerimizin özünde yer alan güven, yeni fikirler için güvenilir ortaklar olmamızı sağlıyor.</p>
+                     <p class="text-white text-2xl mb-10  text-center w-96">Değerlerimiz, yaptığımız her şeyin kalbinde olan güvene dayanır. Tüm değerlerimizin özünde yer alan güven, yeni fikirler için güvenilir ortaklar olmamızı sağlıyor.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
@@ -83,10 +83,10 @@
        
             <div class="relative bg-black shadow-md rounded-lg overflow-hidden h-100">
                     <img class="w-full h-full object-cover z-10filter brightness-75" src="{{ asset('images/taah.jpeg') }}" alt="Hakkımızda">
-                <div class="absolute inset-0 bg-gray-100  opacity-40 z-0 "></div>
+                <div class="absolute inset-0 bg-black opacity-20 z-0 "></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center mb-12">
                     <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">TAAHHÜTLERİMİZ</a>
-                        <p class="text-gray-700 text-2xl mb-5  text-center w-96">Ürünlerimiz ve çözümlerimiz sürekli besin değerlerini optimize etmeyi amaçlarken sosyal sorumluluk faaliyetlerimiz gelecek nesile yatırıma dayalıdır.</p>
+                        <p class="text-white text-2xl mb-5  text-center w-96">Ürünlerimiz ve çözümlerimiz sürekli besin değerlerini optimize etmeyi amaçlarken sosyal sorumluluk faaliyetlerimiz gelecek nesile yatırıma dayalıdır.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
@@ -101,10 +101,10 @@
             
             <div class="relative  shadow-md rounded-lg overflow-hidden">
                     <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/humanres.jpeg') }}" alt="Hakkımızda">
-                <div class="absolute inset-0 bg-gray-100  opacity-40 z-0 "></div>
+                <div class="absolute inset-0 bg-black  opacity-20 z-0 "></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center  mb-12">
                     <a href="#" class="text-white text-2xl font-bold mb-8 mt-3">İNSAN KAYNAKLARI</a>
-                        <p class="text-gray-700 text-2xl mb-5  text-center w-96">Çalışanlarımız, yetenekleri ve tutkularıyla yönlendirilir. Puratos'da şirket değerlerimizi ve çalışma prensiplerimizi harmanlayarak kendi sihrinizi yaratabilirsiniz.</p>
+                        <p class="text-white text-2xl mb-5  text-center w-96">Çalışanlarımız, yetenekleri ve tutkularıyla yönlendirilir. Puratos'da şirket değerlerimizi ve çalışma prensiplerimizi harmanlayarak kendi sihrinizi yaratabilirsiniz.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
@@ -116,12 +116,12 @@
                 </div>
             </div>
         
-            <div class="relative shadow-md rounded-lg overflow-hidden" style="height:150%">
+            <div class="relative shadow-md rounded-lg overflow-hidden" style="height:85vh">
                 <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/tarihce.jpeg') }}" alt="Hakkımızda">
-                <div class="absolute inset-0 bg-gray-100 opacity-40 z-0"></div>
+                <div class="absolute inset-0 bg-black opacity-20 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center mb-12">
                     <a href="#" class="text-white text-2xl font-bold mb-5">TARİHÇEMİZ</a>
-                        <p class="text-gray-700 text-2xl mb-5 text-center w-96">Puratos 100 yaşında! 100 yıl boyunca yenilik tutkusu ve yaptığımız her şeyi sürekli iyileştirme isteğiyle hareket ettik.</p>
+                        <p class="text-white text-2xl mb-5 text-center w-96">Puratos 100 yaşında! 100 yıl boyunca yenilik tutkusu ve yaptığımız her şeyi sürekli iyileştirme isteğiyle hareket ettik.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-20">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
@@ -133,12 +133,12 @@
                 </div>
             </div>
 
-        <div class="relative  shadow-md rounded-lg overflow-hidden" style="height:150%">
+        <div class="relative  shadow-md rounded-lg overflow-hidden h-full">
                 <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/sector.jpeg') }}" alt="Sector">
-            <div class="absolute inset-0 bg-gray-100  opacity-40 z-0"></div>
+            <div class="absolute inset-0 bg-black  opacity-20 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center mb-12">
                         <a href="#" class="text-white text-2xl font-bold mt-4 mb-4 w-96">EKMEKÇİLİK VE PASTACILIK SEKTÖRÜ YENİDEN YAPILANDIRMA FONU</a>
-                            <p class="text-gray-700 text-2xl text-center w-96">Puratos Türkiye olarak hayata geçirdiğimiz “Puratos Türkiye Ekmekçilik ve Pastacılık Sektörü Yeniden Yapılanma Fonu” ile dayanışmanın bir parçası oluyor ve depremden etkilenen bölgelerdeki yerel ekmekçilik ve pastacılık işletmelerinin yeniden ayağı kalmasına katkı sağlıyoruz.</p>
+                            <p class="text-white text-2xl text-center w-96">Puratos Türkiye olarak hayata geçirdiğimiz “Puratos Türkiye Ekmekçilik ve Pastacılık Sektörü Yeniden Yapılanma Fonu” ile dayanışmanın bir parçası oluyor ve depremden etkilenen bölgelerdeki yerel ekmekçilik ve pastacılık işletmelerinin yeniden ayağı kalmasına katkı sağlıyoruz.</p>
                         <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-5">
                             <div class="flex items-center justify-between w-full">
                              <span class="text-md ml-1">Keşfet</span>
@@ -150,13 +150,13 @@
             </div>
         </div>
 
-            <div class="relative  shadow-md rounded-lg overflow-hidden mt-56 h-auto" style="height:85vh">
+            <div class="relative  shadow-md rounded-lg overflow-hidden h-auto" style="height:85vh">
                 <div class="bg-gray-100 from-white to-gray-500"></div>
                 <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/demo.png') }}" alt="Hakkımızda">
-                <div class="absolute inset-0 bg-gray-100 opacity-40 z-0"></div>
+                <div class="absolute inset-0 bg-black opacity-20 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center  mb-12">
                     <a href="#" class="text-white text-2xl font-bold mb-3 mt-10">PURATOS’TAN PROFESYONELLERE ÖZEL DEMO DENEYİMİ</a>
-                        <p class="text-gray-700 text-2xl mb-10 text-center w-96">‘Food Innovation for Good’ yani ‘İyilik İçin Gıda İnovasyonu’ sloganıyla çıktığımız bu yolda tüm faydanın iyiliğe aktarılması için çabalıyoruz. Eğitim meraklılarını da bizlerle bu iyiliği paylaşmaya davet ediyoruz.</p>
+                        <p class="text-white text-2xl mb-10 text-center w-96">‘Food Innovation for Good’ yani ‘İyilik İçin Gıda İnovasyonu’ sloganıyla çıktığımız bu yolda tüm faydanın iyiliğe aktarılması için çabalıyoruz. Eğitim meraklılarını da bizlerle bu iyiliği paylaşmaya davet ediyoruz.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
@@ -185,7 +185,8 @@
         </div>
     </div>
 </div>
-    </section>
+
+</section>
 
 
 </body>

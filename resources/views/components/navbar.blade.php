@@ -32,8 +32,8 @@
             </div>
         </div>
         <!-- Alt Menü -->
-        <div class="bg-white py-2 shadow">
-            <div class="flex justify-between items-center px-4">
+        <div class="bg-white py-2">
+            <div class=" flex justify-between items-center px-4">
                 <div class="flex items-center">
                     <img src="{{ asset('images/logo.png') }}" alt="Puratos Logo" class="h-16">
                 </div>
