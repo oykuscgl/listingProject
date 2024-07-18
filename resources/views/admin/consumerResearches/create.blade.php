@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Araştırma Yazısı Ekle</h1>
+    <h1>Yeni Araştırma Ekle</h1>
     <form action="{{ route('admin.consumerResearches.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -12,6 +12,10 @@
         <div class="form-group">
             <label for="description">Araştırma Açıklaması</label>
             <textarea name="description" class="form-control">{{ old('description') }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Kategori</label>
+            <input type="text" name="category" class="form-control" value="{{ old('category') }}">
         </div>
         <div class="form-group">
             <label for="detailed_info">Detaylı Araştırma Bilgisi</label>

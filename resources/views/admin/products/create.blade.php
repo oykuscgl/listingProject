@@ -59,7 +59,10 @@
                 <label for="detailed_description">Detailed Description</label>
                 <textarea class="form-control" id="detailed_description" name="detailed_description"></textarea>
             </div>
-
+            <div class="form-group">
+                <label for="image">Görsel</label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
             <button type="submit" class="btn btn-success">Ekle</button>
         </form>
     </div>

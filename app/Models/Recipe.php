@@ -16,6 +16,7 @@ class Recipe extends Model
         'description',
         'category',
         'detailed_info',
+        'image',
     ];
 
     protected $casts = [

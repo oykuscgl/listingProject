@@ -131,7 +131,7 @@
     <main class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
         @foreach($services as $service)
             <div class="relative bg-black shadow-md rounded-lg overflow-hidden full-height">
-                <img class="w-full filter brightness-75" src="{{ asset('images/inovasyon.jpeg') }}" alt="{{ $service->title }}">
+                <img class="w-full filter brightness-75" src="{{ asset('images/'.$service->image) }}" alt="{{ $service->title }}">
                 <div class="gradient-overlay">
                     <h2 class="lg-title text-white text-4xl font-bold mb-4">{{ $service->title }}</h2>
                     <p class="text-gray-700 mb-4 text-2xl lg-text">{{ $service->description }}</p>

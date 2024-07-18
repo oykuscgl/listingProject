@@ -20,6 +20,7 @@ class Product extends Model
         'pallet',
         'packaging',
         'detailed_description',
+        'image',
     ];
 
     public function category()

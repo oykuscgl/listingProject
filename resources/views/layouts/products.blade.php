@@ -99,7 +99,6 @@
                         <div class="flex justify-between items-center">
                             <span class="text-gray-700 font-bold">{{ $product->price }} ₺</span>
                             <span class="text-gray-700">{{ $product->stock }} adet stokta</span>
-
                         </div>
                     </div>
                 @endforeach
