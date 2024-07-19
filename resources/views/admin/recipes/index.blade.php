@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Tarifler Yönetim Sayfası</h1>
-    <a href="{{ route('admin.recipes.create') }}" class="btn btn-primary mb-3">Tarif Ekle</a>
+    <a href="{{ route('admin.recipes.create') }}" class="btn btn-primary mb-3">Tarif Yazısı Ekle</a>
     <table class="table">
         <thead>
             <tr>
@@ -16,7 +16,8 @@
             @foreach($recipes as $recipe)
                 <tr>
                     <td>{{ $recipe->title }}</td>
-                    <td>{{ $recipe->category }}</td>
+                    <td>{{ $recipe->category_id }}</td>
+                    <td>{{ $recipe->image }}</td>
                     <td>
                         <a href="{{ route('admin.recipes.edit', $recipe) }}" class="btn btn-warning">Düzenle</a>
                         <form action="{{ route('admin.recipes.destroy', $recipe) }}" method="POST" class="d-inline">
@@ -31,3 +32,6 @@
     </table>
 </div>
 @endsection
+
+
+

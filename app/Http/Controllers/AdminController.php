@@ -117,34 +117,57 @@ class AdminController extends Controller
 
     public function recipeManagement()
     {
-        $recipes = Recipe::all('id','title');
+        $recipes = Recipe::with('category')->get();
         return view('admin.recipes.index', compact('recipes'));
     }
 
     public function showAddRecipeForm()
     {
-        $recipes = Recipe::all();
-        return view('admin.recipes.create', compact('recipes'));
+        $categories = Category::all();
+        return view('admin.recipes.create', compact('categories'));
     }
 
+    /*
     public function createRecipe()
     {
         return view('admin.recipes.create');
-    }
+    }*/
 
-    public function storeRecipe(RecipeRequest $request)
+    public function storeRecipe(Request $request)
     {
-        Recipe::create($request->validated());
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/recipe/" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        Recipe::create([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'category_id'=> $request->category_id,
+            'detailed_info' => $detailed_info,
+        ]);
+
         return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla eklendi.');
     }
 
-    public function editRecipe(Recipe $recipe)
+    public function showEditRecipeForm(Recipe $recipe)
     {
-        return view('admin.recipes.edit', [
-            'recipe'=> $recipe
-        ]);
+        $categories = Category::all();
+        return view('admin.recipes.edit', compact('recipe', 'categories'));
     }
-
     public function updateRecipe(RecipeRequest $request, Recipe $recipe)
     {
         $recipe->update($request->validated());
@@ -156,7 +179,6 @@ class AdminController extends Controller
         $recipe->delete();
         return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla silindi.');
     }
-
 
 
     //NEWS CONTROL
