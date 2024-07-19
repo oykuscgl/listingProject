@@ -41,6 +41,7 @@ Route::get('/main', function () {
 
 
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{product_id}', [RecipeController::class, 'show'])->name('products.show');
 
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
@@ -130,6 +131,8 @@ Route::post('products', [AdminController::class, 'storeProduct'])->name('product
 Route::get('products/{product}/edit', [AdminController::class, 'showEditProductForm'])->name('products.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::put('products/{product}', [AdminController::class, 'updateProduct'])->name('products.update')->middleware(['auth', AdminMiddleware::class]);
 Route::delete('products/{product}', [AdminController::class, 'deleteProduct'])->name('products.destroy')->middleware(['auth', AdminMiddleware::class]);
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+
 
 
 
