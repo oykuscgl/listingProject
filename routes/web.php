@@ -119,7 +119,7 @@ Route::delete('company-info/{info_id}', [AdminController::class, 'destroyInfo'])
 Route::get('recipe-management', [AdminController::class, 'recipeManagement'])->name('recipes.index')->middleware(['auth', AdminMiddleware::class])->middleware(['auth', AdminMiddleware::class]);
 Route::get('recipes/create', [AdminController::class, 'showAddRecipeForm'])->name('recipes.create')->middleware(['auth', AdminMiddleware::class]);
 Route::post('recipes', [AdminController::class, 'storeRecipe'])->name('recipes.store')->middleware(['auth', AdminMiddleware::class]);
-Route::get('recipes/{recipe}/edit', [AdminController::class, 'editRecipe'])->name('recipes.edit')->middleware(['auth', AdminMiddleware::class]);
+Route::get('recipes/{recipe}/edit', [AdminController::class, 'showEditRecipeForm'])->name('recipes.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::put('recipes/{recipe}', [AdminController::class, 'updateRecipe'])->name('recipes.update')->middleware(['auth', AdminMiddleware::class]);
 Route::delete('recipes/{recipe}', [AdminController::class, 'destroyRecipe'])->name('recipes.destroy')->middleware(['auth', AdminMiddleware::class]);
 

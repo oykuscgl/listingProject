@@ -15,9 +15,9 @@ class RecipeRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|array',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|string|max:255',
             'detailed_info' => 'required|string',
-            'image'=> 'required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
+            'image'=> 'image|mimes:jpeg, png, jpg, gif, svg|max:2048',
         ];
     }
 }

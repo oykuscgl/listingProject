@@ -14,7 +14,7 @@ class Recipe extends Model
     protected $fillable = [
         'title',
         'description',
-        'category',
+        'category_id',
         'detailed_info',
         'image',
     ];
@@ -22,6 +22,11 @@ class Recipe extends Model
     protected $casts = [
         'description' => 'array',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
 
 }
