@@ -15,6 +15,7 @@ class ConsumerResearch extends Model
         'title',
         'description',
         'detailed_info',
+        'image',
     ];
 
 }

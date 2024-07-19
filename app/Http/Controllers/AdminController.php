@@ -19,6 +19,7 @@ use App\Http\Requests\RecipeRequest;
 use App\Http\Requests\NewsPostRequest;
 use App\Http\Requests\ServiceRequest;
 use App\Http\Requests\InfoRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class AdminController extends Controller
@@ -46,7 +47,13 @@ class AdminController extends Controller
 
     public function storeProduct(ProductRequest $request)
     {
-        Product::create($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images', 'public');
+        }
+
+        Product::create($data);
         return redirect()->route('admin.products.index')->with('success', 'Product added successfully');
     }
 
@@ -58,7 +65,17 @@ class AdminController extends Controller
 
     public function updateProduct(ProductRequest $request, Product $product)
     {
-        $product->update($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $data['image'] = $request->file('image')->store('images', 'public');
+        }
+
+        $product->update($data);
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
     }
 
@@ -96,7 +113,9 @@ class AdminController extends Controller
 
     public function editRecipe(Recipe $recipe)
     {
-        return view('admin.recipes.edit', compact('recipe'));
+        return view('admin.recipes.edit', [
+            'recipe'=> $recipe
+        ]);
     }
 
     public function updateRecipe(RecipeRequest $request, Recipe $recipe)
@@ -304,44 +323,44 @@ class AdminController extends Controller
     {
         // Firma hakkında bilgisi sayfası
         $infos = CompanyInfo::all();
-        return view('admin.infos.index', compact('infos'));
+        return view('admin.aboutUs.index', compact('infos'));
     }
 
     public function showAddInfoForm()
     {
         $infos = CompanyInfo::all();
-        return view('admin.infos.create', compact('infos'));
+        return view('admin.aboutUs.create', compact('infos'));
     }
 
     public function createInfo()
     {
-        return view('admin.infos.create');
+        return view('admin.aboutUs.create');
     }
 
     public function storeInfo(InfoRequest $request)
     {
         CompanyInfo::create($request->validated());
-        return redirect()->route('admin.infos.index')->with('success', 'Tarif başarıyla eklendi.');
+        return redirect()->route('admin.aboutUs.index')->with('success', 'Tarif başarıyla eklendi.');
     }
 
     public function editInfo($id)
     {
         $infos = CompanyInfo::findOrFail($id);
-        return view('admin.infos.edit', compact('info'));
+        return view('admin.aboutUs.edit', compact('info'));
     }
 
     public function updateInfo(InfoRequest $request, CompanyInfo $info)
     {
         $info->update($request->validated());
-        return redirect()->route('admin.infos.index')->with('success', 'Tarif başarıyla güncellendi.');
+        return redirect()->route('admin.aboutUs.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
 
     public function destroyInfo($info_id)
     {
         // Haber kaydını bul ve sil
-        $blogs = BlogPost::findOrFail($info_id);
-        $blogs->delete();
-        return redirect()->route('admin.blogs.index')->with('success', 'Haber başarıyla silindi.');
+        $infos = CompanyInfo::findOrFail($info_id);
+        $infos->delete();
+        return redirect()->route('admin.aboutUs.index')->with('success', 'Haber başarıyla silindi.');
     }
 
 

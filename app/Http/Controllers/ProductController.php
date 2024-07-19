@@ -79,10 +79,19 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
+    
     public function destroy($id)
     {
         $product = Product::find($id);
         $product->delete();
         return redirect()->route('products.index');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'like', "%$query%")->get();
+        return view('products.index', compact('products'));
+    }
+
 }

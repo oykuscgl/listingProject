@@ -19,7 +19,7 @@
                         <li><a href="{{ route('recipes.index')}}" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
                         <li><a href="{{ route('services.index')}}" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
                         <li><a href="{{ route('researches.index')}}" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
-                        <li><a href="{{ route('infos.index')}}" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
+                        <li><a href="{{ route('aboutUs.index')}}" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
                         <li><a href="{{ route('news.index')}}" class="text-gray-700 hover:text-red-600">Haberler</a></li>
                         <li><a href="{{ route('blogs.index')}}" class="text-gray-700 hover:text-red-600">Blog</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>

@@ -45,3 +45,14 @@ document.getElementById("loginButton").onclick = function() {
 document.getElementById("registerButton").onclick = function() {
     window.location.href = "{{ asset('register') }}";
 };
+
+function filterCards(category) {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}

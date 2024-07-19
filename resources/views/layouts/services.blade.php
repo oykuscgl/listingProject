@@ -42,12 +42,12 @@
 
     <section class="container-fluid px-4 py-10 mx-auto">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-
+            @foreach($services -> service)
             <div class="relative shadow-md rounded-md overflow-hidden" style="height:70vh;">
                         <img class="object-cover w-full h-full z-10 filter brightness-75" src="{{ asset('images/inovasyon.jpeg') }}" alt="Hakkımızda">
                         <div class="absolute inset-0 bg-gray-100 opacity-50 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center w-full mt-16">
-                    <a href="#" class="text-white text-2xl font-bold mt-4 mb-8">İNOVASYON MERKEZİ</a>
+                    <a href="#" class="text-white text-2xl font-bold mt-4 mb-8">{{ $service-> tilte }}</a>
                     <p class="text-gray-700 text-2xl text-center justify-center w-96">Müşterilerimizin uluslararası trendlere yönelik derinlemesine araştırmalara erişimini sağlıyoruz. Eğitimler ve seminerlerle uzmanlığımızı sizlerle paylaşıyoruz.</p>
                     <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-44">
                     <div class="flex items-center justify-between w-full">
@@ -59,6 +59,7 @@
                     </a>
                 </div>
             </div>
+            @endforeach
 
 
             <div class="relative shadow-md rounded-lg overflow-hidden" style="height:70vh;">
