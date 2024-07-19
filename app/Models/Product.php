@@ -21,6 +21,7 @@ class Product extends Model
         'packaging',
         'detailed_description',
         'image',
+        'specialCategory',
     ];
 
     public function category()

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Firma Hizmetleri Yönetim Sayfası</h1>
-    <a href="{{ route('admin.services.create') }}" class="btn btn-primary mb-3">Hizmet Ekle</a>
+        <a href="{{ route('admin.services.create') }}" class="btn btn-primary mb-3">Hizmet Ekle</a>
     <table class="table">
         <thead>
             <tr>

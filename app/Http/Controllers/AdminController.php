@@ -79,6 +79,7 @@ class AdminController extends Controller
             'pallet' => $request->pallet,
             'packaging' => $request->packaging,
             'image'=> $request->image,
+            'specialCategory'=> $request->specialCategory,
         ]);
 
         return redirect()->route('admin.products.index')->with('success', 'Ürün başarıyla eklendi.');
@@ -245,10 +246,34 @@ class AdminController extends Controller
         return view('admin.services.create');
     }
 
-    public function storeServices(ServiceRequest $request)
+    public function storeServices(Request $request)
     {
-        Service::create($request->validated());
-        return redirect()->route('admin.services.index')->with('success', 'Hizmet başarıyla eklendi.');
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/recipe/" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        Service::create([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'detailed_info' => $detailed_info,
+            'image' => $request->image,
+        ]);
+
+        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla eklendi.');
     }
 
     public function editServices($id)

@@ -69,6 +69,10 @@
                 <textarea class="form-control" id="detailed_description" name="detailed_description"></textarea>
             </div>
             <div class="form-group">
+                <label for="specialCategory"> Özel Kategori</label>
+                <input type="text" class="form-control" id="specialCategory" name="specialCategory">
+            </div>
+            <div class="form-group">
                 <label for="image">Görsel</label>
                 <input type="file" class="form-control" id="image" name="image">
             </div>
