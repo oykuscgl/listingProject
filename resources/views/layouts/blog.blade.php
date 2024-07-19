@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container mx-auto px-4 py-8">
     <div class="flex flex-wrap -mx-4">
         <div class="w-full md:w-1/200 px-48">

@@ -10,7 +10,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="{{ asset('js/recipescript.js') }}"></script>
     <script src="{{ asset('js/allproductscript.js') }}"></script>
-  
+
 </head>
 <body class="bg-white">
     <div>

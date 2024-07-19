@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@%5E1.0/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<style>
-       body {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            font-family: 'CenturyGothic', Verdana, sans-serif;
-        }
-        *{
-            box-sizing: border-box;
-        }
-        @font-face {
-            font-family: 'CenturyGothic', Verdana, sans-serif;
-            font-weight: 600;
-            font-style: italic;
-            font-display: swap;
-            src: url('clientlib-font-default/resources/fonts/CenturyGothicW05-SemiBoldIt.woff');
-        }
+@extends('layouts.app')
 
-</style>
-<body>
+@section('content')
 
 <section class="container mt-10 p-4">
 <header class="text-white py-4 px-6 flex items-center justify-between">
@@ -47,21 +20,16 @@
   <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="p-4 btn">
             <h3 class="p-margin-top-sm p-margin-bottom-sm font-bold text-lg"></h3>
-            <p class="mt-4 text-sm/relaxed">
+            <p class="mt-14 text-sm/relaxed">
                 {{ $blogPost->title }}
             </p>
-            <div class="flex justify-between items-center text-sm mt-5">
-                <p class="mt-4 text-sm/relaxed">
-                    {{ $blogPost->description }}
-                </p>
-            </div>
         </div>
     </div>
 
     <div class="p-4">
         <ul class="list-disc list-inside mt-2">
             <p class="mt-4 text-sm/relaxed">
-                {{ $blogPost->detailed_info }}
+                {!! $blogPost->detailed_info !!}
             </p>
         </ul>
     </div>
@@ -73,3 +41,5 @@
 
 </body>
 </html>
+
+@endsection
