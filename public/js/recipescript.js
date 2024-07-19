@@ -34,6 +34,35 @@ function toggleCheckboxes() {
     }
 }
 
+
+    function toggleCheckboxes() {
+        const checkboxes = document.getElementById('checkboxes');
+        if (checkboxes.classList.contains('hidden')) {
+            checkboxes.classList.remove('hidden');
+        } else {
+            checkboxes.classList.add('hidden');
+        }
+    }
+
+    // Change background color of the button (example functionality)
+    function changeBackgroundColor(button) {
+        button.classList.toggle('bg-gray-200');
+    }
+
+    // Filter cards based on category
+    function filterCards(categoryId) {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            // Check if the card has the class matching the category ID
+            if (categoryId === 'all' || card.classList.contains('category-' + categoryId)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    }
+
+
 function showMessage() {
     alert('Butona tıklandı!');
 }
