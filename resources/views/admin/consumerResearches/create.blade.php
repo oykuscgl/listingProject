@@ -21,6 +21,10 @@
             <label for="detailed_info">Detaylı Araştırma Bilgisi</label>
             <textarea name="detailed_info" class="form-control">{{ old('detailed_info') }}</textarea>
         </div>
+        <div class="form-group">
+            <label for="image">Görsel</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 </div>

@@ -17,6 +17,7 @@
                 <tr>
                     <td>{{ $blogPost->title }}</td>
                     <td>{{ $blogPost->category }}</td>
+                    <td>{{ $blogPost->image }}</td>
                     <td>
                         <a href="{{ route('admin.blogs.edit', $blogPost) }}" class="btn btn-warning">Düzenle</a>
                         <form action="{{ route('admin.blogs.destroy', $blogPost) }}" method="POST" class="d-inline">
@@ -31,3 +32,6 @@
     </table>
 </div>
 @endsection
+
+
+

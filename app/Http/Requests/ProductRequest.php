@@ -23,6 +23,7 @@ class ProductRequest extends FormRequest
             'pallet' => 'nullable|string',
             'packaging' => 'nullable|string',
             'detailed_description' => 'nullable|string',
+            'image'=> 'required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
         ];
     }
 }

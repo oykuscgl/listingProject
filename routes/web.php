@@ -134,10 +134,6 @@ Route::delete('products/{product}', [AdminController::class, 'deleteProduct'])->
 });
 
 
-
-
-
-
 //hr management
 Route::get('/admin/hr', [AdminController::class, 'hr'])->name('admin.hr');
 

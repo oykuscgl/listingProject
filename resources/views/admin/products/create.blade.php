@@ -1,14 +1,10 @@
 
-
-
-
-
 @extends('layouts.admin')
 
 @section('content')
     <div class="container mt-4">
         <h2>Ürün Ekle</h2>
-        <form action="{{ route('admin.products.store') }}" method="POST">
+        <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Ürün Adı</label>
@@ -31,32 +27,32 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Açıklama</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
 
             <div class="form-group">
-                <label for="shelf_life">Shelf Life</label>
+                <label for="shelf_life">Raf Ömrü</label>
                 <input type="text" class="form-control" id="shelf_life" name="shelf_life">
             </div>
 
             <div class="form-group">
-                <label for="product_code">Product Code</label>
+                <label for="product_code">Ürün Kodu</label>
                 <input type="text" class="form-control" id="product_code" name="product_code">
             </div>
 
             <div class="form-group">
-                <label for="pallet">Pallet</label>
+                <label for="pallet">Palet</label>
                 <input type="text" class="form-control" id="pallet" name="pallet">
             </div>
 
             <div class="form-group">
-                <label for="packaging">Packaging</label>
+                <label for="packaging">Paketleme</label>
                 <input type="text" class="form-control" id="packaging" name="packaging">
             </div>
 
             <div class="form-group">
-                <label for="detailed_description">Detailed Description</label>
+                <label for="detailed_description">Detaylı Bilgi</label>
                 <textarea class="form-control" id="detailed_description" name="detailed_description"></textarea>
             </div>
             <div class="form-group">

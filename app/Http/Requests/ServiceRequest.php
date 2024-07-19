@@ -15,7 +15,7 @@ class ServiceRequest extends FormRequest{
             'description' => 'required|string',
             'category' => 'string|max:255',
             'detailed_info' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image'=> 'required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
         ];
     }
 
