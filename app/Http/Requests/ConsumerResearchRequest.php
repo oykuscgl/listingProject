@@ -15,6 +15,7 @@ class ConsumerResearchRequest extends FormRequest{
             'description' => 'required|string',
             'category' => 'string|max:255',
             'detailed_info' => 'required|string',
+            'image'=> 'required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
         ];
     }
 

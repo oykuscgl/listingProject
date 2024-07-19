@@ -41,6 +41,7 @@ Route::get('/main', function () {
 
 
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{product_id}', [RecipeController::class, 'show'])->name('products.show');
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::get('/recipes/{recipe_id}', [RecipeController::class, 'show'])->name('recipes.show');
@@ -134,10 +135,6 @@ Route::get('/products/search', [ProductController::class, 'search'])->name('prod
 
 
 });
-
-
-
-
 
 
 //hr management

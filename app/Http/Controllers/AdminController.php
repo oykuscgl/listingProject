@@ -13,6 +13,7 @@ use App\Models\CompanyInfo;
 use App\Models\News;
 use App\Models\BlogPost;
 use App\Models\HumanResource;
+use DOMDocument;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\RecipeRequest;
@@ -20,7 +21,7 @@ use App\Http\Requests\NewsPostRequest;
 use App\Http\Requests\ServiceRequest;
 use App\Http\Requests\InfoRequest;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -50,11 +51,15 @@ class AdminController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images', 'public');
+            $file = $request->file('image');
+            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/blog'), $filename);
+            $data['image'] = 'images/blog/' . $filename;
         }
 
-        Product::create($data);
-        return redirect()->route('admin.products.index')->with('success', 'Product added successfully');
+        BlogPost::create($data);
+
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog yazısı başarıyla eklendi.');
     }
 
     public function showEditProductForm(Product $product)
@@ -292,10 +297,34 @@ class AdminController extends Controller
         return view('admin.blogs.create');
     }
 
-    public function storeBlogPost(BlogPostRequest $request)
+    public function storeBlogPost(Request $request)
     {
-        BlogPost::create($request->validated());
-        return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla eklendi.');
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/blog/" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        BlogPost::create([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'category'=> $request->category,
+            'detailed_info' => $detailed_info,
+        ]);
+
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog yazısı başarıyla eklendi.');
     }
 
     public function editBlogPost($id)

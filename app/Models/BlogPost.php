@@ -16,7 +16,6 @@ class BlogPost extends Model
         'description',
         'category',
         'detailed_info',
-        'image',
     ];
 
 }

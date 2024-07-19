@@ -17,6 +17,7 @@ class InfoRequest extends FormRequest
             'description' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'detailed_info' => 'required',
+            'image'=> 'required|image|mimes:jpeg, png, jpg, gif, svg|max:2048',
         ];
     }
 }

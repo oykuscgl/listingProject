@@ -18,7 +18,7 @@
             <textarea name="detailed_info" class="form-control">{{ old('detailed_info') }}</textarea>
         </div>
         <div class="form-group">
-            <label for="image">Resim</label>
+            <label for="image">Görsel</label>
             <input type="file" name="image" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Kaydet</button>
