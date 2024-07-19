@@ -42,6 +42,7 @@ Route::get('/main', function () {
 
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
 
+
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::get('/recipes/{recipe_id}', [RecipeController::class, 'show'])->name('recipes.show');
 
@@ -79,9 +80,10 @@ Route::delete('consumer-research/{research_id}', [AdminController::class, 'destr
 //blog management
 Route::get('blog-management', [AdminController::class, 'blogManagement'])->name('blogs.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('blogs/create', [AdminController::class, 'showAddBlogPostForm'])->name('blogs.create')->middleware(['auth', AdminMiddleware::class]);
+Route::get('blogs/{blogPost_id}', [AdminController::class,'seeBlogPost'])->name('blogs.show');
 Route::post('blogs', [AdminController::class, 'storeBlogPost'])->name('blogs.store')->middleware(['auth', AdminMiddleware::class]);
 Route::get('blogs/{blogPost_id}/edit', [AdminController::class, 'editBlogPost'])->name('blogs.edit')->middleware(['auth', AdminMiddleware::class]);
-Route::put('blogs/{blogPost_id}', [AdminController::class, 'updateBlogPost'])->name('blogs.update')->middleware(['auth', AdminMiddleware::class]);
+Route::post('blogs/{blogPost_id}', [AdminController::class, 'updateBlogPost'])->name('blogs.update')->middleware(['auth', AdminMiddleware::class]);
 Route::delete('blogs/{blogPost_id}', [AdminController::class, 'destroyBlogPost'])->name('blogs.destroy')->middleware(['auth', AdminMiddleware::class]);
 
 

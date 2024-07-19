@@ -46,20 +46,42 @@ class AdminController extends Controller
         return view('admin.products.create', compact('categories'));
     }
 
-    public function storeProduct(ProductRequest $request)
+    public function storeProduct(Request $request)
     {
-        $data = $request->validated();
+        $detailed_description = $request->detailed_description;
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images/blog'), $filename);
-            $data['image'] = 'images/blog/' . $filename;
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_description, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/products/" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
         }
 
-        BlogPost::create($data);
+        $detailed_description = $dom->saveHTML();
 
-        return redirect()->route('admin.blogs.index')->with('success', 'Blog yazısı başarıyla eklendi.');
+        Product::create([
+            'name' => $request->name,
+            'description'=> $request->description,
+            'category'=> $request->category,
+            'detailed_description' => $detailed_description,
+            'stock' => $request->stock,
+            'price' => $request->price,
+            'category_id' => $request->category_id,
+            'shelf_life' => $request->shelf_life,
+            'product_code' => $request->product_code,
+            'pallet' => $request->pallet,
+            'packaging' => $request->packaging,
+            'image'=> $request->image,
+        ]);
+
+        return redirect()->route('admin.products.index')->with('success', 'Ürün başarıyla eklendi.');
     }
 
     public function showEditProductForm(Product $product)
@@ -285,6 +307,11 @@ class AdminController extends Controller
         return view('admin.blogs.index', compact('blogs'));
     }
 
+    public function seeBlogPost($id)
+    {
+        $blog = BlogPost::findOrFail($id);
+        return view('admin.blogs.show', compact('blog'));
+    }
 
     public function showAddBlogPostForm()
     {
@@ -329,14 +356,15 @@ class AdminController extends Controller
 
     public function editBlogPost($id)
     {
-        $blogs = BlogPost::findOrFail($id);
-        return view('admin.blogs.edit', compact('blogPost'));
+        $blog = BlogPost::findOrFail($id);
+        return view('admin.blogs.edit', compact('blog'));
     }
 
     public function updateBlogPost(BlogPostRequest $request, BlogPost $blogPost)
     {
         $blogPost->update($request->validated());
         return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla güncellendi.');
+
     }
 
     public function destroyBlogPost($blogPost_id)

@@ -11,19 +11,11 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="{{ asset('js/allproductscript.js') }}"></script>
 </head>
-<<<<<<< HEAD
-<body class="bg-white">
-    <div>
-        @include('components.navbar')
-    </div>
-
-=======
     <body class="bg-white">
     <div>
         @include('components.navbar')
     </div>
-    
->>>>>>> refs/remotes/origin/main
+
     <div class="container-fluid flex flex-row">
         <aside class="w-1/5 p-4 justify-start bg-white shadow-md rounded-lg">
             <div class="mb-4">
@@ -78,11 +70,7 @@
                     </span>
                 </button>
             </div>
-<<<<<<< HEAD
-            <div class="mb-4">
-                <span class="text-lg ml-3 mb-5">Çözümlerimiz</span>
-=======
-            
+
 
     </div>
         </aside>
@@ -90,7 +78,7 @@
 <header class="bg-gray-00 p-4 flex flex-row text-start justify-start">
         <div class="container  flex flex-col justify-start items-start">
            <div class="mb-5 text-2xl font-bold text-black">TARİFLERİMİZ</div>
-           
+
            <div class="relative w-full">
     <div class="flex items-center">
         <input autocomplete="off" type="text" aria-autocomplete="both" aria-expanded="false" aria-haspopup="listbox" role="combobox" class="rbt-input-main form-control rbt-input px-5 py-3 pr-12 border border-gray-300 rounded-full focus:outline-none hover:border-red-500 focus:border-gray-700 w-full" value="">
@@ -119,7 +107,6 @@
                         </svg>
                     </div>
                 </div>
->>>>>>> refs/remotes/origin/main
             </div>
             <button onclick="toggleCheckboxes()" class="flex items-center justify-between w-full p-2 bg-white border border-gray-300 rounded-md shadow-md transform-scale-060 hover:text-red-500">
                 <label class="text-sm text-black ml-1">Tarif çeşidi seç</label>
