@@ -15,17 +15,17 @@
     *{
         box-sizing: border-box;
     }
-  
+
 </style>
 
 <body class="font-sans bg-white">
 
-    
+
     <div>
         @include('components.navbar')
     </div>
 
-    
+
     <div class="relative mr-2">
         <img class="w-full object-cover banner" src="{{ asset('images/bannercustomer.jpeg') }}" alt="Banner Image"style="height:30vh">
         <div class="absolute inset-0 bg-gradient-to-r from-white via-gray-100"></div>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    
+
 <section class="container-fluid px-4 py-10 mx-auto">
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
     @foreach($researches as $research)
@@ -51,7 +51,7 @@
             <div class="absolute inset-0 flex flex-col items-center justify-start text-center w-full mt-16">
         <a href="#" class="text-black text-2xl font-bold mt-4 mb-8">{{ $research->title }}</a>
         <p class="text-gray-700 text-2xl text-center justify-center w-96">{{ $research->description }}</p>
-        <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
+        <a href="{{ route('researches.show', ['research_id' => $research->id]) }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
         <div class="flex items-center justify-between w-full">
          <span class="text-md ml-1">Keşfet</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
@@ -63,7 +63,6 @@
     </div>
     @endforeach
 </section>
-
 
 </body>
 

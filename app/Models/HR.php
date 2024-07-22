@@ -9,7 +9,7 @@ class HR extends Model
 
    use HasFactory;
 
-    protected $table = 'news';
+    protected $table = 'hr';
 
     protected $fillable = [
         'detailed_info',

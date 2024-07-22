@@ -16,18 +16,18 @@
             <div class="bg-gray-100 py-2 pb-3 pl-5 sm:pl-10 md:pl-20 lg:pl-40 rounded-bl-3xl w-full max-w-screen-lg">
                 <nav>
                     <ul class="flex flex-wrap justify-end space-x-2 sm:space-x-4 text-xs">
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Haberler</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Blog</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
+                        <li><a href="/products" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
+                        <li><a href="/recipes" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
+                        <li><a href="/services" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
+                        <li><a href="/customersearches" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
+                        <li><a href="/aboutus" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
+                        <li><a href="/news" class="text-gray-700 hover:text-red-600">Haberler</a></li>
+                        <li><a href="/blog" class="text-gray-700 hover:text-red-600">Blog</a></li>
+                        <li><a href="/HRPage" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">İletişim</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Login</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-red-600">Register</a></li>
+                        <li><a href="/communication" class="text-gray-700 hover:text-red-600">İletişim</a></li>
+                        <li><a href="/login" class="text-gray-700 hover:text-red-600">Login</a></li>
+                        <li><a href="/register" class="text-gray-700 hover:text-red-600">Register</a></li>
                     </ul>
                 </nav>
             </div>

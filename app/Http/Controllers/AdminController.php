@@ -428,16 +428,41 @@ class AdminController extends Controller
         return view('admin.aboutUs.create', compact('infos'));
     }
 
-    public function storeInfo(InfoRequest $request)
+    public function storeInfo(Request $request)
     {
-        CompanyInfo::create($request->validated());
-        return redirect()->route('admin.aboutUs.index')->with('success', 'Tarif başarıyla eklendi.');
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 1);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        CompanyInfo::create([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'category'=> $request->category,
+            'detailed_info' => $detailed_info,
+            'image' => $request->image,
+        ]);
+
+        return redirect()->route('admin.aboutUs.index')->with('success', 'Sayfa başarıyla eklendi.');
     }
 
     public function editInfo($id)
     {
         $infos = CompanyInfo::findOrFail($id);
-        return view('admin.aboutUs.edit', compact('info'));
+        return view('admin.aboutUs.edit', compact('infos'));
     }
 
     public function updateInfo(InfoRequest $request, CompanyInfo $info)
@@ -471,7 +496,8 @@ class AdminController extends Controller
         $hr = HR::all();
         return view('admin.hr.create', compact('hr'));
     }
-    public function hrEdit(Request $request)
+
+    public function storeHR(Request $request)
     {
         $detailed_info = $request->detailed_info;
 
@@ -491,7 +517,7 @@ class AdminController extends Controller
 
         $detailed_info = $dom->saveHTML();
 
-        Recipe::create([
+        HR::create([
             'detailed_info' => $detailed_info,
         ]);
 
@@ -504,12 +530,6 @@ class AdminController extends Controller
         return redirect()->route('admin.hr.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
 
-
-    public function storeHR(HRRequest $request)
-    {
-        HR::create($request->validated());
-        return redirect()->route('admin.hr.index')->with('success', 'Başarıyla eklendi.');
-    }
 
     //CONTACT CONTROL
     public function contact()
