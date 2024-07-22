@@ -32,10 +32,10 @@ class DatabaseSeeder extends Seeder
         */
 
         $this->call([
-            //CategorySeeder::class,
+            CategorySeeder::class,
             //ProductsTableSeeder::class,
             //RecipeSeeder::class,
-            //NewsSeeder::class,
+            UserSeeder::class,
             ServiceSeeder::class,
         ]);
 
