@@ -61,6 +61,7 @@ Route::get('/aboutusPage/{info_id}', [CompanyInfoController::class, 'show'])->na
 
 Route::get('/HRPage', [HRController::class, 'index'])->name('hr.index');
 
+
 Route::get('/communication', function () {
     return view('layouts.communication');
 });
@@ -144,7 +145,6 @@ Route::post('hr', [AdminController::class, 'storeHR'])->name('hr.store')->middle
 Route::put('hr/update/{hr_id}', [AdminController::class, 'updateHR'])->name('hr.update')->middleware(['auth', AdminMiddleware::class]);
 Route::get('hr/{hr_id}/edit', [AdminController::class, 'editHR'])->name('hr.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::delete('hr/{hr_id}', [AdminController::class, 'deleteHR'])->name('hr.delete')->middleware(['auth', AdminMiddleware::class]);
-
 
 });
 
