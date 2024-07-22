@@ -3,54 +3,52 @@
 @section('content')
 <div class="relative w-full h-96 mt-12 mx-auto">
     <div id="carousel" class="relative overflow-hidden">
-        
-        <div class="relative h-96 overflow-hidden rounded-lg">
+
+    <div class="relative h-96 overflow-hidden rounded-lg">
             <div class="absolute inset-0 transition-transform transform translate-x-0 flex items-center justify-between" data-slide="1">
                 <div class="w-1/2 m-12">
                     <h5 class="text-2xl font-semibold text-red-600">YAZIN ENERJİSİNİ KEŞFEDİN</h5>
                     <p class="mt-4 text-gray-800 text-xl">Yazın ilhamı ve birinci sınıf malzemelerle mutfağınıza tazelik geliyor.</p>
-                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
-                    <div class="flex items-center justify-between w-full">
-                    <span class="text-md ml-1">Kampanya Detaylarını İnceleyin </span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-                </div>
-                </a>
+                    <button onclick="window.location.href='/aboutUs'" class="bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between">
+                        <span class="text-md ml-1">Kampanya Detaylarını İnceleyin</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
                 </div>
                 <div class="flex-shrink-0 mr-4 w-1/2">
-                    <img src="{{ asset('/images/bannercake.webp') }}" class="w-full h-1/ object-cover">
+                    <img src="{{ asset('/images/bannercake.webp') }}" class="w-full h-full object-cover">
                 </div>
             </div>
+
+    
             <div class="absolute inset-0 transition-transform transform translate-x-full flex items-center justify-between" data-slide="2">
                 <div class="ml-12 w-1/2">
                     <h5 class="text-2xl text-red-600 font-semibold">FOOD INNOVATION FOR GOOD</h5>
                     <p class="mt-4 text-gray-800 text-xl">Dünyanın dört bir yanında insanların iyiliği ve sağlığı için yenilikçi gıda çözümleri geliştirerek gezegenimizi ileriye taşıyoruz.</p>
-                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
-                    <div class="flex items-center justify-between w-full">
-                    <span class="text-md ml-1"> Daha fazla bilgi</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-                </div>
-                </a>
+                    <button onclick="window.location.href='/more-info'" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between">
+                        <span class="text-md ml-1">Daha fazla bilgi</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
                 </div>
                 <div class="flex-shrink-0 mr-4 w-1/2">
                     <img src="{{ asset('/images/banner2.jpeg') }}" class="w-full h-full object-cover">
                 </div>
             </div>
+
+      
             <div class="absolute inset-0 transition-transform transform translate-x-full flex items-center justify-between" data-slide="3">
-                <div class=" ml-12 w-1/2">
+                <div class="ml-12 w-1/2">
                     <h5 class="text-2xl font-semibold text-red-600">PURATOS'TA İYİLİK İÇİN GIDA İNOVASYONU YAPIYORUZ</h5>
-                    <p class="mt-4 text-gray-800 text-xl"> Puratos'ta gıda inovasyonunun iyilik için bir güç olduğu inancıyla harekete ediyoruz.</p>
-                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
-                    <div class="flex items-center justify-between w-full">
-                    <span class="text-md ml-1"> Puratos'ta inovasyon yapmanın sonsuz sebebini keşfedin</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-                </div>
-                </a>
+                    <p class="mt-4 text-gray-800 text-xl">Puratos'ta gıda inovasyonunun iyilik için bir güç olduğu inancıyla harekete ediyoruz.</p>
+                    <button onclick="window.location.href='/about-us'" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between">
+                        <span class="text-md ml-1">Puratos'ta inovasyon yapmanın sonsuz sebebini keşfedin</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
                 </div>
                 <div class="flex-shrink-0 mr-4 w-1/2">
                     <img src="{{ asset('/images/banner3.jpeg') }}" class="w-full h-full object-cover">
@@ -58,7 +56,8 @@
             </div>
         </div>
     </div>
-   
+    
+
     <div class="absolute inset-0 flex items-center justify-between">
         <button id="prev" class="bg-white bg-opacity-50 hover:bg-opacity-100 text-black rounded-full p-2">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -72,6 +71,7 @@
         </button>
     </div>
 </div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -112,9 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
                </p>
                <div class="btn text-left my-2.5">
-                  <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
+                <a href="#">
+                  <button  class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
                      Keşfet
                   </button>
+                  </a>
                </div>
             </div>
          </div>
@@ -133,9 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
                </p>
                <div class="btn text-left my-2.5">
-                  <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
+                <a href="#">
+                  <button onclick="" class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
                      Keşfet
                   </button>
+                  </a>
                </div>
             </div>
          </div>
@@ -154,9 +158,11 @@ document.addEventListener('DOMContentLoaded', function() {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
                </p>
                <div class="btn text-left my-2.5">
+                <a href="#">
                   <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
                      Keşfet
                   </button>
+                  </a>
                </div>
             </div>
          </div>
@@ -174,10 +180,11 @@ document.addEventListener('DOMContentLoaded', function() {
                <p class="text-justify my-2.5">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
                </p>
-               <div class="btn text-left my-2.5">
+               <div class="btn text-left my-2.5"><a href="#">
                   <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
                      Keşfet
                   </button>
+                  </a>
                </div>
             </div>
          </div>
@@ -196,121 +203,78 @@ document.addEventListener('DOMContentLoaded', function() {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
                </p>
                <div class="btn text-left my-2.5">
+                <a href="#">
                   <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
                      keşfet
                   </button>
+                  </a>
                </div>
             </div>
-         </div>
-         <div class="card flex-1 mx-2.5 bg-white">
-            <div class="img h-52 w-full">
-               <img src="#" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="content p-5">
-               <div class="title text-2xl font-semibold">
-               Title
-               </div>
-               <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-               Title
-               </div>
-               <p class="text-justify my-2.5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-               </p>
-               <div class="btn text-left my-2.5">
-                  <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
-                     keşfet
-                  </button>
-               </div>
-            </div>
+         </div> 
          </div>
       </div>
-      <script>
-         $(".slider").owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 2000, //2000ms = 2s;
-            autoplayHoverPause: true,
-         });
-      </script>
    </div>
 
 
-    <div class="bg-gray-200 py-12">
+   <div class="bg-gray-200 py-12">
     <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h2 class="text-3xl text-black font-semibold tracking-wide uppercase">İlginizi Çekebilecek Konular</h2>
+            <h2 class="text-2xl text-black font-semibold tracking-wide">İLGİNİZİ ÇEKEBİLECEK KONULAR</h2>
         </div>
 
-        <div class="mt-10">
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6">
-        
-                <div class="p-6 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/maya.png') }}" alt="ticket" class="w-full h-48 object-contain mb-4">
-                    <p class="text-xl text-black font-bold text-center">Ekşi Maya Akademisi</p>
-                </div>
-
+        <div class="mt-8">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+                <a href="#">
+                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/maya.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
+                        <p class="text-lg text-black font-semibold text-center">Ekşi Maya Akademisi</p>
+                    </div>
+                </a>
                 
-                <div class="p-6 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/kakao.jpeg') }}" alt="ticket" class="w-full h-48 object-contain mb-4">
-                <p class="text-xl text-black font-bold text-center">İyilik & Sağlık</p>
-                </div>
+                <a href="#">
+                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/kakao.jpeg') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
+                        <p class="text-lg text-black font-semibold text-center">İyilik & Sağlık</p>
+                    </div>
+                </a>
 
-                <div class="p-4 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/ticket.png') }}" alt="ticket" class="w-full h-48 object-contain mt-4 mb-4">
-                    <p class="text-xl text-black font-bold text-center">Yalın Etiket Çözümler</p>
-                </div>
+                <a href="#">
+                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/ticket.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
+                        <p class="text-lg text-black font-semibold text-center">Yalın Etiket Çözümler</p>
+                    </div>
+                </a>
 
-                <div class="p-6 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/belcolade.png') }}" alt="ticket" class="w-full h-48 object-contain mb-4">
-                <p class="text-xl text-black font-bold text-center">Gerçek Belçika Çikolatası</p>
-                </div>
+                <a href="#">
+                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/belcolade.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
+                        <p class="text-lg text-black font-semibold text-center">Gerçek Belçika Çikolatası</p>
+                    </div>
+                </a>
 
-                <div class="p-6 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/chef.png') }}" alt="ticket" class="w-full h-48 object-contain mb-4">
-                    <p class="text-xl text-black font-bold text-center">İşletmeniz İçin Büyüme Önerileri</p>
-                </div>
-                
-                
-                <div class="p-4 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/health.png') }}" alt="ticket" class="w-full h-48 object-contain mt-4 mb-4">
-                    <p class="text-xl text-black font-bold text-center">İşletmeniz İçin Büyüme Önerileri</p>
-                </div>
+                <a href="#">
+                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/chef.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
+                        <p class="text-lg text-black font-semibold text-center">İşletmeniz İçin Büyüme Önerileri</p>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/health.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
+                        <p class="text-lg text-black font-semibold text-center">İşletmeniz İçin Büyüme Önerileri</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script>
-    $(document).ready(function() {
-    $('.owl-carousel').owlCarousel({
-        items: 3,
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1,
-                nav: false
-            },
-            600: {
-                items: 2,
-                nav: false
-            },
-            1000: {
-                items: 3,
-                nav: false
-            }
-        }
-    })
-    })
-</script>
+
+
 
 <div class="flex flex-col gap-4 mt-20">
-    <!-- Üst satır -->
+
     <div class="flex flex-row gap-4">
         <div class="relative group flex-1 bg-red-800 text-white">
             <div class="flex flex-col justify-center items center">
@@ -328,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 
-    <!-- Alt satır -->
+
     <div class="flex flex-row gap-4 flex-wrap">
     <div class="relative group flex-2 w-full sm:w-1/2 md:w-1/4">
         <a href="#" class="block relative">
@@ -350,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#" class="block relative">
             <img src="{{ asset('/images/alt2.jpeg') }}" alt="Küçük Resim 3" class="w-full h-64 object-cover">
             <div class="overlay absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition duration-300">
-                <span class="text-overlay text-white text-lg font-semibold">DESERT</span>
+                <span class="text-overlay text-white text-lg font-semibold">Strawberry Cake</span>
             </div>
         </a>
     </div>
@@ -358,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#" class="block relative">
             <img src="{{ asset('/images/alt3.jpeg') }}" alt="Küçük Resim 4" class="w-full h-64 object-cover">
             <div class="overlay absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition duration-300">
-                <span class="text-overlay text-white text-lg font-semibold">DESERT</span>
+                <span class="text-overlay text-white text-lg font-semibold">Summer Fav</span>
             </div>
         </a>
     </div>
@@ -424,8 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 
-  <!-- Repeat the above structure for the remaining three cards -->
-  <!-- Example for the second card -->
+
   <div class="flex flex-col  w-1/4">
     <div class="shadow-md rounded-md overflow-hidden mb-4">
       <a href="#">
