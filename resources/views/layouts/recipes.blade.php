@@ -60,8 +60,18 @@
             </div>
         </aside>
         <div class="w-4/5 p-4">
-            <div class="mb-4">
-                <span class="text-lg font-bold uppercase text-black ml-3 mb-5">Tarifler</span>
+<div class="mb-4 bg-gray-200">
+                <h2 class="text-xl font-bold uppercase text-black ml-3 mb-5 pt-4 pl-2">TARİFLERİMİZ</h2>
+                <div class="p-4  shadow-md rounded-lg">
+                <div class="flex items-center border border-gray-300 rounded-full overflow-hidden">
+                <input type="text" placeholder="Ara..." class="flex-1 p-2 border-none focus:outline-none" />
+                <button class="p-2 bg-gray-400 text-white flex items-center justify-center hover:bg-black rounded-full focus:outline-none">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm-1 6h2v2h-2v-2zm0-4h2v2h-2V6zm0 8h2v2h-2v-2zm5.657 3.657a1 1 0 0 1-1.414-1.414A8 8 0 1 0 4 12a1 1 0 0 1-2 0A10 10 0 1 1 14.657 20.657z"/>
+            </svg>
+        </button>
+    </div>
+</div>
             </div>
             <div class="grid grid-cols-3 gap-4">
                 @foreach($recipes as $recipe)
