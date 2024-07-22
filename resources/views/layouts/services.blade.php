@@ -42,20 +42,13 @@
     <section class="container-fluid px-4 py-10 mx-auto">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             @foreach($services as $service)
-                    <div class="card border rounded-lg p-4 {{ $service->category }}">
-                        <h2 class="text-xl font-semibold mb-2">{{ $service->title }}</h2>
-                        <div class="flex justify-between items-center">
-                            <a href="{{ route('services.show', $service->id) }}" class="btn mt-4">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                @endforeach
             <div class="relative shadow-md rounded-lg overflow-hidden" style="height:70vh;">
                 <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/ekmek.merkez.jpeg') }}" alt="Hakkımızda">
                 <div class="absolute inset-0 bg-gray-100  opacity-50 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center w-full mt-16">
-                    <a href="#" class="text-white text-2xl font-bold mt-4 mb-8">EKMEKÇİLİK MERKEZİ</a>
-                    <p class="text-gray-700 text-2xl text-center w-96">Belçika'nın St. Vith kentinde bulunan Ekmekçilik Merkezi, müşterilerimize, bilim insanlarına ve Puratos çalışanlarına ekmekçilikte mükemmel tatlar elde etme tutukusunu paylaşmak için özel olanaklar sağlıyor. Ayrıca merkezimiz Ekşimaya Kütüphanesi'ne de ev sahipliği yapıyor.</p>
-                    <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
+                    <a href="{{ route('services.show', $service->id) }}" class="text-white text-2xl font-bold mt-4 mb-8">{{ $service->title }}</a>
+                    <p class="text-gray-700 text-2xl text-center w-96">{{ $service->description }}</p>
+                    <a href="{{ route('services.show', $service->id) }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
@@ -65,6 +58,7 @@
                 </a>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 

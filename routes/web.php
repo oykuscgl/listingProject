@@ -135,12 +135,15 @@ Route::get('/products/search', [ProductController::class, 'search'])->name('prod
 
 
 
+//hr management
+Route::get('hr', [AdminController::class, 'hr'])->name('hr.index');
+
+
 
 });
 
 
-//hr management
-Route::get('/admin/hr', [AdminController::class, 'hr'])->name('admin.hr');
+
 
 //contact info management
 Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');

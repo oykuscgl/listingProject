@@ -155,9 +155,6 @@ class AdminController extends Controller
         $detailed_info = $dom->saveHTML();
 
         Recipe::create([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'category_id'=> $request->category_id,
             'detailed_info' => $detailed_info,
         ]);
 
@@ -478,6 +475,32 @@ class AdminController extends Controller
         return view('admin.hr');
     }
 
+    public function hrEdit(Request $request)
+    {
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/hr/" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        Recipe::create([
+            'detailed_info' => $detailed_info,
+        ]);
+
+        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
 
 
     //CONTACT CONTROL

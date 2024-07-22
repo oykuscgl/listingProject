@@ -18,7 +18,7 @@
                 <a href="{{ route('admin.aboutUs.index') }}" class="btn btn-primary mt-3">Firma  Bilgisi Yönetimi Sayfasına Git</a>
                 <a href="{{ route('admin.news.index') }}" class="btn btn-primary mt-3">Haberler Yönetimi Sayfasına Git</a>
                 <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary mt-3">Blog Yönetimi Sayfasına Git</a>
-                <a href="{{ route('admin.hr') }}" class="btn btn-primary mt-3">Firma İnsan Kaynakları Yönetimi Sayfasına Git</a>
+                <a href="{{ route('admin.hr.index') }}" class="btn btn-primary mt-3">Firma İnsan Kaynakları Yönetimi Sayfasına Git</a>
                 <a href="{{ route('admin.contact') }}" class="btn btn-primary mt-3">Firma İletişim</a>
             </div>
         </div>
