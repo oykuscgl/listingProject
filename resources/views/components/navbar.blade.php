@@ -25,7 +25,7 @@
                 <li><a href="/blog" class="text-gray-700 hover:text-red-600">Blog</a></li>
                 <li><a href="/careers" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
                 <li><a href="/mypuratos" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
-                <li><a href="/contact" class="text-gray-700 hover:text-red-600">İletişim</a></li>
+                <li><a href="/communication" class="text-gray-700 hover:text-red-600">İletişim</a></li>
                 <li><a href="/login" class="text-gray-700 hover:text-red-600">Login</a></li>
                 <li><a href="/register" class="text-gray-700 hover:text-red-600">Register</a></li>
                 </ul>

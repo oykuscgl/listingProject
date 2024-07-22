@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <script src="{{ asset('js/recipescript.js') }}"></script>
-    <script src="{{ asset('js/allproductscript.js') }}"></script>
+@extends('layouts.app')
 
-</head>
-<body class="bg-white">
-    <div>
-        @include('components.navbar')
-    </div>
-
+@section('content')
     <div class="container-fluid flex flex-row">
         <aside class="w-1/5 p-4 justify-start bg-white shadow-md rounded-lg">
             <div class="mb-4">
@@ -85,7 +69,6 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+@endsection
 
 

@@ -3,124 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@%5E1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Product Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-white">
-    <div>
-        @include('components.navbar')
-    </div>
-
-    <div class="container-fluid flex flex-row">
-        <aside class="w-1/5 p-4 justify-start bg-white shadow-md rounded-lg">
-            <div class="mb-4">
-                <span class="text-lg font-bold uppercase text-black ml-3 mb-5">Aktif filtreler</span>
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-row items-center">
-                    <button onclick="filterCards('bread')" class="flex items-center justify-between w-full p-2 bg-white border rounded-md shadow-md hover:text-red-500">
-                        <label class="text-lg font-bold uppercase ml-1">Pastacılık</label>
-                        <span>
-                          <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                          </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-row items-center">
-                    <button onclick="filterCards('chocolate')" class="h-18 flex items-center justify-between w-full p-2 bg-white border border-gray-300 rounded-md shadow-md hover:text-red-500">
-                        <label class="text-lg font-bold uppercase ml-1">Çikolata</label>
-                        <span class="ml-auto">
-                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-row items-center">
-                    <button onclick="filterCards('pastry')" class="flex items-center justify-between w-full p-2 bg-white border border-gray-300 rounded-md shadow-md hover:text-red-500">
-                        <label class="text-lg font-bold uppercase ml-1">Tatlı</label>
-                        <span class="ml-auto">
-                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </aside>
-
-        <div class="flex flex-col justify-end text-end w-full mr-5">
-            <header class="bg-gray-00 p-4 flex flex-row text-start justify-start">
-                <div class="container flex flex-col justify-start items-start">
-                    <div class="mb-5 text-2xl font-bold text-black">ÜRÜNLERİMİZ</div>
-                    <div class="relative w-full">
-                        <div class="flex items-center">
-                            <input autocomplete="off" type="text" aria-autocomplete="both" aria-expanded="false" aria-haspopup="listbox" role="combobox" class="rbt-input-main form-control rbt-input px-5 py-3 pr-12 border border-gray-300 rounded-full focus:outline-none hover:border-red-500 focus:border-gray-700 w-full" value="">
-                            <button class="bg-gray-600 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full focus:outline-none absolute right-0 top-0 mt-2 mr-3">
-                                <img src="{{ asset('images/magnifying-glass-solid.svg') }}" alt="search" class="h-6 w-6 flex items-center justify-center">
-                            </button>
-                        </div>
-                        <input aria-hidden="true" class="rbt-input-hint" readonly="" tabindex="-1" value="" style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: solid; border-width: 1px; font-size: 14px; height: 48px; line-height: 23.8px; margin: 0px; padding: 12px 60px 12px 24px;">
-                    </div>
-                </div>
-            </header>
-            <section class="p-4">
-                <div class="relative mb-4 mt-4 flex justify-between">
-                    <p class="text-left">{{ count($recipes) }} tarif</p>
-                    <div class="flex items-right">
-                        <select class="appearance-none bg-white border border-gray-300 px-4 py-2 pr-8 rounded-lg shadow-sm focus:outline-none focus:border-gray-700 hover:border-red-500">
-                            <option selected disabled>Sırala</option>
-                            <option value="1">En Yeni</option>
-                            <option value="2">Tarihe Göre Sırala</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    @foreach ($recipes as $recipe)   
-                        <div class="h-72 card bg-white shadow-lg rounded-lg {{ $recipe->category }}">
-                            <figure class="relative">
-                                <a href="{{ route('recipes.show', ['recipe_id' => $recipe->id]) }}">
-                                    <img src="{{ asset('images/'.$recipe->image) }}" alt="{{ $recipe->title }}" class="w-full h-48 object-cover">
-                                </a>
-                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
-                                    <a href="{{ route('recipes.show', ['recipe_id' => $recipe->id]) }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg">Görüntüle</a>
-                                </div>
-                            </figure>
-                            <div class="p-4 flex-grow flex flex-col justify-between">
-                                <h2 class="text-lg font-bold text-gray-800">{{ $recipe->title }}</h2>
-                                <p class="mt-2 text-gray-600">{{ $recipe->description }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </section>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-white bg-opacity-75 py-4 shadow-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <nav>
+                <ul class="flex space-x-4 text-sm text-gray-600">
+                    <li><a href="#" class="hover:text-gray-900">HOME ></a></li>
+                    <li><a href="#" class="hover:text-gray-900">ÜRÜNLERİMİZ ></a></li>
+                    <li><a href="#" class="hover:text-gray-900">{{ $product->name }}</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <script>
-        function filterCards(category) {
-            var cards = document.getElementsByClassName('card');
-            for (var i = 0; i < cards.length; i++) {
-                if (cards[i].classList.contains(category)) {
-                    cards[i].style.display = "block";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <div class="grid grid-cols-5 gap-8">
+            <div class="col-span-3 flex flex-col items-center bg-white bg-opacity-75 p-6 rounded-lg shadow-sm">
+                <h1 class="text-4xl font-bold mb-6">{{ $product->name }}</h1>
+                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-full h-auto">
+            </div>
+            <aside class="col-span-2">
+                <div class="mb-6 bg-white p-6 shadow-sm rounded-lg">
+                    <p class="text-sm text-gray-600">MyPuratos hesabınızla online mağazamızın tadını çıkarın! Tüm katalog ürünlerini, fiyat ve stok bilgilerini, size özel kampanyaları ve daha fazlasını keşfedin!</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button class="py-2 px-5 bg-transparent border border-red-600 text-red-600 rounded-full hover:bg-red-600 hover:text-white">Giriş yap</button>
+                        <button class="py-2 px-4 bg-red-600 text-white rounded-full hover:bg-red-700">Kayıt ol</button>
+                    </div>
+                </div>
+                <div class="p-4 rounded-lg">
+                    <p class="text-gray-700 mb-2">{{ $product->description }}</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>Enzim ve emülgatör teknolojisine dayalı bir inovasyon çözümüdür</li>
+                        <li>Yumuşaklık, nemlilik, esnek yapı dahil olmak üzere farklı kek tazeliği parametreleri üzerinde kanıtlanmış pozitif bir etkiye sahiptir</li>
+                        <li>Tüm kek uygulamalarında kullanılabilir</li>
+                    </ul>
+                    <a href="#" class="text-red-600 mt-4 inline-block"><u>Tam açıklamayı görüntüleyin</u></a>
+                </div>
+            </aside>
+        </div>
+
+        <section class="bg-white bg-opacity-75 p-6 shadow-sm rounded-lg mt-8">
+            <h2 class="text-2xl font-bold mb-4">Detaylar</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <p><strong>Uygulamalar:</strong><span class="max-w-40 truncate whitespace-nowrap inline-block py-1.5 px-3 rounded-lg text-sm font-medium bg-gray-400 text-white">kek</span> <span class="max-w-40 truncate whitespace-nowrap inline-block py-1.5 px-3 rounded-lg text-sm font-medium bg-gray-400 text-white">porsiyon kek</span></p>
+                    <p><strong>Açıklama:</strong> {{ $product->name }}</p>
+                </div>
+                <div>
+                    <p><strong>Ürün kodu:</strong> {{ $product->product_code }}</p>
+                    <p><strong>Raf ömrü:</strong> {{ $product->shelf_life }} Gün</p>
+                </div>
+                <div>
+                    <p><strong>Ambalaj:</strong> {{ $product->packaging }}</p>
+                    <p><strong>Palet:</strong> {{ $product->pallet }}</p>
+                </div>
+            </div>
+            <p class="mt-4 text-sm text-gray-600">Bu ürün hakkında daha fazla bilgi almak ister misiniz? <a href="#" class="text-red-600">Bize ulaşın</a></p>
+        </section>
+
+      
+        <section class="bg-white p-6 shadow-sm rounded-lg mt-8">
+            <h2 class="text-2xl font-bold mb-4">Sıkça Birlikte Alınanlar</h2>
+            <div class="grid grid-cols-5 gap-4 items-center">
+                @foreach ($products as $product)
+                    <div class="col-span-1 flex flex-col items-center">
+                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-32 h-auto">
+                        <p class="text-center">{{ $product->name }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+
+        <section class="bg-white p-6 shadow-sm rounded-lg mt-8">
+            <h2 class="text-2xl font-bold mb-4">Diğer Müşterilerin Satın Aldığı Ürünler</h2>
+            <div class="grid grid-cols-5 gap-4">
+                @foreach ($products as $product)
+                    <div class="col-span-1 flex flex-col items-center">
+                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-32 h-auto">
+                        <p class="text-center">{{ $product->name }}</p>
+                        <a href="{{ route('products.show', $product->id) }}" class="text-red-600 mt-2"><u>Daha fazla bilgi</u></a>
+
+                    </div>
+                @endforeach
+            </div>
+        </section>
+        <div class="col-span-1 flex flex-col items-center">
+            <button class="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 mt-8">Tüm Ürünler</button>
+        </div>
+    </main>    
+
+    <!-- Contact Section -->
+    <footer class="bg-gray-200 p-6 shadow-sm rounded-lg mt-8 flex justify-between items-center">
+        <div class="flex-1 p-6" style="background-image: url('/etc.clientlibs/settings/wcm/designs/puratos2022/clientlib-preloaded/resources/img/jpg/pattern.jpg'); background-size: cover; background-repeat: no-repeat;">
+            <h2 class="text-2xl font-bold mb-4">İletişim</h2>
+            <p>Ürünlerimiz ve iş süreçlerinize uygun çözümlerimiz hakkında daha fazla bilgi almak için bize ulaşabilirsiniz.</p>
+            <button class="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 mt-4">İletişim</button>
+        </div>
+        <div class="flex-1 bg-red-600 text-white p-6 rounded-lg flex flex-col justify-center items-center">
+            <h2 class="text-2xl font-bold mb-4">Hizmetlerimiz</h2>
+            <p>Puratos, dünya çapında pastacılık, ekmekçilik ve çikolata sektörlerine kaliteli ürünler ve çözümler sunar.</p>
+            <button class="py-2 px-4 bg-white text-red-600 rounded hover:bg-gray-200 mt-4">Daha fazla bilgi</button>
+        </div>
+    </footer>
 </body>
 </html>

@@ -41,7 +41,11 @@ Route::get('/main', function () {
 
 
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{product_id}', [RecipeController::class, 'show'])->name('products.show');
+Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('products.show');
+
+
+Route::get('/communication',[ProductController::class, 'index'])->name('communication.index');
+Route::get('/communication/{communication_id}', [RecipeController::class, 'show'])->name('communication.show');
 
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
