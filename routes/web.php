@@ -137,8 +137,9 @@ Route::get('/products/search', [ProductController::class, 'search'])->name('prod
 
 //hr management
 Route::get('hr', [AdminController::class, 'hr'])->name('hr.index');
-
-
+Route::get('hr/create', [AdminController::class, 'showAddHRForm'])->name('hr.create')->middleware(['auth', AdminMiddleware::class]);
+Route::post('hr', [AdminController::class, 'storeHR'])->name('hr.store')->middleware(['auth', AdminMiddleware::class]);
+Route::put('hr/{hr_id}', [AdminController::class, 'updateHR'])->name('hr.update')->middleware(['auth', AdminMiddleware::class]);
 
 });
 

@@ -12,7 +12,7 @@ use App\Models\ConsumerResearch;
 use App\Models\CompanyInfo;
 use App\Models\News;
 use App\Models\BlogPost;
-use App\Models\HumanResource;
+use App\Models\HR;
 use DOMDocument;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
@@ -20,6 +20,7 @@ use App\Http\Requests\RecipeRequest;
 use App\Http\Requests\NewsPostRequest;
 use App\Http\Requests\ServiceRequest;
 use App\Http\Requests\InfoRequest;
+use App\Http\Requests\HRRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -363,11 +364,6 @@ class AdminController extends Controller
         return view('admin.blogs.create', compact('blogs'));
     }
 
-    public function createBlogPost()
-    {
-        return view('admin.blogs.create');
-    }
-
     public function storeBlogPost(Request $request)
     {
         $detailed_info = $request->detailed_info;
@@ -408,7 +404,6 @@ class AdminController extends Controller
     {
         $blogPost->update($request->validated());
         return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla güncellendi.');
-
     }
 
     public function destroyBlogPost($blogPost_id)
@@ -431,11 +426,6 @@ class AdminController extends Controller
     {
         $infos = CompanyInfo::all();
         return view('admin.aboutUs.create', compact('infos'));
-    }
-
-    public function createInfo()
-    {
-        return view('admin.aboutUs.create');
     }
 
     public function storeInfo(InfoRequest $request)
@@ -471,16 +461,22 @@ class AdminController extends Controller
     //HUMAN RESOURCES CONTROL
     public function hr()
     {
+        $hr = HR::all();
         // İnsan kaynakları yönetimi sayfası
-        return view('admin.hr');
+        return view('admin.hr.index');
     }
 
+    public function showAddHRForm()
+    {
+        $hr = HR::all();
+        return view('admin.hr.create', compact('hr'));
+    }
     public function hrEdit(Request $request)
     {
         $detailed_info = $request->detailed_info;
 
         $dom = new DOMDocument();
-        $dom->loadHTML($detailed_info, 9);
+        $dom->loadHTML($detailed_info, 1);
 
         $images = $dom->getElementsByTagName('img');
 
@@ -499,9 +495,21 @@ class AdminController extends Controller
             'detailed_info' => $detailed_info,
         ]);
 
-        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla eklendi.');
+        return redirect()->route('admin.hr.index')->with('success', 'Sayfa başarıyla eklendi.');
     }
 
+    public function updateHR(HRRequest $request, HR $hr)
+    {
+        $hr->update($request->validated());
+        return redirect()->route('admin.hr.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
+
+
+    public function storeHR(HRRequest $request)
+    {
+        HR::create($request->validated());
+        return redirect()->route('admin.hr.index')->with('success', 'Başarıyla eklendi.');
+    }
 
     //CONTACT CONTROL
     public function contact()
