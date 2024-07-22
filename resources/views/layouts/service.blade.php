@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <header>
-        <!-- Header içeriği burada olacak -->
-    </header>
+    <div>
+        @include('components.navbar')
+    </div>
 
     <main>
         <section class="service-detail-section">

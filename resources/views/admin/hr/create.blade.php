@@ -17,21 +17,9 @@
 </head>
 <body>
    <div class="container">
-    <h1>Blog Yazısı Ekle</h1>
-    <form action="{{ route('admin.blogs.store') }}" method="POST", enctype="multipart/form-data" id="upload-image" action="{{url('storeBlogPost')}}">
+    <h1>İnsan Kaynakları Yazısı Ekle</h1>
+    <form action="{{ route('admin.blogs.store') }}" method="POST", enctype="multipart/form-data" id="upload-image" action="{{url('hrEdit')}}">
         @csrf
-        <div class="form-group">
-            <label for="title">Blog Yazısı Başlığı </label>
-            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
-        </div>
-        <div class="form-group">
-            <label for="description">Blog Yazısı Açıklaması</label>
-            <textarea name="description" class="form-control">{{ old('description') }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="category">Kategori</label>
-            <input type="text" name="category" class="form-control" value="{{ old('category') }}">
-        </div>
         <div class="form-group">
             <label for="detailed_info">Detaylı Yazı Bilgisi</label>
             <textarea name="detailed_info" id="detailed_info" cols="30" rows="10"></textarea>
