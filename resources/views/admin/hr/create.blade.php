@@ -18,7 +18,7 @@
 <body>
    <div class="container">
     <h1>İnsan Kaynakları Yazısı Ekle</h1>
-    <form action="{{ route('admin.hr.store') }}" method="POST", enctype="multipart/form-data" id="upload-image" action="{{url('hrEdit')}}">
+    <form action="{{ route('admin.hr.store') }}" method="POST", enctype="multipart/form-data" id="upload-image" action="{{url('storeHR')}}">
         @csrf
         <div class="form-group">
             <label for="detailed_info">Detaylı Yazı Bilgisi</label>

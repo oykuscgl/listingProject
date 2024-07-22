@@ -12,13 +12,13 @@ class CustomerSearchController extends Controller
     public function index()
     {
         $researches = ConsumerResearch::all();
-        return view('layouts.customersearches', ['researches' => $researches]);
+        return view('layouts.customersearches', compact('researches'));
     }
 
     public function show($research_id)
     {
         $research = ConsumerResearch::findOrFail($research_id);
-        return view('layouts.customerSearchPage', ['research' => $research]);
+        return view('layouts.customerSearchPage', compact('research'));
     }
 
 }

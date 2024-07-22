@@ -9,6 +9,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HRController;
 use App\Http\Controllers\CustomerSearchController;
 use App\Http\Controllers\auth\AuthenticatedSessionController;
 use App\Http\Controllers\CompanyInfoController;
@@ -30,10 +31,6 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
-Route::get('/customersearches', function () {
-    return view('layouts.customersearches');
-});
-
 
 Route::get('/main', function () {
     return view('layouts.main');
@@ -49,23 +46,28 @@ Route::get('/communication/{communication_id}', [RecipeController::class, 'show'
 
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
-Route::get('/recipes/{recipe_id}', [RecipeController::class, 'show'])->name('recipes.show');
+Route::get('/recipe/{recipe_id}', [RecipeController::class, 'show'])->name('recipes.show');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{newsPost_id}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/newsPost/{newsPost_id}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/{service_id}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/service/{service_id}', [ServiceController::class, 'show'])->name('services.show');
 
-Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
-Route::get('/blogs/{blogPost_id}', [BlogController::class, 'show'])->name('blogs.show');
+Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogPost/{blogPost_id}', [BlogController::class, 'show'])->name('blogs.show');
 
-Route::get('/consumer-research', [CustomerSearchController::class, 'index'])->name('researches.index');
-Route::get('/consumer-research/{research_id}', [CustomerSearchController::class, 'show'])->name('researches.show');
+Route::get('/customersearches', [CustomerSearchController::class, 'index'])->name('researches.index');
+Route::get('/customerSearchPage/{research_id}', [CustomerSearchController::class, 'show'])->name('researches.show');
 
-Route::get('/aboutUs', [CompanyInfoController::class, 'index'])->name('aboutUs.index');
-Route::get('/aboutUs/{info_id}', [CompanyInfoController::class, 'show'])->name('aboutUs.show');
+Route::get('/aboutus', [CompanyInfoController::class, 'index'])->name('aboutUs.index');
+Route::get('/aboutusPage/{info_id}', [CompanyInfoController::class, 'show'])->name('aboutUs.show');
 
+Route::get('/HRPage', [HRController::class, 'index'])->name('hr.index');
+
+Route::get('/communication', function () {
+    return view('layouts.communication');
+});
 
 //Admin Dashboard
 Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.adminDashboard');
