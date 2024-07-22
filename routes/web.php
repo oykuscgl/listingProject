@@ -41,10 +41,6 @@ Route::get('/products',[ProductController::class, 'index'])->name('products.inde
 Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('products.show');
 
 
-Route::get('/communication',[ProductController::class, 'index'])->name('communication.index');
-Route::get('/communication/{communication_id}', [RecipeController::class, 'show'])->name('communication.show');
-
-
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::get('/recipe/{recipe_id}', [RecipeController::class, 'show'])->name('recipes.show');
 
@@ -64,6 +60,7 @@ Route::get('/aboutus', [CompanyInfoController::class, 'index'])->name('aboutUs.i
 Route::get('/aboutusPage/{info_id}', [CompanyInfoController::class, 'show'])->name('aboutUs.show');
 
 Route::get('/HRPage', [HRController::class, 'index'])->name('hr.index');
+
 
 Route::get('/communication', function () {
     return view('layouts.communication');
@@ -145,7 +142,9 @@ Route::get('/products/search', [ProductController::class, 'search'])->name('prod
 Route::get('hr', [AdminController::class, 'hr'])->name('hr.index');
 Route::get('hr/create', [AdminController::class, 'showAddHRForm'])->name('hr.create')->middleware(['auth', AdminMiddleware::class]);
 Route::post('hr', [AdminController::class, 'storeHR'])->name('hr.store')->middleware(['auth', AdminMiddleware::class]);
-Route::put('hr/{hr_id}', [AdminController::class, 'updateHR'])->name('hr.update')->middleware(['auth', AdminMiddleware::class]);
+Route::put('hr/update/{hr_id}', [AdminController::class, 'updateHR'])->name('hr.update')->middleware(['auth', AdminMiddleware::class]);
+Route::get('hr/{hr_id}/edit', [AdminController::class, 'editHR'])->name('hr.edit')->middleware(['auth', AdminMiddleware::class]);
+Route::delete('hr/{hr_id}', [AdminController::class, 'deleteHR'])->name('hr.delete')->middleware(['auth', AdminMiddleware::class]);
 
 });
 

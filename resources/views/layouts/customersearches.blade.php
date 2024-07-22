@@ -49,7 +49,7 @@
                     </a>
             <div class="absolute inset-0 bg-gray-100 opacity-50 z-0"></div>
             <div class="absolute inset-0 flex flex-col items-center justify-start text-center w-full mt-16">
-        <a href="#" class="text-black text-2xl font-bold mt-4 mb-8">{{ $research->title }}</a>
+        <a href="/customerSearchPage" class="text-black text-2xl font-bold mt-4 mb-8">{{ $research->title }}</a>
         <p class="text-gray-700 text-2xl text-center justify-center w-96">{{ $research->description }}</p>
         <a href="{{ route('researches.show', ['research_id' => $research->id]) }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
         <div class="flex items-center justify-between w-full">

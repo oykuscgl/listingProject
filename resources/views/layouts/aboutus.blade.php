@@ -15,17 +15,17 @@
     *{
         box-sizing: border-box;
     }
-  
+
 </style>
 
 <body class="font-sans bg-white">
 
-    
+
     <div>
         @include('components.navbar')
     </div>
 
-    
+
     <div class="relative mr-2">
         <img class="w-full object-cover banner" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image"
             style="height:30vh">
@@ -46,14 +46,14 @@
 
     @foreach($infos as $info)
                 <div class="relative shadow-md rounded-md overflow-hidden h-96">
-                     <a href="{{ route('infos.show', ['info_id' => $info->id]) }}">
+                     <a href="{{ route('aboutUs.show', ['info_id' => $info->id]) }}">
                     <img src="{{ asset('images/'.$info->image) }}" alt="{{ $info->title }}" class="w-full h-48 object-cover z-10 filter brightness-75">
                     </a>
             <div class="absolute inset-0 bg-gray-100 opacity-50 z-0"></div>
             <div class="absolute inset-0 flex flex-col items-center justify-start text-center w-full mt-16">
         <a href="#" class="text-black text-2xl font-bold mt-4 mb-8">{{ $info->title }}</a>
         <p class="text-gray-700 text-2xl text-center justify-center w-96">{{ $info->description }}</p>
-        <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
+        <a href="{{ route('aboutUs.show', ['info_id' => $info->id]) }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
         <div class="flex items-center justify-between w-full">
          <span class="text-md ml-1">Keşfet</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">

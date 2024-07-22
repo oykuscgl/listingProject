@@ -61,7 +61,7 @@
     <div class="p-4">
         <ul class="list-disc list-inside mt-2">
             <p class="mt-4 text-sm/relaxed">
-                {{ $newsPost->detailed_info }}
+                {!! $newsPost->detailed_info !!}
             </p>
         </ul>
     </div>

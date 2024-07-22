@@ -19,11 +19,11 @@
                 <li><a href="/products" class="text-gray-700 hover:text-red-600">Ürünlerimiz</a></li>
                 <li><a href="/recipes" class="text-gray-700 hover:text-red-600">Tarifler</a></li>
                 <li><a href="/services" class="text-gray-700 hover:text-red-600">Hizmetlerimiz</a></li>
-                <li><a href="/consumer-research" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
-                <li><a href="/aboutUs" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
+                <li><a href="/customersearches" class="text-gray-700 hover:text-red-600">Tüketici Araştırmaları</a></li>
+                <li><a href="/aboutus" class="text-gray-700 hover:text-red-600">Puratos Hakkında</a></li>
                 <li><a href="/news" class="text-gray-700 hover:text-red-600">Haberler</a></li>
                 <li><a href="/blog" class="text-gray-700 hover:text-red-600">Blog</a></li>
-                <li><a href="/careers" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
+                <li><a href="/HRPage" class="text-gray-700 hover:text-red-600">İnsan Kaynakları</a></li>
                 <li><a href="/mypuratos" class="text-gray-700 hover:text-red-600">MyPuratos</a></li>
                 <li><a href="/communication" class="text-gray-700 hover:text-red-600">İletişim</a></li>
                 <li><a href="/login" class="text-gray-700 hover:text-red-600">Login</a></li>

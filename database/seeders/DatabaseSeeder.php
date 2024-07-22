@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             //RecipeSeeder::class,
             UserSeeder::class,
             ServiceSeeder::class,
+            UserSeeder::class,
         ]);
 
     }

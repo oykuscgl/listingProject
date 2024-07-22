@@ -157,6 +157,10 @@ class AdminController extends Controller
 
         Recipe::create([
             'detailed_info' => $detailed_info,
+            'title' => $request->title,
+            'description' => $request->description,
+            'image'=> $request->image,
+
         ]);
 
         return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla eklendi.');
@@ -199,10 +203,35 @@ class AdminController extends Controller
         return view('admin.news.create');
     }
 
-    public function storeNews(NewsPostRequest $request)
+    public function storeNews(Request $request)
     {
-        News::create($request->validated());
-        return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla eklendi.');
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        News::create([
+            'detailed_info' => $detailed_info,
+            'title' => $request->title,
+            'description' => $request->description,
+            'category' => $request->category,
+            'image'=> $request->image,
+        ]);
+
+        return redirect()->route('admin.news.index')->with('success', 'Haber başarıyla eklendi.');
     }
 
     public function editNews($id)
