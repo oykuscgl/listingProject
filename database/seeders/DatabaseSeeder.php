@@ -35,7 +35,6 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             //ProductsTableSeeder::class,
             //RecipeSeeder::class,
-            UserSeeder::class,
             ServiceSeeder::class,
             UserSeeder::class,
         ]);
