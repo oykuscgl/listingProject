@@ -542,23 +542,102 @@ public function updateProduct(Request $request, Product $product)
         return view('admin.consumerResearches.create');
     }
 
-    public function storeResearch(ConsumerResearchRequest $request)
+    public function storeResearch(Request $request)
     {
-        ConsumerResearch::create($request->validated());
-        return redirect()->route('admin.consumerResearches.index')->with('success', 'Tarif başarıyla eklendi.');
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/researches" . time(). $key.'png';
+            file_put_contents(public_path(). $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+
+        $research = new ConsumerResearch();
+        $research->title = $request->title;
+        $research->description = $request->description;
+        $research->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            $image_file = $request->file('image');
+            $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+            $image_path = $image_file->storeAs('images/researches', $image_name, 'public');
+            $research->image = $image_path;
+        }
+
+        $research->save();
+
+        return redirect()->route('admin.consumerResearches.index')->with('success', 'Araştırma başarıyla eklendi.');
     }
 
+    public function updateResearch(Request $request, ConsumerResearch $research)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/researches/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $research->title = $request->title;
+        $research->description = $request->description;
+        $research->category = $request->category;
+        $research->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($research->image) {
+                Storage::disk('public')->delete($research->image);
+            }
+            $imagePath = $request->file('image')->store('images/researches', 'public');
+            $research->image = $imagePath;
+        }
+
+        $research->save();
+
+        return redirect()->route('admin.researches.index')->with('success', 'Araştırma başarıyla güncellendi.');
+    }
     public function editResearch($id)
     {
         $research = ConsumerResearch::findOrFail($id);
         return view('admin.consumerResearches.edit', compact('research'));
     }
 
-    public function updateResearch(ConsumerResearchRequest $request, ConsumerResearch $research)
-    {
-        $research->update($request->validated());
-        return redirect()->route('admin.consumerResearches.index')->with('success', 'Tarif başarıyla güncellendi.');
-    }
+
 
     public function destroyResearch($research_id)
     {

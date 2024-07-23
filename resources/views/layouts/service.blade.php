@@ -24,9 +24,5 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <!-- Footer içeriği burada olacak -->
-    </footer>
 </body>
 </html>
