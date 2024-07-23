@@ -33,6 +33,15 @@
             <input type="text" name="category" class="form-control" value="{{ old('category') }}">
         </div>
         <div class="form-group">
+            <label for="image">Blog Resmi</label>
+            @if ($blog->image)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Resmi" class="img-thumbnail" style="width: 200px;">
+                </div>
+            @endif
+            <input type="file" name="image" class="form-control">
+        </div>
+        <div class="form-group">
             <label for="detailed_info">Detaylı Yazı Bilgisi</label>
             <textarea name="detailed_info" id="detailed_info" cols="30" rows="10"></textarea>
         </div>

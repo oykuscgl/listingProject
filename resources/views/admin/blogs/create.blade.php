@@ -33,6 +33,10 @@
             <input type="text" name="category" class="form-control" value="{{ old('category') }}">
         </div>
         <div class="form-group">
+            <label for="image">Kapak Görsel</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <div class="form-group">
             <label for="detailed_info">Detaylı Yazı Bilgisi</label>
             <textarea name="detailed_info" id="detailed_info" cols="30" rows="10"></textarea>
         </div>

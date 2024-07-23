@@ -44,9 +44,9 @@
                 <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('storage/' . $research->image) }}" alt="Hakkımızda">
                 <div class="absolute inset-0 bg-gray-100  opacity-50 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center w-full mt-16">
-                    <a href="{{ route('services.show', $research->id) }}" class="text-white text-2xl font-bold mt-4 mb-8">{{ $research->title }}</a>
+                    <a href="{{ route('researches.show', $research->id) }}" class="text-white text-2xl font-bold mt-4 mb-8">{{ $research->title }}</a>
                     <p class="text-gray-700 text-2xl text-center w-96">{{ $research->description }}</p>
-                    <a href="{{ route('services.show', $research->id) }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
+                    <a href="{{ route('researches.show', $research->id) }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
                     <div class="flex items-center justify-between w-full">
                     <span class="text-md ml-1">Keşfet</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">

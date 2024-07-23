@@ -383,7 +383,7 @@ public function updateProduct(Request $request, Product $product)
 
         $newsPost->save();
 
-        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla güncellendi.');
+        return redirect()->route('admin.news.index')->with('success', 'Haber başarıyla güncellendi.');
     }
     public function editNews($id)
     {
@@ -672,6 +672,14 @@ public function updateProduct(Request $request, Product $product)
 
     public function storeBlogPost(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $detailed_info = $request->detailed_info;
 
         $dom = new DOMDocument();
@@ -681,7 +689,7 @@ public function updateProduct(Request $request, Product $product)
 
         foreach ($images as $key => $img) {
             $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_name = "/images/blog/" . time(). $key.'png';
+            $image_name = "/images/blogs" . time(). $key.'png';
             file_put_contents(public_path(). $image_name, $data);
 
             $img->removeAttribute('src');
@@ -690,27 +698,76 @@ public function updateProduct(Request $request, Product $product)
 
         $detailed_info = $dom->saveHTML();
 
-        BlogPost::create([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'category'=> $request->category,
-            'detailed_info' => $detailed_info,
-        ]);
+
+        $blog = new BlogPost();
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->category = $request->category;
+        $blog->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            $image_file = $request->file('image');
+            $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+            $image_path = $image_file->storeAs('images/blogs', $image_name, 'public');
+            $blog->image = $image_path;
+        }
+
+        $blog->save();
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog yazısı başarıyla eklendi.');
     }
+    public function updateBlogPost(Request $request, BlogPost $blogPost)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/blogs/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $blogPost->title = $request->title;
+        $blogPost->description = $request->description;
+        $blogPost->category = $request->category;
+        $blogPost->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($blogPost->image) {
+                Storage::disk('public')->delete($blogPost->image);
+            }
+            $imagePath = $request->file('image')->store('images/blogs', 'public');
+            $blogPost->image = $imagePath;
+        }
+
+        $blogPost->save();
+
+        return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
     public function editBlogPost($id)
     {
         $blog = BlogPost::findOrFail($id);
         return view('admin.blogs.edit', compact('blog'));
     }
 
-    public function updateBlogPost(BlogPostRequest $request, BlogPost $blogPost)
-    {
-        $blogPost->update($request->validated());
-        return redirect()->route('admin.blogs.index')->with('success', 'Tarif başarıyla güncellendi.');
-    }
+
 
     public function destroyBlogPost($blogPost_id)
     {
@@ -736,16 +793,24 @@ public function updateProduct(Request $request, Product $product)
 
     public function storeInfo(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $detailed_info = $request->detailed_info;
 
         $dom = new DOMDocument();
-        $dom->loadHTML($detailed_info, 1);
+        $dom->loadHTML($detailed_info, 9);
 
         $images = $dom->getElementsByTagName('img');
 
         foreach ($images as $key => $img) {
             $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_name = "/images" . time(). $key.'png';
+            $image_name = "/images/infos" . time(). $key.'png';
             file_put_contents(public_path(). $image_name, $data);
 
             $img->removeAttribute('src');
@@ -754,15 +819,69 @@ public function updateProduct(Request $request, Product $product)
 
         $detailed_info = $dom->saveHTML();
 
-        CompanyInfo::create([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'category'=> $request->category,
-            'detailed_info' => $detailed_info,
-            'image' => $request->image,
-        ]);
+
+        $info = new CompanyInfo();
+        $info->title = $request->title;
+        $info->description = $request->description;
+        $info->detailed_info = $detailed_info;
+        $info->category = $request->category;
+
+        if ($request->hasFile('image')) {
+            $image_file = $request->file('image');
+            $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+            $image_path = $image_file->storeAs('images/infos', $image_name, 'public');
+            $info->image = $image_path;
+        }
+
+        $info->save();
 
         return redirect()->route('admin.aboutUs.index')->with('success', 'Sayfa başarıyla eklendi.');
+    }
+
+    public function updateInfo(Request $request, CompanyInfo $info)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'detailed_info' => 'required',
+            'category' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/infos/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $info->title = $request->title;
+        $info->description = $request->description;
+        $info->category = $request->category;
+        $info->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($info->image) {
+                Storage::disk('public')->delete($info->image);
+            }
+            $imagePath = $request->file('image')->store('images/infos', 'public');
+            $info->image = $imagePath;
+        }
+
+        $info->save();
+
+        return redirect()->route('admin.aboutUs.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
 
     public function editInfo($id)
@@ -771,11 +890,6 @@ public function updateProduct(Request $request, Product $product)
         return view('admin.aboutUs.edit', compact('infos'));
     }
 
-    public function updateInfo(InfoRequest $request, CompanyInfo $info)
-    {
-        $info->update($request->validated());
-        return redirect()->route('admin.aboutUs.index')->with('success', 'Tarif başarıyla güncellendi.');
-    }
 
     public function destroyInfo($info_id)
     {

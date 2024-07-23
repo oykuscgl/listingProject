@@ -47,7 +47,7 @@
     @foreach($infos as $info)
                 <div class="relative shadow-md rounded-md overflow-hidden h-96">
                      <a href="{{ route('aboutUs.show', ['info_id' => $info->id]) }}">
-                    <img src="{{ asset('images/'.$info->image) }}" alt="{{ $info->title }}" class="w-full h-48 object-cover z-10 filter brightness-75">
+                    <img src="{{ asset('storage/'.$info->image) }}" alt="{{ $info->title }}" class="w-full h-48 object-cover z-10 filter brightness-75">
                     </a>
             <div class="absolute inset-0 bg-gray-100 opacity-50 z-0"></div>
             <div class="absolute inset-0 flex flex-col items-center justify-start text-center w-full mt-16">
