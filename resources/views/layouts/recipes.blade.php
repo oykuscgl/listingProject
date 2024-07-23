@@ -60,6 +60,9 @@
             <div class="grid grid-cols-3 gap-4">
                 @foreach($recipes as $recipe)
                     <div class="card border rounded-lg p-4 {{ $recipe->category }}">
+                        @if ($recipe->image)
+                            <img src="{{ asset('storage/' . $recipe->image) }}" alt="{{ $recipe->title }}" class="w-full h-auto mb-4">
+                        @endif
                         <h2 class="text-xl font-semibold mb-2">{{ $recipe->title }}</h2>
                         <div class="flex justify-between items-center">
                             <a href="{{ route('recipes.show', $recipe->id) }}" class="btn mt-4">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>

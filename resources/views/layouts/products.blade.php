@@ -89,7 +89,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 @foreach ($products as $product)
                 <div class="card p-4 bg-white border rounded-md shadow-md" data-filters="{{ $product->category_id }}">
-                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover mb-4 rounded-md">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover mb-4 rounded-md">
                     <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
                     <p class="text-gray-600">{{ $product->description }}</p>
                     <a href="{{ route('products.show', $product->id) }}" class="mt-4 block text-center text-white bg-blue-500 py-2 px-4 rounded">View Details</a>
@@ -100,10 +100,10 @@
     </div>
 
     <script>
-        
+
         let activeFilter = [];
 
-        
+
         function filterCards() {
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
@@ -120,9 +120,9 @@
         function filterByCategory(categoryId) {
             const index = activeFilter.indexOf(categoryId);
             if (index > -1) {
-                activeFilter.splice(index, 1); 
+                activeFilter.splice(index, 1);
             } else {
-                activeFilter.push(categoryId); 
+                activeFilter.push(categoryId);
             }
         }
 
@@ -134,8 +134,8 @@
                 checkboxes.classList.add('hidden');
             }
         }
-        
-       
+
+
         function changeBackgroundColor(button) {
             button.classList.toggle('bg-red-500');
         }

@@ -22,7 +22,7 @@ use App\Http\Requests\ServiceRequest;
 use App\Http\Requests\InfoRequest;
 use App\Http\Requests\HRRequest;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+
 
 class AdminController extends Controller
 {
@@ -48,43 +48,98 @@ class AdminController extends Controller
     }
 
     public function storeProduct(Request $request)
-    {
-        $detailed_description = $request->detailed_description;
+{
+    $detailed_description = $request->detailed_description;
 
-        $dom = new DOMDocument();
-        $dom->loadHTML($detailed_description, 9);
+    $dom = new DOMDocument();
+    $dom->loadHTML($detailed_description, 9);
 
-        $images = $dom->getElementsByTagName('img');
+    $images = $dom->getElementsByTagName('img');
 
-        foreach ($images as $key => $img) {
-            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_name = "/images/products/" . time(). $key.'png';
-            file_put_contents(public_path(). $image_name, $data);
+    foreach ($images as $key => $img) {
+        $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+        $image_name = "/images/products/" . time(). $key.'png';
+        file_put_contents(public_path(). $image_name, $data);
 
-            $img->removeAttribute('src');
-            $img->setAttribute('src', $image_name);
-        }
-
-        $detailed_description = $dom->saveHTML();
-
-        Product::create([
-            'name' => $request->name,
-            'description'=> $request->description,
-            'category'=> $request->category,
-            'detailed_description' => $detailed_description,
-            'stock' => $request->stock,
-            'price' => $request->price,
-            'category_id' => $request->category_id,
-            'shelf_life' => $request->shelf_life,
-            'product_code' => $request->product_code,
-            'pallet' => $request->pallet,
-            'packaging' => $request->packaging,
-            'image'=> $request->image,
-            'specialCategory'=> $request->specialCategory,
-        ]);
-
-        return redirect()->route('admin.products.index')->with('success', 'Ürün başarıyla eklendi.');
+        $img->removeAttribute('src');
+        $img->setAttribute('src', $image_name);
     }
+
+    $detailed_description = $dom->saveHTML();
+
+    $product = new Product();
+    $product->name = $request->name;
+    $product->description = $request->description;
+    $product->detailed_description = $detailed_description;
+    $product->stock = $request->stock;
+    $product->price = $request->price;
+    $product->category_id = $request->category_id;
+    $product->shelf_life = $request->shelf_life;
+    $product->product_code = $request->product_code;
+    $product->pallet = $request->pallet;
+    $product->packaging = $request->packaging;
+    $product->specialCategory = $request->specialCategory;
+
+    if ($request->hasFile('image')) {
+        $image_file = $request->file('image');
+        $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+        $image_path = $image_file->storeAs('images/products', $image_name, 'public');
+        $product->image = $image_path;
+    }
+
+    $product->save();
+
+    return redirect()->route('admin.products.index')->with('success', 'Ürün başarıyla eklendi.');
+}
+
+public function updateProduct(Request $request, Product $product)
+{
+    $detailed_description = $request->detailed_description;
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($detailed_description, 9);
+
+    $images = $dom->getElementsByTagName('img');
+
+    foreach ($images as $key => $img) {
+        $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+        $image_name = "/images/products/" . time(). $key.'png';
+        file_put_contents(public_path(). $image_name, $data);
+
+        $img->removeAttribute('src');
+        $img->setAttribute('src', $image_name);
+    }
+
+    $detailed_description = $dom->saveHTML();
+
+    $product->name = $request->name;
+    $product->description = $request->description;
+    $product->detailed_description = $detailed_description;
+    $product->stock = $request->stock;
+    $product->price = $request->price;
+    $product->category_id = $request->category_id;
+    $product->shelf_life = $request->shelf_life;
+    $product->product_code = $request->product_code;
+    $product->pallet = $request->pallet;
+    $product->packaging = $request->packaging;
+    $product->specialCategory = $request->specialCategory;
+
+    if ($request->hasFile('image')) {
+        // Delete old image if it exists
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
+        $image_file = $request->file('image');
+        $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+        $image_path = $image_file->storeAs('images/products', $image_name, 'public');
+        $product->image = $image_path;
+    }
+
+    $product->save();
+
+    return redirect()->route('admin.products.index')->with('success', 'Ürün başarıyla güncellendi.');
+}
+
 
     public function showEditProductForm(Product $product)
     {
@@ -92,21 +147,6 @@ class AdminController extends Controller
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
-    public function updateProduct(ProductRequest $request, Product $product)
-    {
-        $data = $request->validated();
-
-        if ($request->hasFile('image')) {
-            // Delete old image if it exists
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
-            $data['image'] = $request->file('image')->store('images', 'public');
-        }
-
-        $product->update($data);
-        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
-    }
 
     public function deleteProduct(Product $product)
     {
@@ -129,25 +169,27 @@ class AdminController extends Controller
         return view('admin.recipes.create', compact('categories'));
     }
 
-    /*
-    public function createRecipe()
-    {
-        return view('admin.recipes.create');
-    }*/
-
     public function storeRecipe(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $detailed_info = $request->detailed_info;
 
         $dom = new DOMDocument();
-        $dom->loadHTML($detailed_info, 9);
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         $images = $dom->getElementsByTagName('img');
 
         foreach ($images as $key => $img) {
             $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_name = "/images/recipe/" . time(). $key.'png';
-            file_put_contents(public_path(). $image_name, $data);
+            $image_name = "images/recipe/" . time() . $key . '.png';  // Dosya yolunu belirleyin
+            file_put_contents(public_path($image_name), $data);
 
             $img->removeAttribute('src');
             $img->setAttribute('src', $image_name);
@@ -155,15 +197,68 @@ class AdminController extends Controller
 
         $detailed_info = $dom->saveHTML();
 
-        Recipe::create([
-            'detailed_info' => $detailed_info,
-            'title' => $request->title,
-            'description' => $request->description,
-            'image'=> $request->image,
+        $recipe = new Recipe();
+        $recipe->title = $request->title;
+        $recipe->description = $request->description;
+        $recipe->category_id = $request->category_id;
+        $recipe->detailed_info = $detailed_info;
 
-        ]);
+        if ($request->hasFile('image')) {
+            $image_file = $request->file('image');
+            $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+            $image_path = $image_file->storeAs('images/recipe', $image_name, 'public');
+            $recipe->image = $image_path;
+        }
+
+        $recipe->save();
 
         return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function updateRecipe(Request $request, Recipe $recipe)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/recipe/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $recipe->title = $request->title;
+        $recipe->description = $request->description;
+        $recipe->category_id = $request->category_id;
+        $recipe->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($recipe->image) {
+                Storage::disk('public')->delete($recipe->image);
+            }
+            $imagePath = $request->file('image')->store('images/recipe', 'public');
+            $recipe->image = $imagePath;
+        }
+
+        $recipe->save();
+
+        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
 
     public function showEditRecipeForm(Recipe $recipe)
@@ -171,11 +266,7 @@ class AdminController extends Controller
         $categories = Category::all();
         return view('admin.recipes.edit', compact('recipe', 'categories'));
     }
-    public function updateRecipe(RecipeRequest $request, Recipe $recipe)
-    {
-        $recipe->update($request->validated());
-        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla güncellendi.');
-    }
+
 
     public function destroyRecipe(Recipe $recipe)
     {
@@ -205,6 +296,14 @@ class AdminController extends Controller
 
     public function storeNews(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $detailed_info = $request->detailed_info;
 
         $dom = new DOMDocument();
@@ -214,7 +313,7 @@ class AdminController extends Controller
 
         foreach ($images as $key => $img) {
             $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_name = "/images" . time(). $key.'png';
+            $image_name = "/images/news" . time(). $key.'png';
             file_put_contents(public_path(). $image_name, $data);
 
             $img->removeAttribute('src');
@@ -223,28 +322,76 @@ class AdminController extends Controller
 
         $detailed_info = $dom->saveHTML();
 
-        News::create([
-            'detailed_info' => $detailed_info,
-            'title' => $request->title,
-            'description' => $request->description,
-            'category' => $request->category,
-            'image'=> $request->image,
-        ]);
+
+        $newsPost = new News();
+        $newsPost->title = $request->title;
+        $newsPost->description = $request->description;
+        $newsPost->category = $request->category;
+        $newsPost->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            $image_file = $request->file('image');
+            $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+            $image_path = $image_file->storeAs('images/recipe', $image_name, 'public');
+            $newsPost->image = $image_path;
+        }
+
+        $newsPost->save();
 
         return redirect()->route('admin.news.index')->with('success', 'Haber başarıyla eklendi.');
     }
+    public function updateNews(Request $request, News $newsPost)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/news/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $newsPost->title = $request->title;
+        $newsPost->description = $request->description;
+        $newsPost->category = $request->category;
+        $newsPost->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($newsPost->image) {
+                Storage::disk('public')->delete($newsPost->image);
+            }
+            $imagePath = $request->file('image')->store('images/news', 'public');
+            $newsPost->image = $imagePath;
+        }
+
+        $newsPost->save();
+
+        return redirect()->route('admin.recipes.index')->with('success', 'Tarif başarıyla güncellendi.');
+    }
     public function editNews($id)
     {
         $new = News::findOrFail($id);
         return view('admin.news.edit', compact('new'));
     }
 
-    public function updateNews(NewsPostRequest $request, News $new)
-    {
-        $new->update($request->validated());
-        return redirect()->route('admin.news.index')->with('success', 'Tarif başarıyla güncellendi.');
-    }
+
 
     public function destroyNews($news_id)
     {

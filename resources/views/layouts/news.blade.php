@@ -70,7 +70,7 @@
                 @foreach($news as $item)
                     <div class="bg-white p-4 shadow flex flex-wrap">
                         <div class="w-full md:w-1/3 p-8">
-                            <img src="{{ $item->image }}" alt="{{ $item->title }}" class="w-full h-full object-cover">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" class="w-full h-full object-cover">
                         </div>
                         <div class="w-full md:w-2/3 p-2">
                             <h4 class="text-xl font-bold">{{ $item->title }}</h4>

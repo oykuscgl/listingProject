@@ -17,7 +17,7 @@
 </head>
     <div class="container mt-4">
         <h2>Ürün Ekle</h2>
-        <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" id="upload-image" action="{{url('storeProduct')}}">
             @csrf
             <div class="form-group">
                 <label for="name">Ürün Adı</label>
@@ -74,9 +74,9 @@
             </div>
             <div class="form-group">
                 <label for="image">Görsel</label>
-                <input type="file" class="form-control" id="image" name="image">
+                <input type="file" name="image"  class="form-control" id="image">
             </div>
-            <button type="submit" class="btn btn-success">Ekle</button>
+            <button type="submit" class="btn btn-success">Kaydet</button>
         </form>
     </div>
     <script>

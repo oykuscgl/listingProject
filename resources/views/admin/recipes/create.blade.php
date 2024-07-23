@@ -37,6 +37,10 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="image">Görsel </label>
+            <input type="file" name="image" class="form-control" id="image">
+        </div>
+        <div class="form-group">
             <label for="detailed_info">Detaylı Tarif Bilgisi</label>
             <textarea name="detailed_info" id="detailed_info" cols="30" rows="10"></textarea>
         </div>

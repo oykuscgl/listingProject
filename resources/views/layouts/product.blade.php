@@ -24,7 +24,7 @@
         <div class="grid grid-cols-5 gap-8">
             <div class="col-span-3 flex flex-col items-center bg-white bg-opacity-75 p-6 rounded-lg shadow-sm">
                 <h1 class="text-4xl font-bold mb-6">{{ $product->name }}</h1>
-                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-full h-auto">
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto">
             </div>
             <aside class="col-span-2">
                 <div class="mb-6 bg-white p-6 shadow-sm rounded-lg">
@@ -65,13 +65,13 @@
             <p class="mt-4 text-sm text-gray-600">Bu ürün hakkında daha fazla bilgi almak ister misiniz? <a href="#" class="text-red-600">Bize ulaşın</a></p>
         </section>
 
-      
+
         <section class="bg-white p-6 shadow-sm rounded-lg mt-8">
             <h2 class="text-2xl font-bold mb-4">Sıkça Birlikte Alınanlar</h2>
             <div class="grid grid-cols-5 gap-4 items-center">
                 @foreach ($products as $product)
                     <div class="col-span-1 flex flex-col items-center">
-                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-32 h-auto">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-32 h-auto">
                         <p class="text-center">{{ $product->name }}</p>
                     </div>
                 @endforeach
@@ -84,7 +84,7 @@
             <div class="grid grid-cols-5 gap-4">
                 @foreach ($products as $product)
                     <div class="col-span-1 flex flex-col items-center">
-                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-32 h-auto">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-32 h-auto">
                         <p class="text-center">{{ $product->name }}</p>
                         <a href="{{ route('products.show', $product->id) }}" class="text-red-600 mt-2"><u>Daha fazla bilgi</u></a>
 
@@ -95,7 +95,7 @@
         <div class="col-span-1 flex flex-col items-center">
             <button class="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 mt-8">Tüm Ürünler</button>
         </div>
-    </main>    
+    </main>
 
     <!-- Contact Section -->
     <footer class="bg-gray-200 p-6 shadow-sm rounded-lg mt-8 flex justify-between items-center">
