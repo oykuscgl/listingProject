@@ -43,7 +43,7 @@
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             @foreach($services as $service)
             <div class="relative shadow-md rounded-lg overflow-hidden" style="height:70vh;">
-                <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('images/ekmek.merkez.jpeg') }}" alt="Hakkımızda">
+                <img class="w-full h-full object-cover z-10 filter brightness-75" src="{{ asset('storage/' . $service->image) }}" alt="Hakkımızda">
                 <div class="absolute inset-0 bg-gray-100  opacity-50 z-0"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center w-full mt-16">
                     <a href="{{ route('services.show', $service->id) }}" class="text-white text-2xl font-bold mt-4 mb-8">{{ $service->title }}</a>

@@ -415,13 +415,15 @@ public function updateProduct(Request $request, Product $product)
         return view('admin.services.create', compact('services'));
     }
 
-    public function createServices()
-    {
-        return view('admin.services.create');
-    }
-
     public function storeServices(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $detailed_info = $request->detailed_info;
 
         $dom = new DOMDocument();
@@ -431,7 +433,7 @@ public function updateProduct(Request $request, Product $product)
 
         foreach ($images as $key => $img) {
             $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_name = "/images/recipe/" . time(). $key.'png';
+            $image_name = "/images/services" . time(). $key.'png';
             file_put_contents(public_path(). $image_name, $data);
 
             $img->removeAttribute('src');
@@ -440,14 +442,67 @@ public function updateProduct(Request $request, Product $product)
 
         $detailed_info = $dom->saveHTML();
 
-        Service::create([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'detailed_info' => $detailed_info,
-            'image' => $request->image,
-        ]);
+
+        $service = new Service();
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            $image_file = $request->file('image');
+            $image_name = time() . '.' . $image_file->getClientOriginalExtension();
+            $image_path = $image_file->storeAs('images/services', $image_name, 'public');
+            $service->image = $image_path;
+        }
+
+        $service->save();
 
         return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla eklendi.');
+    }
+
+    public function updateServices(Request $request, Service $service)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'detailed_info' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/services/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->category = $request->category;
+        $service->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($service->image) {
+                Storage::disk('public')->delete($service->image);
+            }
+            $imagePath = $request->file('image')->store('images/services', 'public');
+            $service->image = $imagePath;
+        }
+
+        $service->save();
+
+        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
 
     public function editServices($id)
@@ -456,11 +511,7 @@ public function updateProduct(Request $request, Product $product)
         return view('admin.services.edit', compact('service'));
     }
 
-    public function updateServices(ServiceRequest $request, Service $new)
-    {
-        $new->update($request->validated());
-        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla güncellendi.');
-    }
+
 
     public function destroyServices($service_id)
     {
