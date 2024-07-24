@@ -90,7 +90,7 @@
         </div>
     </main>
 
-    <!-- Contact Section -->
+
     <footer class="bg-gray-200 p-6 shadow-sm rounded-lg mt-8 flex justify-between items-center">
         <div class="flex-1 p-6" style="background-image: url('/etc.clientlibs/settings/wcm/designs/puratos2022/clientlib-preloaded/resources/img/jpg/pattern.jpg'); background-size: cover; background-repeat: no-repeat;">
             <h2 class="text-2xl font-bold mb-4">İletişim</h2>

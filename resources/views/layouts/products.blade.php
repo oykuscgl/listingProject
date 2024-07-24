@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid flex flex-col lg:flex-row bg-gray-200">
-    <!-- Main Content -->
+
     <div id="mainContent" class="w-full lg:w-full order-1 lg:order-2">
         <div class="mb-4 bg-gray-200">
             <h2 class="text-xl font-bold uppercase text-black ml-3 mb-5 pt-4 pl-2">ÜRÜNLERİMİZ</h2>
@@ -24,7 +24,6 @@
             Filtreleri Göster
         </button>
 
-        <!-- Sorting Button -->
         <div class="flex justify-end w-full">
         <div class="relative inline-block text-left mt-4 lg:mt-0 mb-4 z-10">
             <button onclick="toggleSortMenu()" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
@@ -43,7 +42,7 @@
             </div>
         </div>
         </div>
-        <!-- Products Container -->
+
         <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 z-0">
             @foreach ($products as $product)
             <div class="card category-{{ $product->category_id }} bg-white rounded-lg overflow-hidden shadow-md transform transition duration-500 hover:scale-105">
@@ -62,7 +61,6 @@
         </div>
     </div>
 
-    <!-- Filter Section -->
     <div id="filterSection" class="w-full lg:w-1/4 p-4 lg:flex lg:flex-col bg-gray-100 hidden lg:block">
         <h2 class="text-xl font-bold uppercase text-black mb-4">Filtreler</h2>
         <div class="mb-4">
@@ -154,7 +152,7 @@ function applySorting(sortBy) {
         if (sortBy === 'alphabetical') {
             return nameA.localeCompare(nameB);
         }
-        return 0; // Default to no sorting
+        return 0; 
     });
 
     items.forEach(item => container.appendChild(item));
@@ -167,7 +165,6 @@ document.querySelectorAll('#sortOptions a').forEach(option => {
         if (sortType === 'alphabetical') {
             applySorting('alphabetical');
         }
-        // Update current sort type
         currentSort = sortType;
     });
 });

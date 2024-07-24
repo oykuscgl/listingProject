@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid flex flex-col lg:flex-row bg-gray-200">
-    <!-- Main Content -->
+
     <div id="mainContent" class="w-full lg:w-full order-1 lg:order-2">
         <div class="mb-4 bg-gray-200">
             <h2 class="text-xl font-bold uppercase text-black ml-3 mb-5 pt-4 pl-2">TARİFLERİMİZ</h2>
@@ -24,7 +24,7 @@
             Filtreleri Göster
         </button>
 
-        <!-- Sorting Button -->
+   
 
 <div class="relative inline-block text-left mt-4 lg:mt-0">
     <button onclick="toggleSortMenu()" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
@@ -44,7 +44,6 @@
 </div>
 
 
-        <!-- Recipes Container -->
         <div id="recipesContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     @foreach($recipes as $recipe)
         <div class="card border rounded-lg overflow-hidden relative p-4 {{ $recipe->category ? $recipe->category->name : '' }}">
@@ -63,7 +62,6 @@
 
     </div>
 
-    <!-- Filter Section -->
     <aside id="filterSection" class="fixed inset-0 lg:relative lg:w-1/5 p-4 hidden lg:block lg:flex flex-col justify-start bg-white shadow-md rounded-lg order-3 lg:order-1">
         <div class="lg:hidden p-4 bg-gray-900 text-white flex justify-between items-center">
             <span class="text-lg font-bold uppercase">Filtreler</span>
@@ -150,7 +148,7 @@ function toggleBackgroundColor(button, filter) {
         activeFilters.innerHTML += `<div>${filter}</div>`;
     }
 
-    // Show or hide the apply and reset buttons based on filter selection
+    
     if (selectedFilter) {
         applyFiltersBtn.classList.remove('hidden');
         resetFiltersBtn.classList.remove('hidden');
@@ -165,19 +163,19 @@ function applyFilters() {
     console.log('applyFilters fonksiyonu çağrıldı');
     console.log(`Seçilen filtre: ${selectedFilter}`);
 
-    // Sayfayı filtrelerle birlikte yeniden yüklemek için URL'yi güncelleyin
+    
     const url = new URL(window.location.href);
     url.searchParams.set('filter', selectedFilter);
-    window.location.href = url.toString(); // Sayfayı yeniler
+    window.location.href = url.toString(); 
 }
 
 function resetFilters() {
     console.log('resetFilters fonksiyonu çağrıldı');
     selectedFilter = '';
 
-    // Filtre parametresini URL'den kaldır
+    
     const url = new URL(window.location.href);
     url.searchParams.delete('filter');
-    window.location.href = url.toString(); // Sayfayı yeniler
+    window.location.href = url.toString(); 
 }
 </script>
