@@ -1,24 +1,57 @@
-@extends('layouts.admin')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-@section('content')
-<div class="container">
-    <h1>Tüketici Araştırmasını Düzenle</h1>
-    <form action="{{ route('admin.consumerResearches.update', ['research_id' => $research->id]) }}" method="POST">
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+</head>
+<body>
+   <div class="container">
+    <h1>Araştırma Yazısını Düzenle</h1>
+    <form action="{{ route('admin.consumerResearches.update', $research->id) }}" method="POST" enctype="multipart/form-data" id="upload-image">
         @csrf
         @method('PUT')
+
         <div class="form-group">
-            <label for="title">Başlık</label>
+            <label for="title">Araştırma Yazısı Başlığı</label>
             <input type="text" name="title" class="form-control" value="{{ old('title', $research->title) }}">
         </div>
         <div class="form-group">
-            <label for="description">Açıklama</label>
+            <label for="description">Araştırma Yazısı Açıklaması</label>
             <textarea name="description" class="form-control">{{ old('description', $research->description) }}</textarea>
         </div>
         <div class="form-group">
-            <label for="detailed_info">Detaylı Bilgi</label>
-            <textarea name="detailed_info" class="form-control">{{ old('detailed_info', $research->detailed_info) }}</textarea>
+            <label for="detailed_info">Detaylı Araştırma Bilgisi</label>
+            <textarea name="detailed_info" id="detailed_info" cols="30" rows="10">{{ old('detailed_info', $research->detailed_info) }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Güncelle</button>
+        <div class="form-group">
+            <label for="image">Araştırma Resmi</label>
+            @if ($research->image)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $research->image) }}" alt="Tarif Resmi" class="img-thumbnail" style="width: 200px;">
+                </div>
+            @endif
+            <input type="file" name="image" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
-</div>
-@endsection
+   </div>
+    <script>
+        $('#detailed_info').summernote({
+            placeholder: 'Detaylı tarif bilgisi...',
+            tabsize:2,
+            height:300
+        });
+    </script>
+</body>
+</html>

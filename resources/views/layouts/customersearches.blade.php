@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="relative mr-2">
-        <img class="w-full object-cover banner"  src="{{ asset('storage/' . $research->image) }}" alt="Banner Image"style="height:30vh">
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-gray-100"></div>
-        <div class="absolute top-1/3 left-12 transform -translate-y-1/2">
-            <div class="flex items-center space-x-2 text-sm text-black">
-                <p class="underline uppercase">Home ></p>
-                <p class="text-red-500">TÜKETİCİ ARAŞTIRMALARI</p>
-            </div>
-            <div>
-                <h3 class="font-bold text-red-700 text-4xl mt-5">TÜKETİCİ ARAŞTIRMALARI</h3>
-            </div>
-        </div>
-    </div>
     <section class="container-fluid px-4 py-10 mx-auto">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             @foreach($researches as $research)

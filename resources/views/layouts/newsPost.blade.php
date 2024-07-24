@@ -16,21 +16,6 @@
     </div>
 </div>
 
-  <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
-        <div class="p-4 btn">
-            <h3 class="p-margin-top-sm p-margin-bottom-sm font-bold text-lg"></h3>
-            <p class="mt-4 text-sm/relaxed">
-                {{ $newsPost->title }}
-            </p>
-            <div class="flex justify-between items-center text-sm mt-5">
-                <p class="mt-4 text-sm/relaxed">
-                    {{ $newsPost->description }}
-                </p>
-            </div>
-        </div>
-    </div>
-
-
     <div class="p-4">
         <ul class="list-disc list-inside mt-2">
             <p class="mt-4 text-sm/relaxed">

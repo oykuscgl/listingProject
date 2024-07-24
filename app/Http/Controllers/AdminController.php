@@ -382,7 +382,6 @@ public function updateProduct(Request $request, Product $product)
         }
 
         $newsPost->save();
-
         return redirect()->route('admin.news.index')->with('success', 'Haber başarıyla güncellendi.');
     }
     public function editNews($id)
@@ -471,13 +470,26 @@ public function updateProduct(Request $request, Product $product)
 
         $detailed_info = $request->detailed_info;
 
+        // Clean up the HTML to make sure it's well-formed
+        $detailed_info = $this->cleanHtml($detailed_info);
+
         $dom = new DOMDocument();
+
+        // Suppress warnings due to malformed HTML
+        libxml_use_internal_errors(true);
         $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        libxml_clear_errors();
 
         $images = $dom->getElementsByTagName('img');
 
         foreach ($images as $key => $img) {
-            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $src = $img->getAttribute('src');
+            $parts = explode(',', $src);
+            if (count($parts) < 2) {
+                continue; // Skip if not a valid base64 image
+            }
+
+            $data = base64_decode($parts[1]);
             $image_name = "/images/services/" . time() . $key . '.png';
             file_put_contents(public_path() . $image_name, $data);
 
@@ -489,7 +501,6 @@ public function updateProduct(Request $request, Product $product)
 
         $service->title = $request->title;
         $service->description = $request->description;
-        $service->category = $request->category;
         $service->detailed_info = $detailed_info;
 
         if ($request->hasFile('image')) {
@@ -502,8 +513,15 @@ public function updateProduct(Request $request, Product $product)
 
         $service->save();
 
-        return redirect()->route('admin.services.index')->with('success', 'Tarif başarıyla güncellendi.');
+        return redirect()->route('admin.services.index')->with('success', 'Service successfully updated.');
     }
+
+    private function cleanHtml($html)
+    {
+        // Perform some cleanup or validation here if needed
+        return $html;
+    }
+
 
     public function editServices($id)
     {
@@ -616,7 +634,6 @@ public function updateProduct(Request $request, Product $product)
 
         $research->title = $request->title;
         $research->description = $request->description;
-        $research->category = $request->category;
         $research->detailed_info = $detailed_info;
 
         if ($request->hasFile('image')) {
@@ -768,7 +785,6 @@ public function updateProduct(Request $request, Product $product)
     }
 
 
-
     public function destroyBlogPost($blogPost_id)
     {
         // Haber kaydını bul ve sil
@@ -908,7 +924,7 @@ public function updateProduct(Request $request, Product $product)
     {
         $hr = HR::all();
         // İnsan kaynakları yönetimi sayfası
-        return view('admin.hr.index');
+        return view('admin.hr.index', compact('hr'));
     }
 
     public function showAddHRForm()
@@ -946,9 +962,60 @@ public function updateProduct(Request $request, Product $product)
 
     public function updateHR(HRRequest $request, HR $hr)
     {
-        $hr->update($request->validated());
+        $request->validate([
+            'detailed_info' => 'required',
+
+        ]);
+
+        $detailed_info = $request->detailed_info;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($detailed_info, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/images/hr/" . time() . $key . '.png';
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $detailed_info = $dom->saveHTML();
+
+        $hr->title = $request->title;
+        $hr->description = $request->description;
+        $hr->category = $request->category;
+        $hr->detailed_info = $detailed_info;
+
+        if ($request->hasFile('image')) {
+            if ($hr->image) {
+                Storage::disk('public')->delete($hr->image);
+            }
+            $imagePath = $request->file('image')->store('images/hr', 'public');
+            $hr->image = $imagePath;
+        }
+
+        $hr->save();
         return redirect()->route('admin.hr.index')->with('success', 'Tarif başarıyla güncellendi.');
     }
+
+    public function editHR($id)
+    {
+        $hr = hr::findOrFail($id);
+        return view('admin.hr.edit', compact('hr'));
+    }
+
+    public function deleteHR($hr_id)
+{
+    // İlgili insan kaynakları kaydını silme
+    $hr = HR::findOrFail($hr_id);
+    $hr->delete();
+
+    return redirect()->route('admin.hr.index')->with('success', 'Sayfa başarıyla silindi.');
+}
 
 
     //CONTACT CONTROL
