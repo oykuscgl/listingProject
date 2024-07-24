@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid  mx-auto px-4 py-8">
     <div class="flex flex-row">
         <aside class="w-full md:w-1/5 p-4 justify-start bg-gray-200 shadow-md rounded-lg mb-4 md:mr-4">
@@ -61,7 +62,6 @@
 
             </div>
         </aside>
-
         <div class="w-full md:w-4/5 p-4 bg-white shadow-md rounded-lg">
             <h3 class="text-2xl font-bold mb-4">
                 <span>{{ $blogs->count() }}</span> Sonuçlar
