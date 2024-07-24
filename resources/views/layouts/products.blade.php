@@ -25,101 +25,75 @@
         </button>
 
         <!-- Sorting Button -->
-
-<div class="relative inline-block text-left mt-4 lg:mt-0">
-    <button onclick="toggleSortMenu()" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
-        Sırala
-        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 116.293 6.293l3-3A1 1 0 0110 3zm0 14a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 14.586l2.293-2.293A1 1 0 1113.707 13.707l-3 3A1 1 0 0110 17z" clip-rule="evenodd" />
-        </svg>
-    </button>
-    <div id="sortOptions" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="sortOptionsButton">
-            <a href="?sort=title" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Başlığa Göre</a>
-            <a href="?sort=category" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Kategoriye Göre</a>
-            <a href="?sort=date" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Tarihe Göre</a>
-            <a href="?sort=alphabetical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Alfabetik Sırala</a> <!-- Yeni seçenek eklendi -->
-        </div>
-    </div>
-</div>
-
-
-        <!-- products Container -->
-        <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    @foreach($products as $product)
-        <div class="card border rounded-lg overflow-hidden relative p-4 {{ $product->category ? $product->category->name : '' }}">
-            @if ($product->image)
-                <div class="w-full h-32 mb-4">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}" class="w-full h-32 object-contain">
+        <div class="flex justify-end w-full">
+        <div class="relative inline-block text-left mt-4 lg:mt-0 mb-4 z-10">
+            <button onclick="toggleSortMenu()" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
+                Sırala
+                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 116.293 6.293l3-3A1 1 0 0110 3zm0 14a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 14.586l2.293-2.293A1 1 0 1113.707 13.707l-3 3A1 1 0 0110 17z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div id="sortOptions" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="sortOptionsButton">
+                    <a href="?sort=title" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Başlığa Göre</a>
+                    <a href="?sort=category" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Kategoriye Göre</a>
+                    <a href="?sort=date" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Tarihe Göre</a>
+                    <a href="?sort=alphabetical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Alfabetik Sırala</a> <!-- Yeni seçenek eklendi -->
                 </div>
-            @endif  
-            <h2 class="text-xl text-black font-semibold mb-4 ">{{ $product->name }}</h2>
-            <p>{{ $product->description }}</p>
-            <div class="flex justify-start items-center">
-                <a href="{{ route('products.show', $product->id) }}" class="btn mt-4 text-red-600">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>
             </div>
-        </div> 
-    @endforeach
-</div>
-
+        </div>
+        </div>
+        <!-- Products Container -->
+        <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 z-0">
+            @foreach ($products as $product)
+            <div class="card category-{{ $product->category_id }} bg-white rounded-lg overflow-hidden shadow-md transform transition duration-500 hover:scale-105">
+                <div class="relative">
+                    <img src="{{ asset('images/' . $product->image) }}" alt="Product Image" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $product->name }}</h3>
+                    <p class="text-gray-600 text-md">{{ $product->description }}</p>
+                    <div class="mt-4 flex justify-center">
+                        <a href="{{ route('products.show', $product->id) }}" class="bg-red-500 text-white px-4 py-2 rounded-md shadow-md">Ürünü İncele</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 
     <!-- Filter Section -->
-    <aside id="filterSection" class="fixed inset-0 lg:relative lg:w-1/5 p-4 hidden lg:block lg:flex flex-col justify-start bg-white shadow-md rounded-lg order-3 lg:order-1">
-        <div class="lg:hidden p-4 bg-gray-900 text-white flex justify-between items-center">
-            <span class="text-lg font-bold uppercase">Filtreler</span>
-            <button onclick="toggleFilters()">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M18 6L6 18M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
-        <div class="lg:mt-0 flex flex-col justify-start text-start">
-            <span class="text-xl font-bold text-black mb-4">AKTİF FİLTRELER</span>
-        </div>
-        <div class="flex flex-col mb-4 space-y-2">
-            <div class="filter-btn-wrapper">
-                <button onclick="toggleBackgroundColor(this, 'Pastacılık')" class="filter-btn p-2 w-full text-left flex justify-between items-center shadow-md border-2 border-gray-300 rounded-lg hover:bg-red-600 hover:text-white">
-                    PASTACILIK
-                    <i class="fas fa-angle-right"></i>
-                </button>
-            </div>
-            <div class="filter-btn-wrapper">
-                <button onclick="toggleBackgroundColor(this, 'Çikolata')" class="filter-btn p-2 w-full text-left flex justify-between items-center shadow-md border-2 border-gray-300 rounded-lg hover:bg-red-600 hover:text-white">
-                    ÇİKOLATA
-                    <i class="fas fa-angle-right"></i>
-                </button>
-            </div>
-            <div class="filter-btn-wrapper">
-                <button onclick="toggleBackgroundColor(this, 'Ekmekçilik')" class="filter-btn p-2 w-full text-left flex justify-between items-center shadow-md border-2 border-gray-300 rounded-lg hover:bg-red-600 hover:text-white active:text-white">
-                    EKMEKÇİLİK
-                    <i class="fas fa-angle-right"></i>
-                </button>
+    <div id="filterSection" class="w-full lg:w-1/4 p-4 lg:flex lg:flex-col bg-gray-100 hidden lg:block">
+        <h2 class="text-xl font-bold uppercase text-black mb-4">Filtreler</h2>
+        <div class="mb-4">
+            <h3 class="text-lg font-bold text-gray-800">Kategoriler</h3>
+            <div class="mt-2">
+                <button class="filter-btn bg-white text-black py-2 px-4 border rounded-md shadow-md m-1 hover:bg-gray-100" onclick="toggleFilter(this, 'category-1')">Ekmekçilik</button>
+                <button class="filter-btn bg-white text-black py-2 px-4 border rounded-md shadow-md m-1 hover:bg-gray-100" onclick="toggleFilter(this, 'category-2')">Pastacılık</button>
+                <button class="filter-btn bg-white text-black py-2 px-4 border rounded-md shadow-md m-1 hover:bg-gray-100" onclick="toggleFilter(this, 'category-3')">Çikolata</button>
             </div>
         </div>
-        <div class="mt-auto space-y-2">
-            <button id="applyFiltersBtn" class="w-full p-2 bg-red-600 text-white rounded-xl border-2 border-white text-start pl-2 shadow-md" onclick="applyFilters()">Filtreyi Uygula</button>
-            <button id="resetFiltersBtn" class="w-full p-2 font-bold bg-white text-red-600 rounded-xl border-2 border-red-600 text-start pl-2 shadow-md" onclick="resetFilters()">Filtreyi Kaldır</button>
+        <div class="flex flex-col mt-4">
+            <button id="applyFiltersBtn" class="hidden bg-red-500 text-white py-2 px-4 rounded-md shadow-md m-1" onclick="applyFilters()">Filtreyi Uygula</button>
+            <button id="resetFiltersBtn" class="hidden bg-gray-500 text-white py-2 px-4 rounded-md shadow-md m-1" onclick="resetFilters()">Filtreyi Kaldır</button>
         </div>
-    </aside>
+    </div>
 </div>
 @endsection
 
 <script>
-let selectedFilter = '';
+let selectedFilters = [];
+let currentSort = '';
 
 function toggleFilters() {
-    console.log('toggleFilters fonksiyonu çağrıldı');
     const filterSection = document.getElementById('filterSection');
     const mainContent = document.getElementById('mainContent');
 
     if (filterSection.classList.contains('hidden')) {
         filterSection.classList.remove('hidden');
-        filterSection.classList.add('fixed');
         mainContent.classList.add('hidden');
     } else {
         filterSection.classList.add('hidden');
-        filterSection.classList.remove('fixed');
         mainContent.classList.remove('hidden');
     }
 }
@@ -129,57 +103,75 @@ function toggleSortMenu() {
     sortOptions.classList.toggle('hidden');
 }
 
-function toggleBackgroundColor(button, filter) {
-    console.log('toggleBackgroundColor fonksiyonu çağrıldı');
-    const activeFilters = document.getElementById('activeFilters');
-    const applyFiltersBtn = document.getElementById('applyFiltersBtn');
-    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
-
-    if (button.classList.contains('bg-red-600')){
-        button.classList.contains('text-white'); 
-        button.classList.remove('bg-red-600');
-        button.classList.add('bg-white');
-        selectedFilter = '';
-        const filterText = Array.from(activeFilters.children)
-                                .filter(child => child.textContent.includes(filter))
-                                .map(child => child.textContent).join('');
-        activeFilters.innerHTML = activeFilters.innerHTML.replace(filterText, '');
+function toggleFilter(button, filter) {
+    const index = selectedFilters.indexOf(filter);
+    if (index > -1) {
+        selectedFilters.splice(index, 1);
+        button.classList.remove('bg-red-500', 'text-white');
+        button.classList.add('bg-white', 'text-black');
     } else {
-        button.classList.add('bg-red-600');
-        button.classList.remove('bg-white');
-        selectedFilter = filter;
-        activeFilters.innerHTML += `<div>${filter}</div>`;
+        selectedFilters.push(filter);
+        button.classList.add('bg-red-500', 'text-white');
+        button.classList.remove('bg-white', 'text-black');
     }
 
-    // Show or hide the apply and reset buttons based on filter selection
-    if (selectedFilter) {
-        applyFiltersBtn.classList.remove('hidden');
-        resetFiltersBtn.classList.remove('hidden');
+    if (selectedFilters.length > 0) {
+        document.getElementById('applyFiltersBtn').classList.remove('hidden');
+        document.getElementById('resetFiltersBtn').classList.remove('hidden');
     } else {
-        applyFiltersBtn.classList.add('hidden');
-        resetFiltersBtn.classList.add('hidden');
+        document.getElementById('applyFiltersBtn').classList.add('hidden');
+        document.getElementById('resetFiltersBtn').classList.add('hidden');
     }
 }
 
-
 function applyFilters() {
-    console.log('applyFilters fonksiyonu çağrıldı');
-    console.log(`Seçilen filtre: ${selectedFilter}`);
-
-    // Sayfayı filtrelerle birlikte yeniden yüklemek için URL'yi güncelleyin
-    const url = new URL(window.location.href);
-    url.searchParams.set('filter', selectedFilter);
-    window.location.href = url.toString(); // Sayfayı yeniler
+    document.querySelectorAll('.card').forEach(card => {
+        const cardCategories = card.classList.toString();
+        const shouldShow = selectedFilters.some(filter => cardCategories.includes(filter));
+        card.classList.toggle('hidden', !shouldShow);
+    });
 }
 
 function resetFilters() {
-    console.log('resetFilters fonksiyonu çağrıldı');
-    selectedFilter = '';
-
-    // Filtre parametresini URL'den kaldır
-    const url = new URL(window.location.href);
-    url.searchParams.delete('filter');
-    window.location.href = url.toString(); // Sayfayı yeniler
+    selectedFilters = [];
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.classList.remove('bg-red-500', 'text-white');
+        button.classList.add('bg-white', 'text-black');
+    });
+    document.querySelectorAll('.card').forEach(card => card.classList.remove('hidden'));
+    document.getElementById('applyFiltersBtn').classList.add('hidden');
+    document.getElementById('resetFiltersBtn').classList.add('hidden');
 }
 
+function applySorting(sortBy) {
+    const container = document.getElementById('productsContainer');
+    let items = Array.from(container.getElementsByClassName('card'));
+
+    items.sort((a, b) => {
+        const nameA = a.querySelector('h3').textContent.trim().toUpperCase();
+        const nameB = b.querySelector('h3').textContent.trim().toUpperCase();
+        
+        if (sortBy === 'alphabetical') {
+            return nameA.localeCompare(nameB);
+        }
+        return 0; // Default to no sorting
+    });
+
+    items.forEach(item => container.appendChild(item));
+}
+
+document.querySelectorAll('#sortOptions a').forEach(option => {
+    option.addEventListener('click', function(event) {
+        event.preventDefault();
+        const sortType = this.getAttribute('href').split('=')[1];
+        if (sortType === 'alphabetical') {
+            applySorting('alphabetical');
+        }
+        // Update current sort type
+        currentSort = sortType;
+    });
+});
 </script>
+
+
+

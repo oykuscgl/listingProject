@@ -64,6 +64,7 @@
         </div>
     </div>
 
+    @endforeach
     <div class="container-sm text-center bg-gray-100 py-20 mt-12 w-full">
         <div class="flex flex-col items-center justify-center">
              <h2 class="text-2xl font-bold mb-5">PURATOS'U KEŞFEDİN</h2>
@@ -80,7 +81,6 @@
             </div>
         </div>
     </div>
-    @endforeach
         </div>
 </section>
 

@@ -23,6 +23,10 @@ class Product extends Model
         'image',
         'specialCategory',
     ];
+    
+    protected $casts = [
+        'specialCategory' => 'array',
+    ];
 
     public function category()
     {
