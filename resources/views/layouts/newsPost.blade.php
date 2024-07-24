@@ -1,22 +1,20 @@
-<!DOCTYPE html>
 @extends('layouts.app')
 
 @section('content')
 
-<section class="container mt-10 p-4">
-<header class="text-white py-4 px-6 flex items-center justify-between">
-    <div class="text-2xl font-bold text-black"></div>
-    <p class="mt-4 text-sm/relaxed">
-        {{ $newsPost->title }}
-    </p>
-  </header>
-  <div class="bg-white border-t border-gray-300 flex items-center py-4 px-6 rounded-full serial">
-    <input type="text" class="px-4 py-2 border border-gray-300 rounded-full flex-grow mr-2 focus:outline-none hover:border-red-500 focus:border-gray-700" placeholder="">
-    <button class="bg-gray-600 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full focus:outline-none">
-    <img src="magnifying-glass-solid.svg" alt="search" class="h-6 w-6">
-    </button>
+<div class="relative mr-2">
+    <img class="w-full object-cover banner" src="{{ asset('storage/'.$newsPost->image) }}" alt="Banner Image"style="height:30vh">
+    <div class="absolute inset-0 bg-gradient-to-r from-white via-gray-100"></div>
+    <div class="absolute top-1/3 left-12 transform -translate-y-1/2">
+        <div class="flex items-center space-x-2 text-sm text-black">
+            <p class="underline uppercase">Home ></p>
+            <p class="text-red-500">HABERLER</p>
+        </div>
+        <div>
+            <h3 class="font-bold text-red-700 text-4xl mt-5">{{$newsPost->title}}</h3>
+        </div>
     </div>
-  </div>
+</div>
 
   <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="p-4 btn">
