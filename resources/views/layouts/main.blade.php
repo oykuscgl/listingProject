@@ -9,7 +9,7 @@
                 <div class="w-1/2 m-12">
                     <h5 class="text-2xl font-semibold text-red-600">YAZIN ENERJİSİNİ KEŞFEDİN</h5>
                     <p class="mt-4 text-gray-800 text-xl">Yazın ilhamı ve birinci sınıf malzemelerle mutfağınıza tazelik geliyor.</p>
-                    <button onclick="window.location.href='/aboutUs'" class="bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between">
+                    <button onclick="window.location.href='/layouts/aboutUs'" class="bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between">
                         <span class="text-md ml-1">Kampanya Detaylarını İnceleyin</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -21,7 +21,6 @@
                 </div>
             </div>
 
-    
             <div class="absolute inset-0 transition-transform transform translate-x-full flex items-center justify-between" data-slide="2">
                 <div class="ml-12 w-1/2">
                     <h5 class="text-2xl text-red-600 font-semibold">FOOD INNOVATION FOR GOOD</h5>
@@ -38,7 +37,7 @@
                 </div>
             </div>
 
-      
+
             <div class="absolute inset-0 transition-transform transform translate-x-full flex items-center justify-between" data-slide="3">
                 <div class="ml-12 w-1/2">
                     <h5 class="text-2xl font-semibold text-red-600">PURATOS'TA İYİLİK İÇİN GIDA İNOVASYONU YAPIYORUZ</h5>
@@ -56,7 +55,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="absolute inset-0 flex items-center justify-between">
         <button id="prev" class="bg-white bg-opacity-50 hover:bg-opacity-100 text-black rounded-full p-2">
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="grid h-full place-items-center text-center bg-gray-200 mt-8">
     <div class="flex justify-center mt-12">
         <h1 class="text-4xl font-bold text-black">Ürünlerimizi Keşfedin</h1>
-    </div>     
+    </div>
     <div class="slider owl-carousel flex w-full m-16">
         <div class="flex flex-wrap justify-between">
             @foreach ($products as $product)
@@ -222,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="text-gray-700 text-2xl text-left w-full">
                 Sektördeki en son trendleri ve haberleri keşfedin. İşbirliğine dayalı ilhamın kıvılcımını harekete geçirmek için sabırsızlanıyoruz!
             </p>
-            <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between w-1/2">
+            <a href="{{route('news.index')}}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between w-1/2">
                 <span class="text-md ml-1">Tüm makaleleri görüntüle</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -232,64 +231,25 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
 <<div class="flex flex-wrap w-full">
-  <div class="flex flex-col  w-1/4">
+  <div class="flex flex-col  w1/4">
     <div class="shadow-md rounded-md overflow-hidden mb-4">
-      <a href="#">
-        <img src="{{ asset('/images/bannercake.webp') }}" class="h-60 w-full object-cover rounded-t-md" alt="blog">
-      </a>
-      <div class="p-4 bg-white rounded-b-md">
-        <a href="#" class="text-black text-xl font-bold mb-2">DENGELİ BİR BAĞIRSAK FLORASININ TEMELİNDE YATAN BİLİM</a>
-        <p class="text-gray-700 text-base">
-          Sektördeki en son trendleri ve haberleri keşfedin. İşbirliğine dayalı ilhamın kıvılcımını harekete geçirmek için sabırsızlanıyoruz!
-        </p>
-        <a href="#" class="btn mt-4 text-red-500">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>      
-      </div>
+        @foreach ($blogs as $blog)
+            <div class="flex flex-col w-1/4">
+                <div class="shadow-md rounded-md overflow-hidden mb-4">
+                    <a href="#">
+                        <img src="{{ asset('storage/' . $blog->image) }}" class="h-60 w-full object-cover rounded-t-md" alt="blog">
+                    </a>
+                    <div class="p-4 bg-white rounded-b-md">
+                        <a href="{{ route('blogs.show', ['blogPost_id' => $blog->id]) }}" class="text-black text-xl font-bold mb-2">{{ $blog->title }}</a>
+                        <p class="text-gray-700 text-base">{{ $blog->description }}</p>
+                        <a href="{{ route('blogs.show', ['blogPost_id' => $blog->id]) }}" class="text-red-500"></a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
   </div>
 
-
-  <div class="flex flex-col  w-1/4">
-    <div class="shadow-md rounded-md overflow-hidden mb-4">
-      <a href="#">
-        <img src="{{ asset('/images/bannercake.webp') }}" class="h-60 w-full object-cover rounded-t-md" alt="blog">
-      </a>
-      <div class="p-4 bg-white rounded-b-md">
-        <a href="#" class="text-black text-xl font-bold mb-2">DENGELİ BİR BAĞIRSAK FLORASININ TEMELİNDE YATAN BİLİM</a>
-        <p class="text-gray-700 text-base">
-          Sektördeki en son trendleri ve haberleri keşfedin. İşbirliğine dayalı ilhamın kıvılcımını harekete geçirmek için sabırsızlanıyoruz!
-        </p>
-        <a href="#" class="btn mt-4 text-red-500">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>      
-      </div>
-    </div>
-  </div>
-  <div class="flex flex-col  w-1/4">
-    <div class="shadow-md rounded-md overflow-hidden mb-4">
-      <a href="#">
-        <img src="{{ asset('/images/bannercake.webp') }}" class="h-60 w-full object-cover rounded-t-md" alt="blog">
-      </a>
-      <div class="p-4 bg-white rounded-b-md">
-        <a href="#" class="text-black text-xl font-bold mb-2">DENGELİ BİR BAĞIRSAK FLORASININ TEMELİNDE YATAN BİLİM</a>
-        <p class="text-gray-700 text-base">
-          Sektördeki en son trendleri ve haberleri keşfedin. İşbirliğine dayalı ilhamın kıvılcımını harekete geçirmek için sabırsızlanıyoruz!
-        </p>
-        <a href="#" class="btn mt-4 text-red-500">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>      
-      </div>
-    </div>
-  </div>
-  <div class="flex flex-col  w-1/4">
-    <div class="shadow-md rounded-md overflow-hidden mb-4">
-      <a href="#">
-        <img src="{{ asset('/images/bannercake.webp') }}" class="h-60 w-full object-cover rounded-t-md" alt="blog">
-      </a>
-      <div class="p-4 bg-white rounded-b-md">
-        <a href="#" class="text-black text-xl font-bold mb-2">DENGELİ BİR BAĞIRSAK FLORASININ TEMELİNDE YATAN BİLİM</a>
-        <p class="text-gray-700 text-base">
-          Sektördeki en son trendleri ve haberleri keşfedin. İşbirliğine dayalı ilhamın kıvılcımını harekete geçirmek için sabırsızlanıyoruz!
-        </p>
-        <a href="#" class="btn mt-4 text-red-500">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>      
-      </div>
-    </div>
-  </div>
 </div>
 </div>
 
@@ -299,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <img class="w-full object-cover banner" src="{{ asset('images/bannercontact.jpg') }}" alt="Banner Image" style="height: 30vh;">
     <div class="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-transparent flex flex-col justify-center items-center">
         <h3 class="font-bold text-2xl"> SİZE EN YAKIN DİSTRİBÜTÖRÜ BULMAK İÇİN İLETİŞİME GEÇ </h3>
-        <a href="#" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
+        <a href="/communication" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4">
             <div class="flex items-center justify-between w-full">
                 <span class="text-md ml-1">iLETİŞİM</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
