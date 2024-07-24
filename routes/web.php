@@ -13,16 +13,12 @@ use App\Http\Controllers\HRController;
 use App\Http\Controllers\CustomerSearchController;
 use App\Http\Controllers\auth\AuthenticatedSessionController;
 use App\Http\Controllers\CompanyInfoController;
-
+use App\Http\Controllers\MainController;
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
 //User Actions
-
-Route::get('/', function () {
-    return view('layouts.app');
-});
 
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -32,10 +28,8 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 
-Route::get('/main', function () {
-    return view('layouts.main');
-});
 
+Route::get('/', [MainController::class, 'index'])->name('main.index');
 
 Route::get('/products',[ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('products.show');

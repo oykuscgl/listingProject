@@ -103,9 +103,9 @@
 @endsection
 
 <script>
-let selectedFilter = '';
+    let selectedFilter = '';
 
-function toggleFilters() {
+    function toggleFilters() {
     console.log('toggleFilters fonksiyonu çağrıldı');
     const filterSection = document.getElementById('filterSection');
     const mainContent = document.getElementById('mainContent');
@@ -119,14 +119,14 @@ function toggleFilters() {
         filterSection.classList.remove('fixed');
         mainContent.classList.remove('hidden');
     }
-}
+    }
 
-function toggleSortMenu() {
+    function toggleSortMenu() {
     const sortOptions = document.getElementById('sortOptions');
     sortOptions.classList.toggle('hidden');
-}
+    }
 
-function toggleBackgroundColor(button, filter) {
+    function toggleBackgroundColor(button, filter) {
     console.log('toggleBackgroundColor fonksiyonu çağrıldı');
     const activeFilters = document.getElementById('activeFilters');
     const applyFiltersBtn = document.getElementById('applyFiltersBtn');
@@ -156,10 +156,10 @@ function toggleBackgroundColor(button, filter) {
         applyFiltersBtn.classList.add('hidden');
         resetFiltersBtn.classList.add('hidden');
     }
-}
+    }
 
 
-function applyFilters() {
+    function applyFilters() {
     console.log('applyFilters fonksiyonu çağrıldı');
     console.log(`Seçilen filtre: ${selectedFilter}`);
 
@@ -167,9 +167,9 @@ function applyFilters() {
     const url = new URL(window.location.href);
     url.searchParams.set('filter', selectedFilter);
     window.location.href = url.toString(); 
-}
+    }
 
-function resetFilters() {
+    function resetFilters() {
     console.log('resetFilters fonksiyonu çağrıldı');
     selectedFilter = '';
 
@@ -177,5 +177,19 @@ function resetFilters() {
     const url = new URL(window.location.href);
     url.searchParams.delete('filter');
     window.location.href = url.toString(); 
-}
+    }
+    document.querySelector('input[type="text"]').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const cards = document.querySelectorAll('#recipesContainer .card');
+
+    cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm)) {
+            card.style.display = ''; // Eşleşen kartları göster
+        } else {
+            card.style.display = 'none'; // Eşleşmeyen kartları gizle
+        }
+    });
+    });
 </script>

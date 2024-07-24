@@ -93,182 +93,41 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="grid h-full place-items-center text-center bg-gray-200 mt-8">
-   <div class="flex justify-center mt-12">
-    <h1 class="text-4xl font-bold text-black">Ürünlerimizi Keşfedin</h1>
+    <div class="flex justify-center mt-12">
+        <h1 class="text-4xl font-bold text-black">Ürünlerimizi Keşfedin</h1>
     </div>     
     <div class="slider owl-carousel flex w-full m-16">
-         <div class="card flex-1 mx-2.5 bg-white">
-            <div class="img h-52 w-full">
-               <img src="#" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="content p-5">
-               <div class="title text-2xl font-semibold">
-                 Title
-               </div>
-               <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-                  Second Title
-               </div>
-               <p class="text-justify my-2.5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-               </p>
-               <div class="btn text-left my-2.5">
-                <a href="#">
-                  <button  class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
-                     Keşfet
-                  </button>
-                  </a>
-               </div>
-            </div>
-         </div>
-         <div class="card flex-1 mx-2.5 bg-white">
-            <div class="img h-52 w-full">
-               <img src="#" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="content p-5">
-               <div class="title text-2xl font-semibold">
-                  Title
-               </div>
-               <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-                  Second Title
-               </div>
-               <p class="text-justify my-2.5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-               </p>
-               <div class="btn text-left my-2.5">
-                <a href="#">
-                  <button onclick="" class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
-                     Keşfet
-                  </button>
-                  </a>
-               </div>
-            </div>
-         </div>
-         <div class="card flex-1 mx-2.5 bg-white">
-            <div class="img h-52 w-full">
-               <img src="#" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="content p-5">
-               <div class="title text-2xl font-semibold">
-                    Title
-               </div>
-               <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-                  Second Title
-               </div>
-               <p class="text-justify my-2.5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-               </p>
-               <div class="btn text-left my-2.5">
-                <a href="#">
-                  <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
-                     Keşfet
-                  </button>
-                  </a>
-               </div>
-            </div>
-         </div>
-         <div class="card flex-1 mx-2.5 bg-white">
-            <div class="img h-52 w-full">
-               <img src="#" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="content p-5">
-               <div class="title text-2xl font-semibold">
-               Title
-               </div>
-               <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-                 Second Title
-               </div>
-               <p class="text-justify my-2.5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-               </p>
-               <div class="btn text-left my-2.5"><a href="#">
-                  <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
-                     Keşfet
-                  </button>
-                  </a>
-               </div>
-            </div>
-         </div>
-         <div class="card flex-1 mx-2.5 bg-white">
-            <div class="img h-52 w-full">
-               <img src="#" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="content p-5">
-               <div class="title text-2xl font-semibold">
-               Title
-               </div>
-               <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-               Title
-               </div>
-               <p class="text-justify my-2.5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-               </p>
-               <div class="btn text-left my-2.5">
-                <a href="#">
-                  <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
-                     keşfet
-                  </button>
-                  </a>
-               </div>
-            </div>
-         </div> 
-         </div>
-      </div>
-   </div>
-
-
-   <div class="bg-gray-200 py-12">
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <h2 class="text-2xl text-black font-semibold tracking-wide">İLGİNİZİ ÇEKEBİLECEK KONULAR</h2>
-        </div>
-
-        <div class="mt-8">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
-                <a href="#">
-                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
-                        <img src="{{ asset('/images/maya.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
-                        <p class="text-lg text-black font-semibold text-center">Ekşi Maya Akademisi</p>
+        <div class="flex flex-wrap justify-between">
+            @foreach ($products as $product)
+                <div class="card flex-1 mx-2.5 bg-white">
+                    <div class="img h-52 w-full">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover">
                     </div>
-                </a>
-                
-                <a href="#">
-                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
-                        <img src="{{ asset('/images/kakao.jpeg') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
-                        <p class="text-lg text-black font-semibold text-center">İyilik & Sağlık</p>
+                    <div class="content p-5">
+                        <div class="title text-2xl font-semibold">
+                            {{ $product->title }}
+                        </div>
+                        <div class="sub-title text-xl font-semibold text-red-600 leading-5">
+                            {{ $product->category->name ?? 'No Category' }} <!-- Assuming category is optional -->
+                        </div>
+                        <p class="text-justify my-2.5">
+                            {{ $product->description }}
+                        </p>
+                        <div class="btn text-left my-2.5">
+                            <a href="{{ route('products.show', $product->id) }}">
+                                <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
+                                    Keşfet
+                                </button>
+                            </a>
+                        </div>
                     </div>
-                </a>
-
-                <a href="#">
-                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
-                        <img src="{{ asset('/images/ticket.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
-                        <p class="text-lg text-black font-semibold text-center">Yalın Etiket Çözümler</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
-                        <img src="{{ asset('/images/belcolade.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
-                        <p class="text-lg text-black font-semibold text-center">Gerçek Belçika Çikolatası</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
-                        <img src="{{ asset('/images/chef.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
-                        <p class="text-lg text-black font-semibold text-center">İşletmeniz İçin Büyüme Önerileri</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="p-4 bg-white rounded-lg shadow-md flex flex-col items-center justify-center">
-                        <img src="{{ asset('/images/health.png') }}" alt="ticket" class="w-full h-40 object-contain mb-3">
-                        <p class="text-lg text-black font-semibold text-center">İşletmeniz İçin Büyüme Önerileri</p>
-                    </div>
-                </a>
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
+
+
 
 
 
