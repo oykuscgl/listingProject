@@ -19,7 +19,6 @@
     <main>
         <section class="service-detail-section">
             <div class="container">
-                <h1>{{ $info->title }}</h1>
                 <div class="detailed-info">
                     {!! $info->detailed_info !!}
                 </div>
