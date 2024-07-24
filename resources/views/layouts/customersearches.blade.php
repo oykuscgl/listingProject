@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="relative mr-2">
-        <img class="w-full object-cover banner" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image"style="height:30vh">
+        <img class="w-full object-cover banner"  src="{{ asset('storage/' . $research->image) }}" alt="Banner Image"style="height:30vh">
         <div class="absolute inset-0 bg-gradient-to-r from-white via-gray-100"></div>
         <div class="absolute top-1/3 left-12 transform -translate-y-1/2">
             <div class="flex items-center space-x-2 text-sm text-black">
