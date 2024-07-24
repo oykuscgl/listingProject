@@ -1,30 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha512-J6JHuQlRHCUCjMUbTV800vUqlLg5C/Z+ZpKrqvyzA02hSe2HltzTT3bE3D5s7A800Dm800s+Xu5Br1EeMaDpWAMjC9Pg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<style>
-    *{
-        box-sizing: border-box;
-    }
-
-</style>
-
-<body class="font-sans bg-white">
-
-
-    <div>
-        @include('components.navbar')
-    </div>
-
+@extends('layouts.app')
+@section('content')
 
     <div class="relative mr-2">
         <img class="w-full object-cover banner" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image"
@@ -65,6 +40,7 @@
     </div>
 
     @endforeach
+
     <div class="container-sm text-center bg-gray-100 py-20 mt-12 w-full">
         <div class="flex flex-col items-center justify-center">
              <h2 class="text-2xl font-bold mb-5">PURATOS'U KEŞFEDİN</h2>
@@ -85,6 +61,4 @@
 </section>
 
 
-</body>
-
-</html>
+@endsection

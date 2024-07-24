@@ -48,7 +48,7 @@
             @foreach ($products as $product)
             <div class="card category-{{ $product->category_id }} bg-white rounded-lg overflow-hidden shadow-md transform transition duration-500 hover:scale-105">
                 <div class="relative">
-                    <img src="{{ asset('images/' . $product->image) }}" alt="Product Image" class="w-full h-48 object-cover">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" class="w-full h-48 object-cover">
                 </div>
                 <div class="p-4">
                     <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $product->name }}</h3>
@@ -150,7 +150,7 @@ function applySorting(sortBy) {
     items.sort((a, b) => {
         const nameA = a.querySelector('h3').textContent.trim().toUpperCase();
         const nameB = b.querySelector('h3').textContent.trim().toUpperCase();
-        
+
         if (sortBy === 'alphabetical') {
             return nameA.localeCompare(nameB);
         }
