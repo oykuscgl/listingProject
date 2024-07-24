@@ -1,200 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <script src="{{ asset('js/productscript.js') }}"></script>
-    <script src="{{ asset('js/allproductscript.js') }}"></script>
-    <style>
-        .hidden {
-            display: none;
-        }
-        .active {
-            background-color: #f87171; /* Tailwind red-500 */
-        }
-    </style>
-</head>
-<body class="bg-white">
-    <div>
-        @include('components.navbar')
-    </div>
+@extends('layouts.app')
 
-    <div class="container-fluid flex flex-row">
-        <aside class="w-1/5 p-4 justify-start bg-white shadow-md rounded-lg">
-            <div class="mb-4">
-                <span class="text-lg font-bold uppercase text-black ml-3 mb-5">Aktif filtreler</span>
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-row items-center">
-                    <button data-category-id="1" class="filter-button flex items-center justify-between w-full p-2 bg-white border rounded-md shadow-md hover:text-red-500">
-                        <label class="text-lg font-bold uppercase ml-1">Ekmekçilik</label>
-                        <span>
-                          <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                          </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-row items-center">
-                    <button data-category-id="2" class="filter-button flex items-center justify-between w-full p-2 bg-white border border-gray-300 rounded-md shadow-md hover:text-red-500">
-                        <label class="text-lg font-bold uppercase ml-1">Pastacılık</label>
-                        <span class="ml-auto">
-                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="flex flex-row items-center">
-                    <button data-category-id="3" class="filter-button flex items-center justify-between w-full p-2 bg-white border border-gray-300 rounded-md shadow-md hover:text-red-500">
-                        <label class="text-lg font-bold uppercase ml-1">Çikolata</label>
-                        <span class="ml-auto">
-                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div class="bg-gray-100 md:rounded mt-8">
-                <div class="mb-4">
-                    <span class="text-lg ml-3 mb-5">Bitmiş ürüne göre arama</span>
-                </div>
-                <button onclick="toggleCheckboxes()" class="flex items-center justify-between w-full p-2 bg-white border border-gray-300 rounded-md shadow-md transform scale-90 hover:text-red-500">
-                    <label class="text-sm text-black ml-1">Ürün çeşidi seç</label>
-                    <span class="ml-auto">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+@section('content')
+<div class="container-fluid flex flex-col lg:flex-row bg-gray-200">
+    <!-- Main Content -->
+    <div id="mainContent" class="w-full lg:w-full order-1 lg:order-2">
+        <div class="mb-4 bg-gray-200">
+            <h2 class="text-xl font-bold uppercase text-black ml-3 mb-5 pt-4 pl-2">ÜRÜNLERİMİZ</h2>
+            <div class="p-4 shadow-md rounded-lg">
+                <div class="flex items-center border border-gray-300 rounded-full overflow-hidden">
+                    <input type="text" placeholder="Ara..." class="flex-1 p-2 border-none focus:outline-none" />
+                    <button class="p-2 bg-gray-400 flex items-center justify-center hover:bg-black rounded-full focus:outline-none">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M10 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm-1 6h2v2h-2v-2zm0-4h2v2h-2V6zm0 8h2v2h-2v-2zm5.657 3.657a1 1 0 0 1-1.414-1.414A8 8 0 1 0 4 12a1 1 0 0 1-2 0A10 10 0 1 1 14.657 20.657z"/>
                         </svg>
-                    </span>
-                </button>
-                <div id="checkboxes" class="flex flex-col hidden mt-2 ml-3">
-                    <!-- Ensure these filters match the values you expect in your product data -->
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="bitkisel-bazli" class="mr-2">
-                        Bitkisel Bazlı
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="bitkisel-protein" class="mr-2">
-                        Bitkisel protein
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="glutensiz" class="mr-2">
-                        Glutensiz
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="hayvansal-yag-icemez" class="mr-2">
-                        Hayvansal yağ içermez
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="lif-kaynagi" class="mr-2">
-                        Lif Kaynağı
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="sut-icremez" class="mr-2">
-                        Süt içermez
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="tahillar-tohumlar" class="mr-2">
-                        Tahıllar & Tohumlar
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <input type="checkbox" name="filter" value="yapay-tatlandirici" class="mr-2">
-                        Yapay tatlandırıcı
-                    </label>
+                    </button>
                 </div>
             </div>
-        </aside>
+        </div>
+        <button id="toggleFiltersBtn" class="lg:hidden p-2 bg-red-500 text-white rounded-md m-4 shadow-md border-2 border-gray-300 self-center order-2 lg:order-1" onclick="toggleFilters()">
+            <svg class="w-6 h-6 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            Filtreleri Göster
+        </button>
 
-        <main class="w-4/5 p-4">
-            <div class="flex justify-between mb-4">
-                <button onclick="toggleFilters()" class="flex items-center justify-between p-2 bg-red-500 text-white rounded-full shadow-md">
-                    <span>Filtreleri Göster</span>
-                    <svg class="w-4 h-4 ml-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-                    </svg>
-                </button>
+        <!-- Sorting Button -->
+
+<div class="relative inline-block text-left mt-4 lg:mt-0">
+    <button onclick="toggleSortMenu()" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
+        Sırala
+        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 116.293 6.293l3-3A1 1 0 0110 3zm0 14a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 14.586l2.293-2.293A1 1 0 1113.707 13.707l-3 3A1 1 0 0110 17z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    <div id="sortOptions" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="sortOptionsButton">
+            <a href="?sort=title" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Başlığa Göre</a>
+            <a href="?sort=category" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Kategoriye Göre</a>
+            <a href="?sort=date" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Tarihe Göre</a>
+            <a href="?sort=alphabetical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Alfabetik Sırala</a> <!-- Yeni seçenek eklendi -->
+        </div>
+    </div>
+</div>
+
+
+        <!-- products Container -->
+        <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    @foreach($products as $product)
+        <div class="card border rounded-lg overflow-hidden relative p-4 {{ $product->category ? $product->category->name : '' }}">
+            @if ($product->image)
+                <div class="w-full h-32 mb-4">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}" class="w-full h-32 object-contain">
+                </div>
+            @endif  
+            <h2 class="text-xl text-black font-semibold mb-4 ">{{ $product->name }}</h2>
+            <p>{{ $product->description }}</p>
+            <div class="flex justify-start items-center">
+                <a href="{{ route('products.show', $product->id) }}" class="btn mt-4 text-red-600">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>
             </div>
-            <div id="product-container" class="grid grid-cols-3 gap-4">
-                @foreach($products as $product)
-                    <div class="card border rounded-lg p-4"
-                        data-category-id="{{ $product->category_id }}"
-                        data-filters="{{ $product->filters }}"> <!-- Ensure you provide a filters attribute if needed -->
-                        <h2 class="text-xl font-semibold mb-2">{{ $product->name }}</h2>
-                        <p class="text-gray-700 mb-4">{{ $product->description }}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-700 font-bold">{{ $product->price }} ₺</span>
-                            <span class="text-gray-700">{{ $product->stock }} adet stokta</span>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </main>
+        </div> 
+    @endforeach
+</div>
+
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
-            const cards = document.querySelectorAll('#product-container .card');
-            const categoryButtons = document.querySelectorAll('.filter-button');
-            const filterButton = document.querySelector('button[onclick="toggleFilters()"]');
+    <!-- Filter Section -->
+    <aside id="filterSection" class="fixed inset-0 lg:relative lg:w-1/5 p-4 hidden lg:block lg:flex flex-col justify-start bg-white shadow-md rounded-lg order-3 lg:order-1">
+        <div class="lg:hidden p-4 bg-gray-900 text-white flex justify-between items-center">
+            <span class="text-lg font-bold uppercase">Filtreler</span>
+            <button onclick="toggleFilters()">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="lg:mt-0 flex flex-col justify-start text-start">
+            <span class="text-xl font-bold text-black mb-4">AKTİF FİLTRELER</span>
+        </div>
+        <div class="flex flex-col mb-4 space-y-2">
+            <div class="filter-btn-wrapper">
+                <button onclick="toggleBackgroundColor(this, 'Pastacılık')" class="filter-btn p-2 w-full text-left flex justify-between items-center shadow-md border-2 border-gray-300 rounded-lg hover:bg-red-600 hover:text-white">
+                    PASTACILIK
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </div>
+            <div class="filter-btn-wrapper">
+                <button onclick="toggleBackgroundColor(this, 'Çikolata')" class="filter-btn p-2 w-full text-left flex justify-between items-center shadow-md border-2 border-gray-300 rounded-lg hover:bg-red-600 hover:text-white">
+                    ÇİKOLATA
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </div>
+            <div class="filter-btn-wrapper">
+                <button onclick="toggleBackgroundColor(this, 'Ekmekçilik')" class="filter-btn p-2 w-full text-left flex justify-between items-center shadow-md border-2 border-gray-300 rounded-lg hover:bg-red-600 hover:text-white active:text-white">
+                    EKMEKÇİLİK
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mt-auto space-y-2">
+            <button id="applyFiltersBtn" class="w-full p-2 bg-red-600 text-white rounded-xl border-2 border-white text-start pl-2 shadow-md" onclick="applyFilters()">Filtreyi Uygula</button>
+            <button id="resetFiltersBtn" class="w-full p-2 font-bold bg-white text-red-600 rounded-xl border-2 border-red-600 text-start pl-2 shadow-md" onclick="resetFilters()">Filtreyi Kaldır</button>
+        </div>
+    </aside>
+</div>
+@endsection
 
-            function filterCards() {
-                const activeCategoryFilter = Array.from(categoryButtons)
-                    .find(button => button.classList.contains('active'))?.dataset.categoryId;
-                const activeFilters = Array.from(checkboxes)
-                    .filter(checkbox => checkbox.checked)
-                    .map(checkbox => checkbox.value);
+<script>
+let selectedFilter = '';
 
-                cards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category-id');
-                    const cardFilters = card.getAttribute('data-filters') ? card.getAttribute('data-filters').split(',') : [];
-                    const matchesCategory = !activeCategoryFilter || cardCategory === activeCategoryFilter;
-                    const matchesFilters = activeFilters.every(filter => cardFilters.includes(filter));
+function toggleFilters() {
+    console.log('toggleFilters fonksiyonu çağrıldı');
+    const filterSection = document.getElementById('filterSection');
+    const mainContent = document.getElementById('mainContent');
 
-                    card.style.display = matchesCategory && matchesFilters ? 'block' : 'none';
-                });
-            }
+    if (filterSection.classList.contains('hidden')) {
+        filterSection.classList.remove('hidden');
+        filterSection.classList.add('fixed');
+        mainContent.classList.add('hidden');
+    } else {
+        filterSection.classList.add('hidden');
+        filterSection.classList.remove('fixed');
+        mainContent.classList.remove('hidden');
+    }
+}
 
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Toggle active class on category buttons
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
+function toggleSortMenu() {
+    const sortOptions = document.getElementById('sortOptions');
+    sortOptions.classList.toggle('hidden');
+}
 
-                    // Apply filters
-                    filterCards();
-                });
-            });
+function toggleBackgroundColor(button, filter) {
+    console.log('toggleBackgroundColor fonksiyonu çağrıldı');
+    const activeFilters = document.getElementById('activeFilters');
+    const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
 
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', filterCards);
-            });
+    if (button.classList.contains('bg-red-600')){
+        button.classList.contains('text-white'); 
+        button.classList.remove('bg-red-600');
+        button.classList.add('bg-white');
+        selectedFilter = '';
+        const filterText = Array.from(activeFilters.children)
+                                .filter(child => child.textContent.includes(filter))
+                                .map(child => child.textContent).join('');
+        activeFilters.innerHTML = activeFilters.innerHTML.replace(filterText, '');
+    } else {
+        button.classList.add('bg-red-600');
+        button.classList.remove('bg-white');
+        selectedFilter = filter;
+        activeFilters.innerHTML += `<div>${filter}</div>`;
+    }
 
-            filterButton.addEventListener('click', function() {
-                document.getElementById('checkboxes').classList.toggle('hidden');
-            });
+    // Show or hide the apply and reset buttons based on filter selection
+    if (selectedFilter) {
+        applyFiltersBtn.classList.remove('hidden');
+        resetFiltersBtn.classList.remove('hidden');
+    } else {
+        applyFiltersBtn.classList.add('hidden');
+        resetFiltersBtn.classList.add('hidden');
+    }
+}
 
-            // Initial call to apply filters on page load
-            filterCards();
-        });
 
-        function toggleCheckboxes() {
-            document.getElementById('checkboxes').classList.toggle('hidden');
-        }
+function applyFilters() {
+    console.log('applyFilters fonksiyonu çağrıldı');
+    console.log(`Seçilen filtre: ${selectedFilter}`);
 
-        function toggleFilters() {
-            document.getElementById('checkboxes').classList.toggle('hidden');
-        }
-    </script>
-</body>
-</html>
+    // Sayfayı filtrelerle birlikte yeniden yüklemek için URL'yi güncelleyin
+    const url = new URL(window.location.href);
+    url.searchParams.set('filter', selectedFilter);
+    window.location.href = url.toString(); // Sayfayı yeniler
+}
+
+function resetFilters() {
+    console.log('resetFilters fonksiyonu çağrıldı');
+    selectedFilter = '';
+
+    // Filtre parametresini URL'den kaldır
+    const url = new URL(window.location.href);
+    url.searchParams.delete('filter');
+    window.location.href = url.toString(); // Sayfayı yeniler
+}
+
+</script>
