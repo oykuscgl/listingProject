@@ -1,33 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hizmetler.css') }}">
-    <link href="https://unpkg.com/tailwindcss@%5E1.0/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<style>
-       body {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            font-family: 'CenturyGothic', Verdana, sans-serif;
-        }
-        *{
-            box-sizing: border-box;
-        }
-        @font-face {
-            font-family: 'CenturyGothic', Verdana, sans-serif;
-            font-weight: 600;
-            font-style: italic;
-            font-display: swap;
-            src: url('clientlib-font-default/resources/fonts/CenturyGothicW05-SemiBoldIt.woff');
-        }
+@extends('layouts.app')
 
-</style>
-<body>
+@section('content')
 
 <section class="container mt-10 p-4">
 <header class="text-white py-4 px-6 flex items-center justify-between">
@@ -70,6 +44,4 @@
         <a href="{{ route('news.index') }}" class="text-red-500">Tüm Haberlere Geri Dön</a>
     </div>
 </section>
-
-</body>
-</html>
+@endsection

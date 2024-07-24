@@ -180,5 +180,4 @@ function resetFilters() {
     url.searchParams.delete('filter');
     window.location.href = url.toString(); // Sayfayı yeniler
 }
-
 </script>

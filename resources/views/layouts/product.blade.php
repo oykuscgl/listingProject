@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body class="bg-gray-100 text-gray-900">
+@extends('layouts.app')
+
+@section('content')
     <header class="bg-white bg-opacity-75 py-4 shadow-sm">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <nav>
@@ -110,5 +103,4 @@
             <button class="py-2 px-4 bg-white text-red-600 rounded hover:bg-gray-200 mt-4">Daha fazla bilgi</button>
         </div>
     </footer>
-</body>
-</html>
+@endsection

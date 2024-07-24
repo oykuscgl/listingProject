@@ -97,5 +97,4 @@
         button.classList.toggle('bg-gray-200');
     }
 </script>
-
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('content')
 
+@section('content')
     <div class="relative mr-2">
         <img class="w-full object-cover banner" src="{{ asset('images/puratosabout.jpeg') }}" alt="Banner Image"
             style="height:30vh">
@@ -22,7 +22,7 @@
     @foreach($infos as $info)
                 <div class="relative shadow-md rounded-md overflow-hidden h-96">
                      <a href="{{ route('aboutUs.show', ['info_id' => $info->id]) }}">
-                    <img src="{{ asset('storage/'.$info->image) }}" alt="{{ $info->title }}" class="w-full h-48 object-cover z-10 filter brightness-75">
+                    <img src="{{ asset('storage/'.$info->image) }}" alt="{{ $info->title }}" class="w-full h-full object-cover z-10 filter brightness-75">
                     </a>
             <div class="absolute inset-0 bg-gray-100 opacity-50 z-0"></div>
             <div class="absolute inset-0 flex flex-col items-center justify-start text-center w-full mt-16">
@@ -40,8 +40,8 @@
     </div>
 
     @endforeach
-
-    <div class="container-sm text-center bg-gray-100 py-20 mt-12 w-full">
+    </section>
+    <div class="container-fluid text-center bg-gray-100 py-20 mt-12 w-full">
         <div class="flex flex-col items-center justify-center">
              <h2 class="text-2xl font-bold mb-5">PURATOS'U KEŞFEDİN</h2>
                 <p class="text-2xl text-gray-700 mb-5 w-1/2">Puratos, ekmekçilik, pastacılık ve çikolata sektörlerinde artizan, endüstriyel, perakende ve yiyecek sektöründeki müşterileri için yenilikçi bir ürün yelpazesine sahip ve uygulama uzmanlığı sunan uluslararası bir gruptur.</p>
@@ -57,8 +57,7 @@
             </div>
         </div>
     </div>
-        </div>
-</section>
+    </div>
 
 
 @endsection
