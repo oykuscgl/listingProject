@@ -95,24 +95,26 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="flex justify-center mt-12">
         <h1 class="text-4xl font-bold text-black">Ürünlerimizi Keşfedin</h1>
     </div>
-    <div class="slider owl-carousel flex w-full m-16">
-        <div class="flex flex-wrap justify-between">
+    <div class="w-full m-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($products as $product)
-                <div class="card flex-1 mx-2.5 bg-white">
+                <div class="card bg-white shadow-md flex flex-col justify-between">
                     <div class="img h-52 w-full">
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="h-full w-full object-contain">
                     </div>
-                    <div class="content p-5">
-                        <div class="title text-2xl font-semibold">
-                            {{ $product->title }}
+                    <div class="content p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="title text-xl font-semibold mb-2">
+                                {{ $product->name }}
+                            </div>
+                            <div class="mb-2 sub-title text-lg font-semibold text-red-600 leading-5">
+                                {{ $product->category->name ?? 'No Category' }}
+                            </div>
+                            <p class="text-justify my-2.5 mt-4">
+                                {{ $product->description }}
+                            </p>
                         </div>
-                        <div class="sub-title text-xl font-semibold text-red-600 leading-5">
-                            {{ $product->category->name ?? 'No Category' }} <!-- Assuming category is optional -->
-                        </div>
-                        <p class="text-justify my-2.5">
-                            {{ $product->description }}
-                        </p>
-                        <div class="btn text-left my-2.5">
+                        <div class="btn flex justify-center my-2.5">
                             <a href="{{ route('products.show', $product->id) }}">
                                 <button class="bg-red-600 text-white border-none outline-none text-lg py-2 px-8 rounded-md cursor-pointer transition-transform transform hover:scale-90">
                                     Keşfet
@@ -125,6 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
+
+
 
 
 
@@ -213,44 +217,48 @@ document.addEventListener('DOMContentLoaded', function() {
     transition: opacity 0.3s;
     }
     </style>
-
-<div class="flex flex-row mt-12">
-    <div class="relative shadow-md rounded-md overflow-hidden h-96 w-1/2">
-        <div class="absolute inset-0 flex flex-col items-start justify-center text-center w-full pl-8">
+    
+    <div class="flex flex-wrap mt-12 bg-gray-200">
+    <!-- Sol taraf, içerik ve buton -->
+    <div class="relative rounded-md overflow-hidden lg:w-1/3 flex flex-col justify-between p-6 max-h-[24rem]">
+        <div class="flex-grow flex flex-col justify-center text-center">
             <a href="#" class="text-black text-2xl font-bold mt-4 mb-8">En son trendler ve haberler</a>
-            <p class="text-gray-700 text-2xl text-left w-full">
+            <p class="text-gray-700 text-xl text-left">
                 Sektördeki en son trendleri ve haberleri keşfedin. İşbirliğine dayalı ilhamın kıvılcımını harekete geçirmek için sabırsızlanıyoruz!
             </p>
-            <a href="{{route('news.index')}}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-4 flex items-center justify-between w-1/2">
-                <span class="text-md ml-1">Tüm makaleleri görüntüle</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-10">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-            </a>
         </div>
+        <a href="{{ route('news.index') }}" class="btn bg-red-700 text-white py-2 px-4 rounded-full mt-2 flex items-center justify-start w-full max-w-xs">
+            <span class="text-md ml-1">Tüm makaleleri görüntüle</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+        </a>
     </div>
 
-<<div class="flex flex-wrap w-full">
-  <div class="flex flex-col  w1/4">
-    <div class="shadow-md rounded-md overflow-hidden mb-4">
+    <!-- Sağ taraf, blog card'lar -->
+    <div class="w-full lg:w-2/3 flex flex-wrap -mx-4 mt-24 mb-24 items-start">
         @foreach ($blogs as $blog)
-            <div class="flex flex-col w-1/4">
-                <div class="shadow-md rounded-md overflow-hidden mb-4">
-                    <a href="#">
-                        <img src="{{ asset('storage/' . $blog->image) }}" class="h-60 w-full object-cover rounded-t-md" alt="blog">
+            <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-4">
+                <div class="shadow-md rounded-md overflow-hidden flex flex-col min-h-[24rem]">
+                    <a href="{{ route('blogs.show', ['blogPost_id' => $blog->id]) }}">
+                        <img src="{{ asset('storage/' . $blog->image) }}" class="h-48 w-full object-cover rounded-t-md" alt="blog">
                     </a>
-                    <div class="p-4 bg-white rounded-b-md">
+                    <div class="p-4 bg-white rounded-b-md flex flex-col flex-grow">
                         <a href="{{ route('blogs.show', ['blogPost_id' => $blog->id]) }}" class="text-black text-xl font-bold mb-2">{{ $blog->title }}</a>
-                        <p class="text-gray-700 text-base">{{ $blog->description }}</p>
-                        <a href="{{ route('blogs.show', ['blogPost_id' => $blog->id]) }}" class="text-red-500"></a>
+                        <p class="text-gray-700 text-base flex-grow">{{ $blog->description }}</p>
+                        <a href="{{ route('blogs.show', ['blogPost_id' => $blog->id]) }}" class="text-red-500 mt-2">Daha fazla oku</a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-  </div>
-
 </div>
+
+
+
+
+
+    </div>
 </div>
 
 
