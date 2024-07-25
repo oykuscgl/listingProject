@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             @foreach ($products as $product)
                 <div class="card flex-1 mx-2.5 bg-white">
                     <div class="img h-52 w-full">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="h-full w-full object-contain">
                     </div>
                     <div class="content p-5">
                         <div class="title text-2xl font-semibold">
