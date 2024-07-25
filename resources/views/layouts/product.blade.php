@@ -23,8 +23,16 @@
                 <div class="mb-6 bg-white p-6 shadow-sm rounded-lg">
                     <p class="text-sm text-gray-600">MyPuratos hesabınızla online mağazamızın tadını çıkarın! Tüm katalog ürünlerini, fiyat ve stok bilgilerini, size özel kampanyaları ve daha fazlasını keşfedin!</p>
                     <div class="mt-4 flex space-x-4">
-                        <button class="py-2 px-5 bg-transparent border border-red-600 text-red-600 rounded-full hover:bg-red-600 hover:text-white">Giriş yap</button>
-                        <button class="py-2 px-4 bg-red-600 text-white rounded-full hover:bg-red-700">Kayıt ol</button>
+                        <a href="{{ route('login') }}">
+                            <button class="py-2 px-5 bg-transparent border border-red-600 text-red-600 rounded-full hover:bg-red-600 hover:text-white">
+                                Giriş yap
+                            </button>
+                        </a>
+                        <a href="{{ route('register') }}">
+                            <button class="py-2 px-4 bg-red-600 text-white rounded-full hover:bg-red-700">
+                                Kayıt ol
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="p-4 rounded-lg">
