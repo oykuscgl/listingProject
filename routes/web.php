@@ -60,6 +60,11 @@ Route::get('/communication', function () {
     return view('layouts.communication');
 });
 
+Route::get('/conditions-of-use', function () {
+    return view('conditionsOfUse');
+})->name('layouts.conditionsOfUse');
+
+
 //Admin Dashboard
 Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.adminDashboard');
 
