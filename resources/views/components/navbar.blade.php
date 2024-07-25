@@ -80,7 +80,7 @@
             
             <!-- Left Container - Logo -->
             <div class="flex items-center">
-                <a href="/main">
+                <a href="/">
                     <img src="{{ asset('images/logo.png') }}" alt="Puratos Logo" class="h-25 ml-4 mt-3 mb-3">
                 </a>
             </div>

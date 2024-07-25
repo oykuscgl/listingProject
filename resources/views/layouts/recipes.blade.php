@@ -26,25 +26,25 @@
                 Filtreleri Göster
             </button>
 
-            <div class="relative flex flex-row items-center space-x-2 z-10">
-                <button onclick="toggleSortMenu()" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
-                    Sırala
-                    <svg class="mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 116.293 6.293l3-3A1 1 0 0110 3zm0 14a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 14.586l2.293-2.293A1 1 0 1113.707 13.707l-3 3A1 1 0 0110 17z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <div id="sortOptions" class="hidden absolute right-0 top-8 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="sortOptionsButton">
-                        <a href="?sort=title" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Başlığa Göre</a>
-                        <a href="?sort=category" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Kategoriye Göre</a>
-                        <a href="?sort=date" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Tarihe Göre</a>
-                        <a href="?sort=alphabetical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Alfabetik Sırala</a>
-                    </div>
-                </div>
-            </div>
+            <div class="relative flex flex-row items-center space-x-2 z-10 ml-auto">
+    <button onclick="toggleSortMenu()" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="sortOptionsButton" aria-expanded="true" aria-haspopup="true">
+        Sırala
+        <svg class="mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707A1 1 0 116.293 6.293l3-3A1 1 0 0110 3zm0 14a1 1 0 01-.707-.293l-3-3a1 1 0 011.414-1.414L10 14.586l2.293-2.293A1 1 0 1113.707 13.707l-3 3A1 1 0 0110 17z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    <div id="sortOptions" class="hidden absolute right-0 top-8 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="sortOptionsButton">
+            <a href="?sort=title" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Başlığa Göre</a>
+            <a href="?sort=category" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Kategoriye Göre</a>
+            <a href="?sort=date" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Tarihe Göre</a>
+            <a href="?sort=alphabetical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Alfabetik Sırala</a>
+        </div>
+    </div>
+</div>
         </div>
 
-        <div id="recipesContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div id="recipesContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ml-2">
             @foreach($recipes as $recipe)
                 <div class="card border rounded-lg overflow-hidden relative p-4 {{ $recipe->category ? $recipe->category->name : '' }}">
                     @if ($recipe->image)
@@ -52,16 +52,17 @@
                             <img src="{{ asset('storage/' . $recipe->image) }}" alt="{{ $recipe->title }}" class="w-full h-full object-cover">
                         </div>
                     @endif  
-                    <h3 class="text-xl font-semibold mb-2">{{ ($recipe->title) }}</h3>
-                    <div class="flex justify-start items-center">
-                        <a href="{{ route('recipes.show', $recipe->id) }}" class="btn mt-4 text-red-600">Daha fazla bilgi al <i class="fas fa-angle-right"></i></a>
+                    <h3 class="text-lg font-semibold mb-4">{{ ($recipe->title) }}</h3>
+                    <span class="text-black-text-sm mb-16">{{ ($recipe->description) }}</span>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-center bg-white">
+                        <a href="{{ route('recipes.show', $recipe->id) }}" class="btn px-4 py-2 bg-red-600 text-white rounded-md shadow-md">Daha fazla bilgi al</a>
                     </div>
                 </div> 
             @endforeach
         </div>
     </div>
 
-    <aside id="filterSection" class="fixed inset-0 lg:relative lg:w-1/5 p-4 hidden lg:block lg:flex flex-col justify-start bg-white shadow-md rounded-lg order-3 lg:order-1">
+    <aside id="filterSection" class="fixed inset-0 z-10 lg:relative lg:w-1/5 p-4 hidden lg:block lg:flex flex-col justify-start bg-white shadow-md rounded-lg order-3 lg:order-1 mt-2">
         <div class="lg:hidden p-4 bg-gray-900 text-white flex justify-between items-center">
             <span class="text-lg font-bold uppercase">Filtreler</span>
             <button onclick="toggleFilters()">
