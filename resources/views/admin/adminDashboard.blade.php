@@ -27,7 +27,7 @@
             margin-bottom: 15px;
         }
         .dashboard-list a {
-            background-color: red;
+            background-color: blue;
             display: block;
             color: wheat;
             padding: 15px;

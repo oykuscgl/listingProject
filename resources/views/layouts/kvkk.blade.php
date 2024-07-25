@@ -9,4 +9,6 @@
             <h1 class="text-3xl font-bold text-red-600 mb-8">İLETİŞİM</h1>
         </div>
     </div>
+
+    
 @endsection    
