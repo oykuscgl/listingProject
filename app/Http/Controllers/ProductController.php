@@ -10,6 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
+        
         $products = Product::all();
         $categories = Category::all();
         return view('layouts.products', ['products' => $products, 'categories' => $categories]);

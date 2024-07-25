@@ -128,7 +128,7 @@ Route::post('products', [AdminController::class, 'storeProduct'])->name('product
 Route::get('products/{product}/edit', [AdminController::class, 'showEditProductForm'])->name('products.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::put('products/{product}', [AdminController::class, 'updateProduct'])->name('products.update')->middleware(['auth', AdminMiddleware::class]);
 Route::delete('products/{product}', [AdminController::class, 'deleteProduct'])->name('products.destroy')->middleware(['auth', AdminMiddleware::class]);
-Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+
 
 
 

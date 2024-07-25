@@ -10,8 +10,8 @@
             background-color: #f8f9fa; /* Arka plan rengi */
         }
         .dashboard-header {
-            background-color: #d16b40; /* Başlık arka plan rengi */
-            color: wheat;
+            background-color: blue; /* Başlık arka plan rengi */
+            color: white;
             padding: 20px;
             text-align: center;
             border-radius: 8px;
@@ -27,8 +27,8 @@
             margin-bottom: 15px;
         }
         .dashboard-list a {
+            background-color: red;
             display: block;
-            background-color: #3b712e;
             color: wheat;
             padding: 15px;
             border-radius: 8px;
