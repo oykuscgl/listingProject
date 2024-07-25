@@ -7,14 +7,15 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa; /* Arka plan rengi */
+            background-color: #d9c7cf; /* Arka plan rengi */
         }
         .dashboard-header {
-            background-color: blue; /* Başlık arka plan rengi */
+            background-color: rgb(122, 160, 173); /* Başlık arka plan rengi */
             color: white;
             padding: 20px;
             text-align: center;
             border-radius: 8px;
+            position: relative;
         }
         .dashboard-list {
             margin-top: 30px;
@@ -27,20 +28,33 @@
             margin-bottom: 15px;
         }
         .dashboard-list a {
-            background-color: blue;
+            background-color: rgb(181, 106, 131);
             display: block;
-            color: wheat;
+            color: rgb(255, 255, 255);
             padding: 15px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
         }
         .dashboard-list a:hover {
-            background-color: #749979;
+            background-color: #ba8fc9;
         }
         .container {
             margin-top: 30px;
         }
+        .logout-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #d85199; /* Burada renk kodunu değiştirin */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    .logout-btn:hover {
+        background-color: #d85199; /* Hover sırasında kullanılacak renk */
+    }
     </style>
 </head>
 <body>
@@ -49,6 +63,7 @@
             <div class="col-md-12">
                 <div class="dashboard-header">
                     <h1>Admin Dashboard</h1>
+                    <a href="{{ route('logout') }}" class="btn btn-primary logout-btn">Çıkış Yap</a>
                 </div>
                 <div class="dashboard-list">
                     <ul>
