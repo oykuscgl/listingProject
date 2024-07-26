@@ -35,7 +35,7 @@ npm run dev
 ## Screenshots
 
 ### Homepage
-![Homepage](images/homepage.png)
+![Homepage](public/images/homepage.png)
 
 
 
