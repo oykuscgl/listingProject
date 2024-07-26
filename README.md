@@ -1,4 +1,4 @@
-PURATOS MOCK UP LISTING PROJECT
+## PURATOS MOCK UP LISTING PROJECT
 
 Product listing project developed with Laravel.
 
@@ -30,6 +30,12 @@ php artisan migrate
 php artisan serve
 npm run dev
 
+```
+
+## Screenshots
+
+### Homepage
+![Homepage](images/homepage.png)
 
 
 
