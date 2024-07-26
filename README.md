@@ -74,9 +74,12 @@ npm run dev
 ![Panel](public/images/adminPanel.png)
 
 
+###Admin Management Page
+![Management](public/images/adminManagement.png)
+
 
 ###Admin Edit Page
-![Homepage](public/images/adminEditPage.png)
+![Edit Page](public/images/adminEditPage.png)
 
 
 
