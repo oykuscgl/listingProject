@@ -45,40 +45,40 @@ npm run dev
 
 
 
-###Products Page
+### Products Page
 ![Product](public/images/products.png)
 
 
 
-###Recipes Page
+### Recipes Page
 ![Recipe](public/images/recipes.png)
 
 
 
-###Services Page
+### Services Page
 ![Service Page](public/images/services.png)
 
 
 
-###News Page
+### News Page
 ![News Page](public/images/news.png)
 
 
 
-###Contact Us Page
+### Contact Us Page
 ![Contactus](public/images/contactus.png)
 
 
 
-###Admin Dashboard
+### Admin Dashboard
 ![Panel](public/images/adminPanel.png)
 
 
-###Admin Management Page
+### Admin Management Page
 ![Management](public/images/adminManagement.png)
 
 
-###Admin Edit Page
+### Admin Edit Page
 ![Edit Page](public/images/adminEditPage.png)
 
 
